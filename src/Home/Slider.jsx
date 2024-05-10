@@ -27,7 +27,7 @@ const Slide = () => {
           <div className="relative overflow-hidden">
             <div className="max-w-[85rem] bg-[url('https://i.ibb.co/0GYbWT2/Rectangle.jpg')] bg-center bg-cover bg-no-repeat bg-opacity-30 mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-24 rounded-lg">
               <div className="text-center">
-                <h1 className="text-4xl sm:text-6xl font-bold text-white">
+                <h1 className="text-3xl font-anton sm:text-6xl font-bold text-white">
                   Insights
                 </h1>
 
@@ -217,7 +217,7 @@ const Slide = () => {
         <SwiperSlide><div className="relative overflow-hidden">
             <div className="max-w-[85rem] bg-[url('https://i.ibb.co/BNF2ZYr/istockphoto-1277763706-170667a.webp')] bg-center bg-cover bg-no-repeat bg-opacity-65 mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-24 rounded-lg">
               <div className="text-center">
-                <h1 className="text-4xl sm:text-6xl font-bold text-white">
+                <h1 className="text-3xl font-anton sm:text-6xl font-bold text-white">
                   Insights
                 </h1>
 
@@ -406,7 +406,7 @@ const Slide = () => {
         <SwiperSlide><div className="relative overflow-hidden">
             <div className="max-w-[85rem] bg-[url('https://i.ibb.co/gTJMzTS/istockphoto-1446478827-612x612.jpg')] bg-center bg-cover bg-no-repeat bg-opacity-30 mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-24 rounded-lg">
               <div className="text-center">
-                <h1 className="text-4xl sm:text-6xl font-bold text-white">
+                <h1 className="text-3xl font-anton sm:text-6xl font-bold text-white">
                   Insights
                 </h1>
 
@@ -595,7 +595,7 @@ const Slide = () => {
         <SwiperSlide><div className="relative overflow-hidden">
             <div className="max-w-[85rem] bg-[url('https://i.ibb.co/1TYb8w7/istockphoto-1409730005-612x612.jpg')] bg-center bg-cover bg-no-repeat bg-opacity-30 mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-24 rounded-lg">
               <div className="text-center">
-                <h1 className="text-4xl sm:text-6xl font-bold text-white">
+                <h1 className="text-3xl font-anton sm:text-6xl font-bold text-white">
                   Insights
                 </h1>
 

@@ -65,7 +65,14 @@ const Login = () => {
         <title>Login</title>
         {/* <link rel="canonical" href="https://www.tacobell.com/" /> */}
       </Helmet>
-      <div className="flex flex-col max-w-md mx-auto border-2 bg-base-200 lg:my-5 p-6 rounded-md sm:p-10 dark:bg-gray-50 dark:text-gray-800">
+
+
+      <div className="flex items-center w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 lg:max-w-4xl">
+    <div className="hidden  lg:block lg:w-1/2 " >
+      <video src="https://cdnl.iconscout.com/lottie/premium/preview-watermark/account-login-8677600-6981645.mp4" autoPlay="muted" loop="loop" playsInline type="video/mp4"></video>
+    </div>
+
+    <div className="flex flex-col max-w-md mx-auto border-2 bg-base-200 lg:my-5 p-6 rounded-md sm:p-10 dark:bg-gray-50 dark:text-gray-800">
         <div className="mb-8 text-center">
           <h1 className="my-3 text-4xl font-bold">Login</h1>
           <p className="text-sm dark:text-gray-600">
@@ -158,6 +165,10 @@ const Login = () => {
           </div>
         </div>
       </div>
+</div>
+
+
+     
     </div>
   );
 };
