@@ -10,14 +10,8 @@ const Header = () => {
           text.
         </Marquee>
       <Link to="/contract">
-        <div>
-        
-        </div>
-        <button className="rounded-md  btn-sm  overflow-hidden relative group cursor-pointer border-2  font-medium border-[#1e847f] text-[#1e847f]hover:text-white">
-          <span className="absolute w-64 h-0 transition-all duration-300 origin-center rotate-45 -translate-x-20 bg-[#1e847f] top-1/2 group-hover:h-64 group-hover:-translate-y-32 ease"></span>
-          <span className="relative my-auto  text-[#1e847f] transition duration-300 group-hover:text-white ease">
-            Contract Us
-          </span>
+        <button className="rounded-md hover:text-black  btn btn-sm bg-[#1e847f] text-white  font-anton">
+            Contract 
         </button>
       </Link>
     </div>

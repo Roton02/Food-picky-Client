@@ -56,7 +56,7 @@ import SinglePage from "../pages/singlePage/SinglePage";
         },
         {
           path:'/singlePage/:id',
-          element:<SinglePage></SinglePage>,
+          element:<PrivateRoute><SinglePage></SinglePage></PrivateRoute>,
           loader:({params})=>fetch(`http://localhost:5000/featured/?id=${params.id}`)
         }
       ]

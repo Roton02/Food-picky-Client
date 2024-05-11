@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const ManageMyFoods = () => {
   const [manageF, setManageF] = useState([]);
   const { user } = useContext(AuthContext);
-  const [upId , setupId] = useState('')
+  const [upId , setupId] = useState(null)
   useEffect(() => {
     axios
       .get(`http://localhost:5000/featured/?email=${user?.email}`)
@@ -79,7 +79,7 @@ const ManageMyFoods = () => {
       additional_notes,
     };
     console.log(foodDetails);
-    axios.patch(`http://localhost:5000/update/:${upId}`, foodDetails)
+    axios.patch(`http://localhost:5000/update/${upId}`, foodDetails)
     .then(res=>{
         console.log(res.data);
     })
@@ -119,7 +119,7 @@ const handleUp = id =>{
                       placeholder="Email Address"
                     />
 
-                    <button className="w-full px-5 py-2 text-sm tracking-wider text-white uppercase transition-colors duration-300 transform bg-blue-600 rounded-lg lg:w-auto lg:mx-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+                    <button className="w-full px-5 py-2 text-sm tracking-wider text-white uppercase transition-colors duration-300 transform bg-[#1e847f] rounded-lg lg:w-auto lg:mx-4  ">
                       Subscribe
                     </button>
                   </div>
@@ -160,13 +160,13 @@ const handleUp = id =>{
                             className="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800"
                             href="#"
                           >
-                            View all
+                            View all 
                           </button>
                         </Link>
 
                         <Link to="/addFood">
                           <button
-                            className="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
+                            className="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-[#1e847f] text-white  disabled:opacity-50 disabled:pointer-events-none"
                             href="#"
                           >
                             <svg
@@ -181,7 +181,7 @@ const handleUp = id =>{
                               <path d="M5 12h14" />
                               <path d="M12 5v14" />
                             </svg>
-                            Add user
+                            Add new food
                           </button>
                         </Link>
                       </div>
@@ -264,7 +264,7 @@ const handleUp = id =>{
                                   >
                                     <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
                                   </svg>
-                                  Active
+                                  Available
                                 </span>
                               ) : (
                                 <span className="py-1 px-1.5 inline-flex items-center gap-x-1 text-xs font-medium bg-slate-200 text-teal-800 rounded-full dark:bg-teal-500/10 dark:text-teal-500">
@@ -330,6 +330,7 @@ const handleUp = id =>{
                                         name="name"
                                         type="text"
                                         required
+                                        defaultValue={manage.food_name}
                                         placeholder="Write Food Name"
                                         className="input input-bordered w-full"
                                       />
@@ -343,6 +344,7 @@ const handleUp = id =>{
                                         name="image"
                                         type="text"
                                         required
+                                        defaultValue={manage.food_image}
                                         placeholder="Write Valid URL"
                                         className="input input-bordered w-full"
                                       />
@@ -358,6 +360,7 @@ const handleUp = id =>{
                                         name="quantity"
                                         type="number"
                                         required
+                                        defaultValue={manage.quantity}
                                         placeholder="Write Quantity"
                                         className="input input-bordered w-full"
                                       />
@@ -371,6 +374,7 @@ const handleUp = id =>{
                                         name="expired"
                                         type="date"
                                         required
+                                        defaultValue={manage.expired_datetime}
                                         placeholder=""
                                         className="input input-bordered w-full"
                                       />
@@ -382,6 +386,7 @@ const handleUp = id =>{
                             <input
                               name="location"
                               required
+                              defaultValue={manage.pickup_location}
                               type="text"
                               placeholder="Type here your pickup location"
                               className="input input-bordered input-md w-full "
@@ -392,6 +397,7 @@ const handleUp = id =>{
                             <input
                               name="notes"
                               required
+                              defaultValue={manage.additional_notes}
                               type="text"
                               placeholder="Type here Additional Notes"
                               className="input input-bordered input-md w-full "
