@@ -163,7 +163,7 @@ const AddFood = () => {
                             <input
                               name="expired"
                               required
-                              type="datetime-local"
+                              type="date"
                               placeholder="Write pick-up Location"
                               className="input input-bordered w-full max-w-xs"
                             />

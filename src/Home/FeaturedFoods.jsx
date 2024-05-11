@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { ImLocation2 } from "react-icons/im";
 import { MdTimeline } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const FeaturedFoods = () => {
   const [foods, setFoods] = useState([]);
@@ -42,12 +43,14 @@ const sortbyQuantity = [...foods].sort((a,b)=> b.quantity - a.quantity)
                
               </div>
               <div className="card-actions justify-end ">
-                <button className="rounded-md  btn  overflow-hidden relative group cursor-pointer border-2  font-medium border-[#1e847f] text-[#1e847f]hover:text-white">
-                  <span className="absolute w-64 h-0 transition-all duration-300 origin-center rotate-45 -translate-x-20 bg-[#1e847f] top-1/2 group-hover:h-64 group-hover:-translate-y-32 ease"></span>
-                  <span className="relative my-auto  text-[#1e847f] transition duration-300 group-hover:text-white ease">
-                    View Details
-                  </span>
-                </button>
+              <Link to={`/singlePage/${food._id}`}>
+                      <button className="rounded-md  btn   overflow-hidden relative group cursor-pointer border-2  font-medium border-[#1e847f] text-[#1e847f]hover:text-white">
+                        <span className="absolute w-64 h-0 transition-all duration-300 origin-center rotate-45 -translate-x-20 bg-[#1e847f] top-1/2 group-hover:h-64 group-hover:-translate-y-32 ease"></span>
+                        <span className="relative my-auto  text-[#1e847f] transition duration-300 group-hover:text-white ease">
+                          View Details
+                        </span>
+                      </button>
+                    </Link>
               </div>
              </div>
             </div>
