@@ -88,9 +88,9 @@ const Register = () => {
 
   return (
     <div>
-      <Helmet>
-        <title>Register</title>
-        <link rel="canonical" href="https://www.tacobell.com/" />
+       <Helmet>
+        <title>Food Picky || Register</title>
+        {/* <link rel="canonical" href="https://www.tacobell.com/" /> */}
       </Helmet>
 
       <div className="flex items-center w-full border-2 max-w-sm mx-auto overflow-hidden bg-white rounded-lg  dark:bg-gray-800 lg:max-w-4xl">

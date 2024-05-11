@@ -1,10 +1,15 @@
 import { Link } from "react-router-dom";
 import FeaturedFoods from "./FeaturedFoods";
 import Slide from "./Slider";
+import { Helmet } from "react-helmet-async";
 
 const Home = () => {
   return (
     <div>
+      <Helmet>
+        <title>Food Picky </title>
+        {/* <link rel="canonical" href="https://www.tacobell.com/" /> */}
+      </Helmet>
       <Slide></Slide>
       <div className="my-5">
         <h1 className="text-3xl text-center text-black underline dark:text-white font-bold font-anton">

@@ -3,6 +3,7 @@ import { BiVerticalBottom } from "react-icons/bi";
 import { AuthContext } from "../../ContextProvider/ContextProvider";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const AddFood = () => {
   const {user} = useContext(AuthContext)
@@ -38,7 +39,11 @@ const AddFood = () => {
     
   }
   return (
-    <div>
+    <div> 
+       <Helmet>
+        <title>Food Picky || Add Food</title>
+        {/* <link rel="canonical" href="https://www.tacobell.com/" /> */}
+      </Helmet>
       <div className="relative bg-gradient-to-bl from-blue-100 via-transparent dark:from-blue-950 dark:via-transparent">
         <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
           <div className="grid items-center md:grid-cols-2 gap-8 lg:gap-12">

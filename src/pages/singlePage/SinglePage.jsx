@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { useLoaderData } from "react-router-dom";
 import { toast } from "react-toastify";
 
@@ -44,6 +45,10 @@ const handleUp = id =>{
 
   return (
     <div className="border-2 rounded-md">
+       <Helmet>
+        <title>Food Picky || Single Food</title>
+        {/* <link rel="canonical" href="https://www.tacobell.com/" /> */}
+      </Helmet>
       {loadData.map((ld) => (
         <div key={ld._id}>
           <div className="max-w-[85rem] mx-auto p-5">

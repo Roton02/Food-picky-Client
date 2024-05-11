@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { FaArrowDown } from "react-icons/fa";
 import { ImLocation2 } from "react-icons/im";
 import { MdTimeline } from "react-icons/md";
@@ -57,6 +58,10 @@ console.log(foods);
 
   return (
     <div>
+       <Helmet>
+        <title>Food Picky || Available Food</title>
+        {/* <link rel="canonical" href="https://www.tacobell.com/" /> */}
+      </Helmet>
       <div>
         <div className="w-full  h-[28rem] rounded-md bg-[url('https://i.ibb.co/Th725HY/Lovepik-com-400155932-crayfish-food-background.jpg')] bg-center bg-cover bg-no-repeat ">
           <div className="flex items-center justify-center w-full h-full rounded-md bg-gray-900/40">

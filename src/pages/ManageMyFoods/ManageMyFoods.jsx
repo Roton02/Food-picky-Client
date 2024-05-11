@@ -4,6 +4,7 @@ import { AuthContext } from "../../ContextProvider/ContextProvider";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import { Helmet } from "react-helmet-async";
 
 const ManageMyFoods = () => {
   const [manageF, setManageF] = useState([]);
@@ -100,6 +101,10 @@ const ManageMyFoods = () => {
 
   return (
     <div>
+       <Helmet>
+        <title>Food Picky || Manage Food</title>
+        {/* <link rel="canonical" href="https://www.tacobell.com/" /> */}
+      </Helmet>
       <div>
         <header className="bg-white dark:bg-gray-900">
           <div className="container px-6  mx-auto">
