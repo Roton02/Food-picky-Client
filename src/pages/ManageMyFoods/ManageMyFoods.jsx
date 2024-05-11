@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../ContextProvider/ContextProvider";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const ManageMyFoods = () => {
   const [manageF, setManageF] = useState([]);
@@ -15,7 +16,7 @@ const ManageMyFoods = () => {
         setManageF(res.data);
       });
   }, [user]);
-//   console.log(manageF);
+  console.log(manageF);
 
   const handleDelete = (id) => {
     const swalWithBootstrapButtons = Swal.mixin({
@@ -61,6 +62,10 @@ const ManageMyFoods = () => {
         }
       });
   };
+  const handleUp = id =>{
+    console.log(id);
+    setupId(id)
+  };
   const handleUpdate = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -79,16 +84,19 @@ const ManageMyFoods = () => {
       additional_notes,
     };
     console.log(foodDetails);
+    
     axios.patch(`http://localhost:5000/update/${upId}`, foodDetails)
     .then(res=>{
         console.log(res.data);
+        if (res.data.modifiedCount > 0) {
+          toast.success("Update successfully !");
+        }else{
+          toast.error("No Update ");
+        }
     })
 }
-const handleUp = id =>{
-    console.log(id);
-    setupId(id)
-  };
-  console.log(upId);
+
+  // console.log(upId);
 
   return (
     <div>

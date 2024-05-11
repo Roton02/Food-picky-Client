@@ -58,7 +58,7 @@ console.log(foods);
   return (
     <div>
       <div>
-        <div className="w-full  h-[28rem] rounded-md bg-[url('https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80')] bg-center bg-cover bg-no-repeat ">
+        <div className="w-full  h-[28rem] rounded-md bg-[url('https://i.ibb.co/Th725HY/Lovepik-com-400155932-crayfish-food-background.jpg')] bg-center bg-cover bg-no-repeat ">
           <div className="flex items-center justify-center w-full h-full rounded-md bg-gray-900/40">
             <div className="text-center">
               <h1 className="text-3xl bg-gradient-to-r from-slate-400 to-zinc-50 bg-clip-text text-transparent mb-10 mx-auto font-semibold  lg:text-5xl">

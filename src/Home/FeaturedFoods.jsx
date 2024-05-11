@@ -17,7 +17,7 @@ const sortbyQuantity = [...foods].sort((a,b)=> b.quantity - a.quantity)
       {sortbyQuantity.slice(0,6).map((food) => (
         <div key={food._id}>
           <div className=" px-0 bg-gray-50 ">
-            <figure className=" relative">
+            <figure className=" relative font-anton" >
               <img
                 src={food.food_image}
                 alt="Shoes"

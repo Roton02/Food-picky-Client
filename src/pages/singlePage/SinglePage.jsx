@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const SinglePage = () => {
   const [upId , setupId] = useState(null)
@@ -29,6 +30,9 @@ const SinglePage = () => {
     axios.patch(`http://localhost:5000/update/${upId}`, foodDetails)
     .then(res=>{
         console.log(res.data);
+        if (res.data.modifiedCount > 0) {
+          toast.success("Added Requested List !");
+        }
     })
 }
 const handleUp = id =>{
@@ -172,7 +176,7 @@ const handleUp = id =>{
                             type="submit"
                             className="btn  bg-[#1e847f] text-white hover:text-black"
                           >
-                            Update Info
+                            Please Add
                           </button>
                         </div>
                       </form>
