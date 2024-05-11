@@ -11,6 +11,8 @@ import AvailFood from "../pages/AvailFood/AvailFood";
 import ManageMyFoods from "../pages/ManageMyFoods/ManageMyFoods";
 import MyFoodRequest from "../pages/MyFoodRequest/MyFoodRequest";
 import Contract from "../Shared/Contract/Contract";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import SinglePage from "../pages/singlePage/SinglePage";
 
 
   const router = createBrowserRouter([
@@ -34,7 +36,7 @@ import Contract from "../Shared/Contract/Contract";
         },
         {
           path:'/addFood',
-          element: <AddFood></AddFood>
+          element: <PrivateRoute><AddFood></AddFood></PrivateRoute>
         },
         {
           path :'/availFood',
@@ -51,6 +53,11 @@ import Contract from "../Shared/Contract/Contract";
         {
           path:'/contract',
           element:<Contract></Contract>
+        },
+        {
+          path:'/singlePage/:id',
+          element:<SinglePage></SinglePage>,
+          loader:({params})=>fetch(`http://localhost:5000/featured/?id=${params.id}`)
         }
       ]
     },

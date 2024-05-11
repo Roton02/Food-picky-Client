@@ -93,12 +93,12 @@ const Register = () => {
         <link rel="canonical" href="https://www.tacobell.com/" />
       </Helmet>
 
-      <div className="flex items-center w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 lg:max-w-4xl">
+      <div className="flex items-center w-full border-2 max-w-sm mx-auto overflow-hidden bg-white rounded-lg  dark:bg-gray-800 lg:max-w-4xl">
     <div className="hidden  lg:block lg:w-1/2 " >
       <video src="https://cdnl.iconscout.com/lottie/premium/preview-watermark/login-security-8684570-6983203.mp4" autoPlay="muted" loop="loop" playsInline type="video/mp4"></video>
     </div>
-
-    <div className="flex flex-col max-w-md mx-auto border-2 bg-base-200 p-6 rounded-md sm:p-10 dark:bg-gray-50 dark:text-gray-800">
+    <div className="divider lg:divider-horizontal py-20">YEH..</div> 
+    <div className="flex flex-col max-w-md mx-auto  p-6  sm:p-10 dark:bg-gray-50 dark:text-gray-800">
         <div className="mb-8 text-center">
           <h1 className="my-3 text-4xl font-bold">Register</h1>
           <p className="text-sm dark:text-gray-600">Register to new account</p>
@@ -167,7 +167,7 @@ const Register = () => {
             <div>
               <button
                 type="submit"
-                className="w-full px-8 btn btn-secondary hover:bg-pink-700 py-3 font-semibold rounded-md dark:bg-violet-600 dark:text-gray-50"
+                className="w-full px-8 btn bg-pink-500  font-anton text-white py-3 font-semibold rounded-md dark:bg-violet-600 dark:text-gray-50"
               >
                 Register
               </button>

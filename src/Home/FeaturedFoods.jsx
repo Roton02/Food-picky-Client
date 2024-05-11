@@ -10,10 +10,10 @@ const FeaturedFoods = () => {
       setFoods(res.data);
     });
   }, []);
-  console.log(foods);
+const sortbyQuantity = [...foods].sort((a,b)=> b.quantity - a.quantity)
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-8" >
-      {foods.slice(0,6).map((food) => (
+      {sortbyQuantity.slice(0,6).map((food) => (
         <div key={food._id}>
           <div className=" px-0 bg-gray-50 ">
             <figure className=" relative">
