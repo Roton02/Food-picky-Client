@@ -79,7 +79,7 @@ const ManageMyFoods = () => {
       additional_notes,
     };
     console.log(foodDetails);
-    axios.patch(`http://localhost:5000/update/:${upId}`)
+    axios.patch(`http://localhost:5000/update/:${upId}`, foodDetails)
     .then(res=>{
         console.log(res.data);
     })
