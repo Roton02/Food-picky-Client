@@ -8,9 +8,11 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const AvailFood = () => {
+  const [allFoods , setAllFoods] = useState([])
   const [foods, setFoods] = useState([]);
   useEffect(() => {
     axios.get("http://localhost:5000/featured").then((res) => {
+      setAllFoods(res.data.filter((s) => s.status === "available"));
       setFoods(res.data.filter((s) => s.status === "available"));
     });
   }, []);
@@ -21,12 +23,9 @@ console.log(foods);
     e.preventDefault();
     const form = e.target;
     console.log(form.serching.value);
-    const filterByName = foods.filter(
-      (f) => f.food_name === form.serching.value 
-    );
+    const filterByName = allFoods.filter( (f) => f.food_name === form.serching.value);
     console.log(filterByName);
-    if (filterByName.length > 0) {
-      setFoods([...filterByName]);
+    if (filterByName.length > 0) { setFoods([...filterByName]);
     } else {
       // form.serching.value =' '
       Swal.fire({
@@ -35,6 +34,7 @@ console.log(foods);
         text: "Data is not found ",
         
       });
+      setFoods([])
     }
   };
 

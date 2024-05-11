@@ -63,10 +63,7 @@ const ManageMyFoods = () => {
         }
       });
   };
-  const handleUp = id =>{
-    console.log(id);
-    setupId(id)
-  };
+  
   const handleUpdate = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -96,7 +93,10 @@ const ManageMyFoods = () => {
         }
     })
 }
-
+const handleUp = id =>{
+  console.log(id);
+  setupId(id)
+};
   // console.log(upId);
 
   return (
@@ -315,7 +315,7 @@ const ManageMyFoods = () => {
                               <button
                                 onClick={() =>
                                   document
-                                    .getElementById("my_modal_5")
+                                    .getElementById(manage._id)
                                     .showModal()
                                 }
                                 className="inline-flex items-center gap-x-1 text-sm text-blue-600 decoration-2 hover:underline font-medium dark:text-blue-500"
@@ -325,7 +325,7 @@ const ManageMyFoods = () => {
                               </button>
 
                               <dialog 
-                                id="my_modal_5"
+                                id={manage._id}
                                 className="modal modal-bottom sm:modal-middle"
                               >
                                 <div className="modal-box relative">
