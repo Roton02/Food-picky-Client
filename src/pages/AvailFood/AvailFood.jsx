@@ -1,4 +1,5 @@
 import axios from "axios";
+import { number } from "prop-types";
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { FaArrowDown } from "react-icons/fa";
@@ -9,6 +10,7 @@ import Swal from "sweetalert2";
 
 const AvailFood = () => {
   const [allFoods , setAllFoods] = useState([])
+  const [stateManage , setStateManage] = useState(true)
   const [foods, setFoods] = useState([]);
   useEffect(() => {
     axios.get("http://localhost:5000/featured").then((res) => {
@@ -42,7 +44,7 @@ console.log(foods);
     // console.log(cost);
     if (expired == "recentDays") {
       const remainingRecent = [...foods].sort(
-        (a, b) => a.expired_datetime.getTime() - b.expired_datetime.getTime()
+        (a, b) => a.expired_datetime.toLocaleDateString() - b.expired_datetime.toLocaleDateString()
       );
       console.log(remainingRecent);
       // setFoods(remainingRecent)
@@ -55,7 +57,10 @@ console.log(foods);
       // setFoods( remainingFast)
     }
   };
-
+const handleStateManage = ()=>{
+  setStateManage(!stateManage)
+}
+console.log(stateManage);
   return (
     <div>
        <Helmet>
@@ -131,8 +136,8 @@ console.log(foods);
           </div>
         </div>
       </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-8">
+    <button onClick={handleStateManage} className="btn bg-[#1e847f] text-white hover:text-black ml-14 my-5"> Layout </button>
+      <div className={stateManage?'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-2':' grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10 mt-2'}>
         {foods.map((food) => (
           <div key={food._id}>
             <div className=" px-0 border-2 rounded-xl ">

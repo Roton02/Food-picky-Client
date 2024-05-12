@@ -1,14 +1,14 @@
-const Contract = () => {
+
+const Maps = () => {
     return (
-      <div>
-        <h1 className="text-3xl font-anton font-semibold text-center
-         underline my-5 ">Office Address</h1>
-        <div className="overflow-hidden my-5  h-[400px]">
-                <iframe width="100%" height="100%" title="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1326418.7529822944!2d90.51535137397207!3d23.32487093833291!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3754ab593c20ef5d%3A0xa4a537a268b0fb48!2sSubarnachar%20Upazila!5e0!3m2!1sen!2sbd!4v1715499474876!5m2!1sen!2sbd"></iframe>
-            </div>
-        <section className=" bg-gray-100 rounded-xl">
-          <div className="grid max-w-6xl grid-cols-1 px-10 lg:px-0 lg:grid-cols-6  gap-10   md:divide-x">
-            <div className="py-20 md:py-0 col-span-2 rounded-l-xl text-white bg-slate-900 ">
+        <div id="contract">
+           <h1 className="text-2xl text-center font-bold font-anton mt-6 underline ">Office Address </h1>
+            <section className="bg-white dark:bg-gray-900">
+    <div className="container px-6 py-12 mx-auto">
+        
+
+        <div className="grid grid-cols-1  lg:min-h-[550px]  lg:grid-cols-3">
+        <div className=" rounded-l-xl  pt-10 text-white bg-slate-900 ">
               <div className="p-10">
                 <p>Contact</p>
                 <h1
@@ -23,7 +23,7 @@ const Contract = () => {
                   data-aos-duration="1000"
                   className="pt-2 pb-4"
                 >
-                  Contact us to unlock the door to your perfect Tourist-Spot.
+                  Contact us to unlock the door to your perfect Food.
                 </p>
                 <div
                   data-aos="fade-right"
@@ -71,50 +71,14 @@ const Contract = () => {
                 </div>
               </div>
             </div>
-            <form
-              noValidate=""
-              className="flex lg:col-span-4 flex-col py-6 my-5 space-y-6 md:py-0 md:px-6"
-            >
-              <label className="block">
-                <span className="mb-1">Full name</span>
-                <input
-                  type="text"
-                  placeholder="Leroy Jenkins"
-                  className="block w-full p-3 rounded-md shadow-sm focus:ring focus:ring-opacity-75 "
-                />
-              </label>
-              <label className="block">
-                <span className="mb-1">Email address</span>
-                <input
-                  type="email"
-                  placeholder="leroy@jenkins.com"
-                  className="block p-3 w-full rounded-md shadow-sm focus:ring focus:ring-opacity-75 "
-                />
-              </label>
-              <label className="block">
-                <span className="mb-1">Message</span>
-                <textarea
-                  placeholder="write message"
-                  rows="5"
-                  className="block p-5 w-full rounded-md focus:ring focus:ring-opacity-75 "
-                ></textarea>
-              </label>
-              <button
-                data-aos="fade-left"
-                data-aos-duration="1000"
-                type="button"
-                className="self-end px-8 py-3 text-lg rounded-lg bg-blue-500  text-white  hover:bg-gray-200 
-               hover:text-black duration-300"
-              >
-                Send message
-              </button>
-            </form>
-          </div>
-        </section>
-        
-      </div>
+            <div className="overflow-hidden  lg:col-span-2 h-96 lg:h-auto">
+                <iframe width="100%" height="100%" title="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1326418.7529822944!2d90.51535137397207!3d23.32487093833291!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3754ab593c20ef5d%3A0xa4a537a268b0fb48!2sSubarnachar%20Upazila!5e0!3m2!1sen!2sbd!4v1715499474876!5m2!1sen!2sbd"></iframe>
+            </div>
+        </div>
+    </div>
+</section>
+        </div>
     );
-  };
-  
-  export default Contract;
-  
+};
+
+export default Maps;

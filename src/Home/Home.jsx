@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import FeaturedFoods from "./FeaturedFoods";
 import Slide from "./Slider";
 import { Helmet } from "react-helmet-async";
+import Maps from "./Maps";
+import Featured from "./Featured";
 
 const Home = () => {
   return (
@@ -23,6 +25,13 @@ const Home = () => {
           </button>
           </Link>
         </div>
+        <div className="mt-10">
+          <Featured></Featured>
+        </div>
+        <div>
+          <Maps></Maps>
+        </div>
+       
       </div>
     </div>
   );
