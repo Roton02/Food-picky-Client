@@ -1,10 +1,12 @@
 import axios from "axios";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useLoaderData } from "react-router-dom";
 import { toast } from "react-toastify";
+import { AuthContext } from "../../ContextProvider/ContextProvider";
 
 const SinglePage = () => {
+  const {user} = useContext(AuthContext)
   const [upId , setupId] = useState(null)
   const loadData = useLoaderData();
   // console.log(loadData);
@@ -17,22 +19,30 @@ const SinglePage = () => {
     const expired_datetime = form.expired.value;
     const quantity = form.quantity.value;
     const additional_notes = form.notes.value;
+    const image = user.photoURL;
+    const name = user.displayName;
+    const email = user.email
     const status = 'Requsted'
     const foodDetails = {
+      email,
       food_name,
       food_image,
       pickup_location,
       expired_datetime,
       quantity,
       status,
-      additional_notes
+      additional_notes,
+      donator:{image, name,email}
     };
     console.log(foodDetails);
-    axios.patch(`http://localhost:5000/update/${upId}`, foodDetails)
+    axios.post('http://localhost:5000/requested', foodDetails)
     .then(res=>{
         console.log(res.data);
-        if (res.data.modifiedCount > 0) {
+        if (res.data.acknowledged) {
           toast.success("Added Requested List !");
+        }
+        else{
+          toast.error("something is wrong");
         }
     })
 }
@@ -82,7 +92,7 @@ const handleUp = id =>{
                 <p className="font-anton">{ld.additional_notes}</p>
 
                 <div className="mt-3 flex flex-col items-center gap-2 sm:flex-row sm:gap-3">
-                  <button
+                  <button 
                     onClick={() =>
                       document.getElementById("my_modal_5").showModal()
                     }

@@ -11,6 +11,8 @@ const PrivateRoute = ({children}) => {
         <span className="loading loading-bars loading-lg"></span>
         <span className="loading loading-bars loading-lg"></span>
         <span className="loading loading-bars loading-lg"></span>
+
+        {/* <video src="https://cdnl.iconscout.com/lottie/premium/preview-watermark/loading-lines-6747317-5601928.mp4" autoPlay="muted" loop="loop" playsInline type="video/mp4"></video> */}
       </div>
     }
     if (user) {

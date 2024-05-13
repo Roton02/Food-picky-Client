@@ -1,5 +1,4 @@
 import axios from "axios";
-import { number } from "prop-types";
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { FaArrowDown } from "react-icons/fa";

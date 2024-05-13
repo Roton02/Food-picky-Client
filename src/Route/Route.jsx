@@ -44,11 +44,11 @@ import SinglePage from "../pages/singlePage/SinglePage";
         },
         {
           path:'/ManageMyFoods',
-          element:<ManageMyFoods></ManageMyFoods>
+          element:<PrivateRoute><ManageMyFoods></ManageMyFoods></PrivateRoute>
         },
         {
           path:'/MyFoodRequest',
-          element:<MyFoodRequest></MyFoodRequest>
+          element:<PrivateRoute><MyFoodRequest></MyFoodRequest></PrivateRoute>
         },
         {
           path:'/contract',

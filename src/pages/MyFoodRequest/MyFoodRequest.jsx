@@ -1,15 +1,17 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../ContextProvider/ContextProvider";
 
 const MyFoodRequest = () => {
+  const {user} = useContext(AuthContext)
   const [foods, setFoods] = useState([]);
   useEffect(() => {
-    axios.get("http://localhost:5000/featured").then((res) => {
-      setFoods(res.data.filter((s) => s.status === "Requsted"));
+    axios.get(`http://localhost:5000/requested/${user.email}`).then((res) => {
+      setFoods(res.data);
     });
-  }, []);
+  }, [user]);
   console.log(foods);
   return (
     <div>
@@ -125,11 +127,11 @@ const MyFoodRequest = () => {
                   <div className="">
                     <div className="avatar">
                       <div className="w-12 rounded-xl">
-                        <img src={manage.donator.image} />
+                        <img src={manage.donator?.image} />
                       </div>
                     </div>
                     <h2 className="text-sm font-medium font-anton">
-                      {manage.donator.name}{" "}
+                      {manage.donator?.name}{" "}
                     </h2>
                   </div>
                 </td>
