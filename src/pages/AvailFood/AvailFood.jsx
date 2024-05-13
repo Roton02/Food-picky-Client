@@ -12,9 +12,9 @@ const AvailFood = () => {
   const [stateManage , setStateManage] = useState(true)
   const [foods, setFoods] = useState([]);
   useEffect(() => {
-    axios.get("http://localhost:5000/featured").then((res) => {
-      setAllFoods(res.data.filter((s) => s.status === "available"));
-      setFoods(res.data.filter((s) => s.status === "available"));
+    axios.get("http://localhost:5000/featured/avilable").then((res) => {
+      setAllFoods(res.data);
+      setFoods(res.data);   
     });
   }, []);
   // const filterByStatus = [...foods];

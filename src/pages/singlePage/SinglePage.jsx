@@ -9,30 +9,28 @@ const SinglePage = () => {
   const {user} = useContext(AuthContext)
   const [upId , setupId] = useState(null)
   const loadData = useLoaderData();
-  // console.log(loadData);
+  const {_id,additional_notes,donator,expired_datetime,food_image,food_name,pickup_location,quantity,status} = loadData;
+  console.log(loadData);
   const handleUpdate = (e) => {
     e.preventDefault();
     const form = e.target;
+    
     const food_name = form.name.value;
     const food_image = form.image.value;
     const pickup_location = form.location.value;
     const expired_datetime = form.expired.value;
     const quantity = form.quantity.value;
     const additional_notes = form.notes.value;
-    const image = user.photoURL;
-    const name = user.displayName;
+    const image = donator.image;
+    const name = donator.name;
     const email = user.email
     const status = 'Requsted'
     const foodDetails = {
-      email,
-      food_name,
-      food_image,
-      pickup_location,
-      expired_datetime,
-      quantity,
-      status,
+      _id,
+      
       additional_notes,
-      donator:{image, name,email}
+      ...loadData,
+      requsterEmail: user.email
     };
     console.log(foodDetails);
     axios.post('http://localhost:5000/requested', foodDetails)
@@ -59,8 +57,8 @@ const handleUp = id =>{
         <title>Food Picky || Single Food</title>
         {/* <link rel="canonical" href="https://www.tacobell.com/" /> */}
       </Helmet>
-      {loadData.map((ld) => (
-        <div key={ld._id}>
+     
+        <div>
           <div className="max-w-[85rem] mx-auto p-5">
             <div className="grid lg:grid-cols-7 lg:gap-x-8 xl:gap-x-12 lg:items-center">
               <div className="lg:col-span-3">
@@ -71,25 +69,25 @@ const handleUp = id =>{
                   <div className="flex gap-5 items-center">
                     <div className="avatar">
                       <div className="w-16 rounded">
-                        <img src={ld.donator.image} />
+                        <img src={donator.image} />
                       </div>
                     </div>
                     <div className="text-sm font-anton">
-                      <p>{ld.donator.name}</p>
-                      <p> pickup_location : {ld.pickup_location}</p>
+                      <p>{donator.name}</p>
+                      <p> pickup_location : {pickup_location}</p>
                     </div>
                   </div>
                 </div>
                 <h1 className="block mt-3 ml-2 text-2xl font-anton font-bold text-gray-800  md:text-3xl lg:text-4xl dark:text-white">
-                  {ld.food_name}
+                  {food_name}
                 </h1>
                 <p className="mt-3 text-lg font-anton text-gray-800 dark:text-neutral-400">
-                  expired: {ld.expired_datetime}
+                  expired: {expired_datetime}
                 </p>
                 <p className=" text-lg font-anton text-gray-800 dark:text-neutral-400">
-                  Quantity: {ld.quantity}
+                  Quantity: {quantity}
                 </p>
-                <p className="font-anton">{ld.additional_notes}</p>
+                <p className="font-anton">{additional_notes}</p>
 
                 <div className="mt-3 flex flex-col items-center gap-2 sm:flex-row sm:gap-3">
                   <button 
@@ -117,7 +115,7 @@ const handleUp = id =>{
                               name="name"
                               type="text"
                               required
-                              value={ld.food_name}
+                              value={food_name}
                               placeholder="Write Food Name"
                               className="input input-bordered w-full"
                             />
@@ -128,7 +126,7 @@ const handleUp = id =>{
                               name="image"
                               type="text"
                               required
-                              value={ld.food_image}
+                              value={food_image}
                               placeholder="Write Valid URL"
                               className="input input-bordered w-full"
                             />
@@ -142,7 +140,7 @@ const handleUp = id =>{
                               name="quantity"
                               type="number"
                               required
-                              value={ld.quantity}
+                              value={quantity}
                               placeholder="Write Quantity"
                               className="input input-bordered w-full"
                             />
@@ -153,7 +151,7 @@ const handleUp = id =>{
                               name="expired"
                               type="text"
                               required
-                              value={ld.expired_datetime}
+                              value={expired_datetime}
                               placeholder="write date"
                               className="input input-bordered w-full"
                             />
@@ -166,7 +164,7 @@ const handleUp = id =>{
                             <input
                               name="location"
                               required
-                              value={ld.pickup_location}
+                              value={pickup_location}
                               type="text"
                               placeholder="Type here your pickup location"
                               className="input input-bordered input-md w-full "
@@ -178,7 +176,7 @@ const handleUp = id =>{
                             <input
                               name="notes"
                               required
-                              defaultValue={ld.additional_notes}
+                              defaultValue={additional_notes}
                               type="text"
                               placeholder="Type here Additional Notes"
                               className="input input-bordered input-md w-full "
@@ -187,7 +185,7 @@ const handleUp = id =>{
                         </div>
                         <div className="flex justify-center my-5">
                           <button
-                            onClick={() => handleUp(ld._id)}
+                            onClick={() => handleUp(_id)}
                             type="submit"
                             className="btn  bg-[#1e847f] text-white hover:text-black"
                           >
@@ -213,14 +211,13 @@ const handleUp = id =>{
               <div className="lg:col-span-4 items-center mt-10 lg:mt-0">
                 <img
                   className="w-full rounded-xl"
-                  src={ld.food_image}
+                  src={food_image}
                   alt="Image Loading..............."
                 />
               </div>
             </div>
           </div>
         </div>
-      ))}
     </div>
   );
 };
