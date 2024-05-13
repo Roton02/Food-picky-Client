@@ -1,10 +1,9 @@
 import PropTypes from 'prop-types';
-import { useContext } from 'react';
 import {Navigate,useLocation} from 'react-router-dom'
-import { AuthContext } from '../ContextProvider/ContextProvider';
+import useAuth from '../Hooks/useAuth';
 const PrivateRoute = ({children}) => {
     const location = useLocation()
-    const {user,loading} = useContext(AuthContext)
+    const {user,loading} = useAuth()
     if (loading) {
         return <div className="flex min-h-screen my-auto items-center justify-center">
         <span className="loading loading-bars loading-xs"></span>

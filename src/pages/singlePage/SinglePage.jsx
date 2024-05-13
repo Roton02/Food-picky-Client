@@ -1,12 +1,12 @@
 import axios from "axios";
-import { useContext, useState } from "react";
+import {  useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useLoaderData } from "react-router-dom";
 import { toast } from "react-toastify";
-import { AuthContext } from "../../ContextProvider/ContextProvider";
+import useAuth from "../../Hooks/useAuth";
 
 const SinglePage = () => {
-  const {user} = useContext(AuthContext)
+  const {user} = useAuth()
   const [upId , setupId] = useState(null)
   const loadData = useLoaderData();
   const {_id,additional_notes,donator,expired_datetime,food_image,food_name,pickup_location,quantity} = loadData;

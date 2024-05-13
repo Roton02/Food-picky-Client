@@ -1,12 +1,11 @@
-import { useContext } from "react";
 import { BiVerticalBottom } from "react-icons/bi";
-import { AuthContext } from "../../ContextProvider/ContextProvider";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
+import useAuth from "../../Hooks/useAuth";
 
 const AddFood = () => {
-  const {user} = useContext(AuthContext)
+  const {user} = useAuth()
   const handleAdd = e => {
     e.preventDefault()
     const form = e.target;

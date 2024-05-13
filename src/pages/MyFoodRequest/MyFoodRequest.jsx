@@ -1,17 +1,31 @@
 import axios from "axios";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../../ContextProvider/ContextProvider";
+import useAuth from "../../Hooks/useAuth";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
 
 const MyFoodRequest = () => {
-  const {user} = useContext(AuthContext)
-  const [foods, setFoods] = useState([]);
-  useEffect(() => {
-    axios.get(`http://localhost:5000/requested/${user.email}`).then((res) => {
-      setFoods(res.data);
-    });
-  }, [user]);
+  const {user} = useAuth()
+  // const [foods, setFoods] = useState([]);
+  const axiosSecure = useAxiosSecure()
+  // useEffect(() => {
+  //   axios.get(`http://localhost:5000/requested/${user.email}, {withCredentials:true}`).then((res) => {
+  //     setFoods(res.data);
+  //   });
+  // }, [user]);
+  const { data: foods = [], isLoading, refetch } = useQuery({
+    queryFn: () => getData(),
+    queryKey: ['manageFoods', user?.email]   // 2nd index a jodi dependency dita pari. mane user?.email asle abar refetch hobe. ex:  queryKey: ['rooms', user?.email] 
+})
+console.log(foods)
+const getData = async () => {
+    const { data } = await axiosSecure(`/requested/${user.email}`)
+    return data;
+}
+console.log(foods);
+
   console.log(foods);
   return (
     <div>

@@ -4,11 +4,12 @@ import { AuthContext } from "../../ContextProvider/ContextProvider";
 import { Helmet } from "react-helmet-async";
 import { IoIosEye, IoIosEyeOff } from "react-icons/io";
 import { toast } from "react-toastify";
+import useAuth from "../../Hooks/useAuth";
 
 const Login = () => {
   const navigate = useNavigate();
   const [toggle, setToggle] = useState(false)
-  const { login, googleSignIn, githubSignIn } = useContext(AuthContext);
+  const { login, googleSignIn, githubSignIn } = useAuth()
   const location = useLocation();
   // console.log(location);
 

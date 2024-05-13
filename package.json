@@ -10,10 +10,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.36.0",
     "animate.css": "^4.1.1",
     "aos": "^2.3.4",
     "axios": "^1.6.8",
     "firebase": "^10.11.0",
+    "framer-motion": "^11.1.9",
     "i": "^0.3.7",
     "lottie-react": "^2.4.0",
     "npm": "^10.5.2",

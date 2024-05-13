@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { ImLocation2 } from "react-icons/im";
 import { MdTimeline } from "react-icons/md";
 import { Link } from "react-router-dom";
+import {motion} from 'framer-motion'
 
 const FeaturedFoods = () => {
   const [foods, setFoods] = useState([]);
@@ -15,7 +16,8 @@ const sortbyQuantity = [...foods].sort((a,b)=> b.quantity - a.quantity)
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-8" >
       {sortbyQuantity.slice(0,6).map((food) => (
-        <div key={food._id}>
+        <motion.div  initial={{ opacity: 0 }}
+        animate={{ opacity: 1, scale:1 }}  exit={{ opacity: 0 }}  key={food._id}>
           <div className=" px-0 bg-gray-50 ">
             <figure className=" relative font-anton" >
               <img
@@ -55,7 +57,7 @@ const sortbyQuantity = [...foods].sort((a,b)=> b.quantity - a.quantity)
              </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       ))}
     </div>
   );

@@ -5,6 +5,7 @@ import { Helmet } from "react-helmet-async";
 import { IoIosEye } from "react-icons/io";
 import { IoIosEyeOff } from "react-icons/io";
 import { toast } from "react-toastify";
+import useAuth from "../../Hooks/useAuth";
 
 const Register = () => {
   const location = useLocation();
@@ -12,7 +13,7 @@ const Register = () => {
   const [error, setError] = useState(null)
   const [toggle, setToggle] = useState(false)
   const navigate = useNavigate()
-  const { signUp, googleSignIn, githubSignIn,UpdateUser,Logout } = useContext(AuthContext);
+  const { signUp, googleSignIn, githubSignIn,UpdateUser,Logout } = useAuth()
   const handleSubmitRegister = (e) => {
     e.preventDefault();
     // e.target.reset();

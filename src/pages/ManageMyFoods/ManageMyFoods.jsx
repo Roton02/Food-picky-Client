@@ -1,22 +1,34 @@
 import axios from "axios";
-import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../ContextProvider/ContextProvider";
+import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Helmet } from "react-helmet-async";
+import useAuth from "../../Hooks/useAuth";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
 
 const ManageMyFoods = () => {
-  const [manageF, setManageF] = useState([]);
-  const { user } = useContext(AuthContext);
+  // const [manageF, setManageF] = useState([]);
+  const { user } = useAuth()
   const [upId , setupId] = useState(null)
-  useEffect(() => {
-    axios
-      .get(`http://localhost:5000/featured/?email=${user?.email}`)
-      .then((res) => {
-        setManageF(res.data);
-      });
-  }, [user]);
+  const axiosSecure = useAxiosSecure()
+  // useEffect(() => {
+  //   // axios
+  //   //   .get(`http://localhost:5000/featured/?email=${user?.email}`)
+  //   //   .then((res) => {
+  //   //     setManageF(res.data);
+  //   //   });
+  // }, [user,axiosSecure]);
+    const { data: manageF = [], isLoading, refetch } = useQuery({
+      queryFn: () => getData(),
+      queryKey: ['manageFoods', user?.email]   // 2nd index a jodi dependency dita pari. mane user?.email asle abar refetch hobe. ex:  queryKey: ['rooms', user?.email] 
+  })
+  console.log(manageF)
+  const getData = async () => {
+      const { data } = await axiosSecure(`/featured/${user?.email}`)
+      return data;
+  }
   console.log(manageF);
 
   const handleDelete = (id) => {
@@ -47,8 +59,9 @@ const ManageMyFoods = () => {
           axios.delete(`http://localhost:5000/delete/${id}`).then((res) => {
             console.log(res.data);
             if (res.data.deletedCount > 0) {
-              const remaining = manageF.filter((manage) => manage._id !== id);
-              setManageF(remaining);
+              // const remaining = manageF.filter((manage) => manage._id !== id);
+              // setManageF(remaining);
+              refetch()
             }
           });
         } else if (
@@ -88,6 +101,7 @@ const ManageMyFoods = () => {
         console.log(res.data);
         if (res.data.modifiedCount > 0) {
           toast.success("Update successfully !");
+          refetch()
         }else{
           toast.error("No Update ");
         }
@@ -98,7 +112,17 @@ const handleUp = id =>{
   setupId(id)
 };
   // console.log(upId);
+if (isLoading) {
+  return<div className="flex min-h-screen my-auto items-center justify-center">
+  <span className="loading loading-bars loading-xs"></span>
+  <span className="loading loading-bars loading-lg"></span>
+  <span className="loading loading-bars loading-lg"></span>
+  <span className="loading loading-bars loading-lg"></span>
 
+  {/* <video src="https://cdnl.iconscout.com/lottie/premium/preview-watermark/loading-lines-6747317-5601928.mp4" autoPlay="muted" loop="loop" playsInline type="video/mp4"></video> */}
+</div>
+   
+}
   return (
     <div>
        <Helmet>

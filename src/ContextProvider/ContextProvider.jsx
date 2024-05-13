@@ -4,6 +4,7 @@ import { createContext, useEffect, useState } from "react";
 import auth from "../Firebase.config/Firbase.config";
 import {  updateProfile } from "firebase/auth";
 import { toast } from "react-toastify";
+import axios from 'axios';
 
 export const AuthContext = createContext(null)
 const ContextProvider = ({children}) => {
@@ -46,21 +47,29 @@ const ContextProvider = ({children}) => {
       })
       };
     
-    useEffect(()=>{
-        const  unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-           if (currentUser) {
-             setUser(currentUser);
-             setLoading(false)
-           } else{
-              // console.log('logOut Successfull');
-           setUser(null)
-           setLoading(false)
-           }
-           return ()=>{
-               unsubscribe()
-           }
-         });
-     },[])
+      useEffect(()=>{
+        const unsubscribe =  onAuthStateChanged(auth,(currentUser)=>{
+         const userInfo = {email: currentUser?.email || user?.email}
+         console.log("currentUser", currentUser);
+         setUser(currentUser)
+         setLoading(false)
+         if(currentUser){
+            axios.post('http://localhost:5000/jwt', userInfo , {withCredentials:true})
+            .then(res=>{
+                console.log(res.data)
+            })
+         }
+         else{
+            axios.post('http://localhost:5000/loggout', userInfo , {withCredentials:true})
+            .then(res => {
+                console.log(res.data);
+            })
+         }
+        })
+        return ()=>{
+         unsubscribe()
+        }
+     },[user?.email])
 
 const info = {UpdateUser,  user, googleSignIn,githubSignIn, signUp,login,Logout,loading}
     return (
