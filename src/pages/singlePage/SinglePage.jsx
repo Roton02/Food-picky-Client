@@ -9,22 +9,13 @@ const SinglePage = () => {
   const {user} = useContext(AuthContext)
   const [upId , setupId] = useState(null)
   const loadData = useLoaderData();
-  const {_id,additional_notes,donator,expired_datetime,food_image,food_name,pickup_location,quantity,status} = loadData;
+  const {_id,additional_notes,donator,expired_datetime,food_image,food_name,pickup_location,quantity} = loadData;
   console.log(loadData);
+  
   const handleUpdate = (e) => {
     e.preventDefault();
     const form = e.target;
-    
-    const food_name = form.name.value;
-    const food_image = form.image.value;
-    const pickup_location = form.location.value;
-    const expired_datetime = form.expired.value;
-    const quantity = form.quantity.value;
     const additional_notes = form.notes.value;
-    const image = donator.image;
-    const name = donator.name;
-    const email = user.email
-    const status = 'Requsted'
     const foodDetails = {
       _id,
       

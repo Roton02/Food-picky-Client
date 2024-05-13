@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom";
 
+import lottie from '../../assets/lottie'
+import Lottie from "lottie-react";
+
 const ErrorPage = () => {
     return (
         <div className="my-4">
-        <div className="max-w-screen-lg mx-auto">
-        {/* <video className="w-full h-[450px]" src="https://cdnl.iconscout.com/lottie/premium/preview-watermark/404-error-3575862-2992469.mp4" autoPlay="muted" loop="loop" playsInline type="video/mp4"></video> */}
-        <img src="https://lottie.host/1ee7c555-22eb-4857-8902-73e1d84ccf34/P4qFlhCYb4.json" alt="" />
+        <div className=" h-[300px] mx-auto">
+        <Lottie animationData={lottie} />
         </div>
        
        <div className="container flex flex-col items-center justify-center px-5 mx-auto">

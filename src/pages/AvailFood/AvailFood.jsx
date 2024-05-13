@@ -8,18 +8,20 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const AvailFood = () => {
+  const [sorts , setSorts] = useState('')
   const [allFoods , setAllFoods] = useState([])
   const [stateManage , setStateManage] = useState(true)
   const [foods, setFoods] = useState([]);
   useEffect(() => {
-    axios.get("http://localhost:5000/featured/avilable").then((res) => {
+    axios.get(`http://localhost:5000/featured/avilable?sorts=${sorts}`).then((res) => {
       setAllFoods(res.data);
-      setFoods(res.data);   
+      setFoods(res.data);  
+      console.log(res.data); 
     });
-  }, []);
+  }, [sorts]);
   // const filterByStatus = [...foods];
   // setFoods([...filterByStatus]);
-console.log(foods);
+// console.log(foods);
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -42,20 +44,15 @@ console.log(foods);
   const sort = (expired) => {
     // console.log(cost);
     if (expired == "recentDays") {
-      const remainingRecent = [...foods].sort(
-        (a, b) => a.expired_datetime.toLocaleDateString() - b.expired_datetime.toLocaleDateString()
-      );
-      console.log(remainingRecent);
-      // setFoods(remainingRecent)
+     setSorts('recentDays')
     }
     if (expired == "fastDays") {
-      const remainingFast = [...foods].sort(
-        (a, b) => b.expired_datetime - a.expired_datetime
-      );
-      console.log(remainingFast);
-      // setFoods( remainingFast)
+    setSorts('fastDays')
     }
   };
+  
+
+
 const handleStateManage = ()=>{
   setStateManage(!stateManage)
 }
