@@ -45,12 +45,12 @@ const handleUp = id =>{
   return (
     <div className="border-2 rounded-md">
        <Helmet>
-        <title>Food Picky || Single Food</title>
+        <title>Food Picky || Food Details</title>
         {/* <link rel="canonical" href="https://www.tacobell.com/" /> */}
       </Helmet>
      
         <div>
-          <div className="max-w-[85rem] mx-auto p-5">
+          <div className="max-w-[85rem] mx-auto md:p-5">
             <div className="grid lg:grid-cols-7 lg:gap-x-8 xl:gap-x-12 lg:items-center">
               <div className="lg:col-span-3">
                 <div className="bg-slate-100 p-5">

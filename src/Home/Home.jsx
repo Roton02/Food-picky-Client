@@ -15,7 +15,7 @@ const Home = () => {
       </Helmet>
       <Slide></Slide>
       <div className="my-5">
-        <h1 className="text-3xl text-center text-black underline dark:text-white font-semibold font-anton">
+        <h1 className="text-3xl text-center  underline font-semibold font-anton">
           Featured Foods
         </h1>
         <FeaturedFoods></FeaturedFoods>
@@ -30,7 +30,7 @@ const Home = () => {
           <Featured></Featured>
         </div>
         <div>
-       <h1 className="text-3xl text-center my-5 text-black underline dark:text-white font-semibold font-anton ">
+       <h1 className="text-3xl text-center my-5  pb-5 underline  font-semibold font-anton ">
           Our Satisfied Customer 
         </h1>
         <ClientReview></ClientReview>

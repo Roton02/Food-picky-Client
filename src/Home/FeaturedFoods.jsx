@@ -18,16 +18,16 @@ const sortbyQuantity = [...foods].sort((a,b)=> b.quantity - a.quantity)
       {sortbyQuantity.slice(0,6).map((food) => (
         <motion.div  initial={{ opacity: 0 }}
         animate={{ opacity: 1, scale:1 }}  exit={{ opacity: 0 }}  key={food._id}>
-          <div className=" px-0 bg-gray-50 ">
+          <div className=" px-0 bg-gray-50 rounded-lg border-2 ">
             <figure className=" relative font-anton" >
               <img
                 src={food.food_image}
                 alt="Shoes"
-                className="rounded-xl w-full"
+                className="rounded-t-lg w-full"
               />
               <p className="absolute w-10 h-10 bg-[#1e847f] text-white top-2 rounded-full text-3xl right-3 flex items-center justify-center ">{food.quantity}</p>
             </figure>
-            <div className="card-body space-y-0 ">
+            <div className="card-body space-y-0 text-black ">
               <h2 className="card-title font-bold">{food.food_name}</h2>
               <p>{food.additional_notes}</p>
               <p className="flex items-center gap-5"> <ImLocation2 />{food.pickup_location}</p>

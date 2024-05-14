@@ -26,7 +26,7 @@ const ManageMyFoods = () => {
   })
   console.log(manageF)
   const getData = async () => {
-      const { data } = await axiosSecure(`/featured/${user?.email}`)
+      const { data } = await axiosSecure(`/featured-info/${user?.email}`)
       return data;
   }
   console.log(manageF);

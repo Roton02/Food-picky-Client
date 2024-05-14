@@ -22,13 +22,13 @@ const Navbar = () => {
   useEffect(() => {
     // Store current theme in localStorage
     // localStorage.setItem("theme", theme ? "dark" : "light");
-    localStorage.setItem("theme", theme ? "light" : "dark");
+    localStorage.setItem("theme", theme ? "dark" : "light");
 
     // Apply theme to HTML element
     // document.querySelector('html').setAttribute('data-theme', theme ? "dark" : "light");
     document
       .querySelector("html")
-      .setAttribute("data-theme", theme ? "light" : "dark");
+      .setAttribute("data-theme", theme ? "dark" : "light");
   }, [theme]); // Re-run effect when theme changes
   console.log(user);
   return (
@@ -95,7 +95,7 @@ const Navbar = () => {
         <Link
           to="/" >
           <h1  className=" text-base md:text-xl lg:text-3xl mr-0 font-bold animate__animated animate__swing animate__delay-0.5s"><span className="text-[#1e847f]">Food</span> picky</h1>
-          <p className="text-sm ml-7">online food order !</p>
+          <p className="text-sm hidden lg:flex ml-7">online food order !</p>
         </Link>
       </div>
         <div className="navbar-center">
@@ -182,7 +182,7 @@ const Navbar = () => {
           <div
               tabIndex={0}
               role="button"
-              className=" border rounded-full border-gray-300  avatar hover:tooltip tooltip-open"
+              className=" border rounded-full border-gray-300 z-[110]  avatar hover:tooltip tooltip-open"
               data-tip={user ? user.displayName : "Invalid Name"}
             >
               <div className=" rounded-full w-9 md:w-12  ">

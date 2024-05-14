@@ -2,8 +2,8 @@
 const Maps = () => {
     return (
         <div id="contract">
-           <h1 className="text-3xl text-center text-black font-semibold font-anton mt-6 underline ">Office Address </h1>
-            <section className="bg-white dark:bg-gray-900">
+           <h1 className="text-3xl text-center   font-semibold font-anton mt-10 py-2 underline ">Office Address </h1>
+            <section className="">
     <div className="container px-6 py-12 mx-auto">
         
 
