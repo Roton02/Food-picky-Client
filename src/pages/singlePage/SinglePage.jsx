@@ -24,7 +24,7 @@ const SinglePage = () => {
       requsterEmail: user.email
     };
     console.log(foodDetails);
-    axios.post('http://localhost:5000/requested', foodDetails)
+    axios.post('https://food-pocky01.vercel.app/requested', foodDetails)
     .then(res=>{
         console.log(res.data);
         if (res.data.acknowledged) {

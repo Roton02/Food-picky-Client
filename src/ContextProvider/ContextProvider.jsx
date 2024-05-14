@@ -54,13 +54,13 @@ const ContextProvider = ({children}) => {
          setUser(currentUser)
          setLoading(false)
          if(currentUser){
-            axios.post('http://localhost:5000/jwt', userInfo , {withCredentials:true})
+            axios.post('https://food-pocky01.vercel.app/jwt', userInfo , {withCredentials:true})
             .then(res=>{
                 console.log(res.data)
             })
          }
          else{
-            axios.post('http://localhost:5000/loggout', userInfo , {withCredentials:true})
+            axios.post('https://food-pocky01.vercel.app/loggout', userInfo , {withCredentials:true})
             .then(res => {
                 console.log(res.data);
             })

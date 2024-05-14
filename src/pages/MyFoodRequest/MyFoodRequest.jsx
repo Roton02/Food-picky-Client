@@ -11,7 +11,7 @@ const MyFoodRequest = () => {
   // const [foods, setFoods] = useState([]);
   const axiosSecure = useAxiosSecure()
   // useEffect(() => {
-  //   axios.get(`http://localhost:5000/requested/${user.email}, {withCredentials:true}`).then((res) => {
+  //   axios.get(`https://food-pocky01.vercel.app/requested/${user.email}, {withCredentials:true}`).then((res) => {
   //     setFoods(res.data);
   //   });
   // }, [user]);

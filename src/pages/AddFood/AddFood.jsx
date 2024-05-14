@@ -24,7 +24,7 @@ const AddFood = () => {
       donator:{image, name,email},status
     }
     // console.log(foodDetails);
-    axios.post('http://localhost:5000/addFood', foodDetails)
+    axios.post('https://food-pocky01.vercel.app/addFood', foodDetails)
     .then(res => {
       console.log(res.data);
       if (res.data.acknowledged) {

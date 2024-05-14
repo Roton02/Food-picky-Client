@@ -13,7 +13,7 @@ const AvailFood = () => {
   const [stateManage , setStateManage] = useState(true)
   const [foods, setFoods] = useState([]);
   useEffect(() => {
-    axios.get(`http://localhost:5000/featured/avilable?sorts=${sorts}`).then((res) => {
+    axios.get(`https://food-pocky01.vercel.app/featured/avilable?sorts=${sorts}`).then((res) => {
       setAllFoods(res.data);
       setFoods(res.data);  
       console.log(res.data); 
@@ -132,7 +132,7 @@ console.log(stateManage);
           </div>
         </div>
       </div>
-    <button onClick={handleStateManage} className="btn bg-[#1e847f] text-white hover:text-black ml-14 my-5"> Layout </button>
+    <button onClick={handleStateManage} className="btn bg-[#1e847f] text-white hover:text-black ml-14 my-5">Change Layout </button>
       <div className={stateManage?'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-2':' grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10 mt-2'}>
         {foods.map((food) => (
           <div key={food._id}>

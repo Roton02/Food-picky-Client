@@ -59,7 +59,7 @@ import UpdateProfile from "../pages/UpdateProfile/UpdateProfile";
         {
           path:'/singlePage/:id',
           element:<PrivateRoute><SinglePage></SinglePage></PrivateRoute>,
-          loader:({params})=>fetch(`http://localhost:5000/featured/${params.id}`)
+          loader:({params})=>fetch(`https://food-pocky01.vercel.app/featured/${params.id}`)
         },
         {
           path:'/profile',

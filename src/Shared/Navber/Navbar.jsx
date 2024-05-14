@@ -182,8 +182,8 @@ const Navbar = () => {
           <div
               tabIndex={0}
               role="button"
-              className=" border rounded-full border-gray-300 z-[110]  avatar hover:tooltip tooltip-open"
-              data-tip={user ? user.displayName : "Invalid Name"}
+              className=" border rounded-full border-gray-300 z-[110]  avatar"
+             
             >
               <div className=" rounded-full w-9 md:w-12  ">
                 <img  alt="" src={user.photoURL} />
@@ -192,12 +192,13 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="dropdown-content hidden lg:flex  z-[100] menu p-2 gap-2 shadow bg-base-100 rounded-box w-32"
+            className="dropdown-content hidden lg:flex  z-[100] menu p-2 gap-2 shadow bg-base-100 rounded-box w-40"
           >
+            <li className="mx-auto  ">{user?.displayName}</li>
             <li>
             <NavLink
           to="/profile"
-          className="btn btn-ghost border-2  border-gray-300 hover:bg-black hover:text-white"
+          className="btn btm-nav-sm  btn-ghost border-2  border-gray-300 hover:bg-black hover:text-white"
         >
           Profile
         </NavLink>
@@ -205,7 +206,7 @@ const Navbar = () => {
 
             <button
               onClick={Logout}
-              className="rounded-md btn-sm md:btn-md lg:px-3.5 lg:py-2 m-1 overflow-hidden relative group cursor-pointer border-2 p-1 font-medium border-[#1e847f] text-[#1e847f] hover:text-white"
+              className="rounded-md btn btm-nav-sm m-1 overflow-hidden relative group cursor-pointer border-2 p-1 font-medium border-[#1e847f] text-[#1e847f] hover:text-white"
             >
               <span className="absolute w-64 h-0 transition-all duration-300 origin-center rotate-45 -translate-x-20 bg-[#1e847f] top-1/2 group-hover:h-64 group-hover:-translate-y-32 ease"></span>
               <span className="relative  text-[#1e847f] transition duration-300 group-hover:text-white ease">
