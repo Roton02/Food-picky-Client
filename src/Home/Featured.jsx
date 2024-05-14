@@ -2,7 +2,7 @@
 const Featured = () => {
     return (
         <div>
-            <h1 className="text-2xl underline text-center font-bold font-anton my-5">Explore Our Featured </h1>
+            <h1 className="text-3xl text-black underline text-center font-semibold font-anton my-5">Explore Our Featured </h1>
 <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
   <div className="grid sm:grid-cols-2 lg:grid-cols-4 items-center gap-12">
   

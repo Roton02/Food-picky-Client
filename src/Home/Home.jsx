@@ -4,6 +4,7 @@ import Slide from "./Slider";
 import { Helmet } from "react-helmet-async";
 import Maps from "./Maps";
 import Featured from "./Featured";
+import ClientReview from "./ClientReview";
 
 const Home = () => {
   return (
@@ -14,7 +15,7 @@ const Home = () => {
       </Helmet>
       <Slide></Slide>
       <div className="my-5">
-        <h1 className="text-3xl text-center text-black underline dark:text-white font-bold font-anton">
+        <h1 className="text-3xl text-center text-black underline dark:text-white font-semibold font-anton">
           Featured Foods
         </h1>
         <FeaturedFoods></FeaturedFoods>
@@ -28,6 +29,12 @@ const Home = () => {
         <div className="mt-10">
           <Featured></Featured>
         </div>
+        <div>
+       <h1 className="text-3xl text-center my-5 text-black underline dark:text-white font-semibold font-anton ">
+          Our Satisfied Customer 
+        </h1>
+        <ClientReview></ClientReview>
+       </div>
         <div>
           <Maps></Maps>
         </div>

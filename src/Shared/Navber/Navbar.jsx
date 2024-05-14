@@ -205,10 +205,10 @@ const Navbar = () => {
 
             <button
               onClick={Logout}
-              className="rounded-md btn-sm md:btn-md lg:px-3.5 lg:py-2 m-1 overflow-hidden relative group cursor-pointer border-2 p-1 font-medium border-pink-700 text-pink-700 hover:text-white"
+              className="rounded-md btn-sm md:btn-md lg:px-3.5 lg:py-2 m-1 overflow-hidden relative group cursor-pointer border-2 p-1 font-medium border-[#1e847f] text-[#1e847f] hover:text-white"
             >
-              <span className="absolute w-64 h-0 transition-all duration-300 origin-center rotate-45 -translate-x-20 bg-pink-700 top-1/2 group-hover:h-64 group-hover:-translate-y-32 ease"></span>
-              <span className="relative  text-pink-700 transition duration-300 group-hover:text-white ease">
+              <span className="absolute w-64 h-0 transition-all duration-300 origin-center rotate-45 -translate-x-20 bg-[#1e847f] top-1/2 group-hover:h-64 group-hover:-translate-y-32 ease"></span>
+              <span className="relative  text-[#1e847f] transition duration-300 group-hover:text-white ease">
                 Logout
               </span>
             </button>
@@ -219,10 +219,10 @@ const Navbar = () => {
         ) : (
           <Link data-aos="fade-left" data-aos-duration='1000'
             to="/login"
-            className="rounded-md btn-sm md:btn-md p-1 md:p-2 lg:px-3.5 lg:py-2 m-1 overflow-hidden relative group cursor-pointer border-2 font-medium border-[#ad1199] text-[#ad1199] hover:text-white"
+            className="rounded-md btn-sm md:btn-md p-1 md:p-2 lg:px-3.5 lg:py-2 m-1 overflow-hidden relative group cursor-pointer border-2 font-medium border-[#1e847f] text-[#1e847f] hover:text-white"
           >
-            <span className="absolute w-64 h-0 transition-all duration-300 origin-center rotate-45 -translate-x-20 bg-[#ad1199] top-1/2 group-hover:h-64 group-hover:-translate-y-32 ease"></span>
-            <span className="relative text-[#ad1199] transition duration-300 group-hover:text-white ease">
+            <span className="absolute w-64 h-0 transition-all duration-300 origin-center rotate-45 -translate-x-20 bg-[#1e847f] top-1/2 group-hover:h-64 group-hover:-translate-y-32 ease"></span>
+            <span className="relative text-[#1e847f] transition duration-300 group-hover:text-white ease">
               Login
             </span>
           </Link>

@@ -13,6 +13,8 @@ import MyFoodRequest from "../pages/MyFoodRequest/MyFoodRequest";
 import Contract from "../Shared/Contract/Contract";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import SinglePage from "../pages/singlePage/SinglePage";
+import Profile from "../pages/Profile/Profile";
+import UpdateProfile from "../pages/UpdateProfile/UpdateProfile";
 
 
   const router = createBrowserRouter([
@@ -58,6 +60,14 @@ import SinglePage from "../pages/singlePage/SinglePage";
           path:'/singlePage/:id',
           element:<PrivateRoute><SinglePage></SinglePage></PrivateRoute>,
           loader:({params})=>fetch(`http://localhost:5000/featured/${params.id}`)
+        },
+        {
+          path:'/profile',
+          element: <Profile></Profile>
+        },
+        {
+          path:'/updateProfile',
+          element:<UpdateProfile></UpdateProfile>
         }
       ]
     },

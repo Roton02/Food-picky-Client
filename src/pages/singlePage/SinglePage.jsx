@@ -60,11 +60,11 @@ const handleUp = id =>{
                   <div className="flex gap-5 items-center">
                     <div className="avatar">
                       <div className="w-16 rounded">
-                        <img src={donator.image} />
+                        <img src={donator?.image} />
                       </div>
                     </div>
                     <div className="text-sm font-anton">
-                      <p>{donator.name}</p>
+                      <p>{donator?.name}</p>
                       <p> pickup_location : {pickup_location}</p>
                     </div>
                   </div>

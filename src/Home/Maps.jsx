@@ -2,7 +2,7 @@
 const Maps = () => {
     return (
         <div id="contract">
-           <h1 className="text-2xl text-center font-bold font-anton mt-6 underline ">Office Address </h1>
+           <h1 className="text-3xl text-center text-black font-semibold font-anton mt-6 underline ">Office Address </h1>
             <section className="bg-white dark:bg-gray-900">
     <div className="container px-6 py-12 mx-auto">
         
@@ -16,7 +16,7 @@ const Maps = () => {
                   data-aos-duration="1000"
                   className="text-3xl  md:text-4xl my-8 font-bold"
                 >
-                  <span className="text-pink-700">Food</span> Picky
+                  <span className="text-[#1e847f]">Food</span> Picky
                 </h1>
                 <p
                   data-aos="fade-right"
