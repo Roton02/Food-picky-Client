@@ -167,7 +167,7 @@ const handleUp = id =>{
                             <input
                               name="notes"
                               required
-                              defaultValue={additional_notes}
+                              
                               type="text"
                               placeholder="Type here Additional Notes"
                               className="input input-bordered input-md w-full "

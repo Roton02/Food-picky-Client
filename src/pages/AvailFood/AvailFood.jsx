@@ -141,7 +141,7 @@ console.log(stateManage);
                 <img
                   src={food.food_image}
                   alt="Shoes"
-                  className="rounded-t-xl w-full"
+                  className="rounded-t-xl w-full h-64"
                 />
               </figure>
               <div className="card-body space-y-0 ">

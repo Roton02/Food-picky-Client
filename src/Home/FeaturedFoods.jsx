@@ -9,7 +9,7 @@ const FeaturedFoods = () => {
   const [foods, setFoods] = useState([]);
   useEffect(() => {
     axios.get("https://food-pocky01.vercel.app/featured").then((res) => {
-      setFoods(res.data);
+      setFoods(res.data.filter(avail => avail.status === "available"));
     });
   }, []);
 const sortbyQuantity = [...foods].sort((a,b)=> b.quantity - a.quantity)
@@ -23,7 +23,7 @@ const sortbyQuantity = [...foods].sort((a,b)=> b.quantity - a.quantity)
               <img
                 src={food.food_image}
                 alt="Shoes"
-                className="rounded-t-lg w-full"
+                className="rounded-t-lg w-full h-64"
               />
               <p className="absolute w-10 h-10 bg-[#1e847f] text-white top-2 rounded-full text-3xl right-3 flex items-center justify-center ">{food.quantity}</p>
             </figure>
