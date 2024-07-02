@@ -29,6 +29,7 @@
 1. Clone the repository:
 
 git clone [https://github.com/Roton02/Food-picky-Client.git](https://github.com/Roton02/Food-picky-Client)
+
 2. Navigate to the project directory:
    
    cd Food-picky-Client
