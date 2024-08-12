@@ -13,7 +13,7 @@ const Root = () => {
                <Header></Header>      
         <div className="my-2 overflow-x-hidden max-w-screen-xl px-3 mx-auto">
             <Navbar></Navbar>
-            <div className='min-h-[420px] my-7'>
+            <div className=''>
             <Outlet></Outlet>
             </div>
             <Footer></Footer>

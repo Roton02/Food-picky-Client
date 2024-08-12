@@ -4,43 +4,52 @@ import { Helmet } from "react-helmet-async";
 import { FaArrowDown } from "react-icons/fa";
 import { ImLocation2 } from "react-icons/im";
 import { MdTimeline } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link  } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const AvailFood = () => {
   const [sorts , setSorts] = useState('')
-  const [allFoods , setAllFoods] = useState([])
+  const [search , setSearch] = useState('')
   const [stateManage , setStateManage] = useState(true)
   const [foods, setFoods] = useState([]);
   useEffect(() => {
-    axios.get(`https://food-pocky01.vercel.app/featured/avilable?sorts=${sorts}`).then((res) => {
-      setAllFoods(res.data);
+    axios.get(`https://food-pocky01.vercel.app/featured/avilable?sorts=${sorts}&search=${search}`).then((res) => {
       setFoods(res.data);  
-      console.log(res.data); 
+      if (res.data.length < 1) {
+        Swal.fire({
+           icon: "error",
+           title: "Oops...",
+           text: "Data is not found ",
+           
+         });
+   }
     });
-  }, [sorts]);
+  }, [sorts,search]);
+  // 
+  // 
   // const filterByStatus = [...foods];
   // setFoods([...filterByStatus]);
 // console.log(foods);
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
-    console.log(form.serching.value);
-    const filterByName = allFoods.filter( (f) => f.food_name === form.serching.value);
-    console.log(filterByName);
-    if (filterByName.length > 0) { setFoods([...filterByName]);
-    } else {
-      // form.serching.value =' '
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "Data is not found ",
+    setSearch(form.serching.value)
+    // const filterByName = allFoods.filter( (f) => f.food_name === form.serching.value);
+    // console.log(filterByName);
+    // if (filterByName.length > 0) { setFoods([...filterByName]);
+    // } else {
+    //   // form.serching.value =' '
+    //   Swal.fire({
+    //     icon: "error",
+    //     title: "Oops...",
+    //     text: "Data is not found ",
         
-      });
-      setFoods([])
-    }
+    //   });
+    //   setFoods([])
+    // }
   };
-
+  
+// console.log(search);
   const sort = (expired) => {
     // console.log(cost);
     if (expired == "recentDays") {
