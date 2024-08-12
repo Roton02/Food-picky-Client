@@ -24,3 +24,26 @@
 *   Framer-motion
 
 */
+
+## Installation
+
+1. Clone the repository:
+
+```
+git clone https://github.com/Roton02/Food-picky-Client
+```
+
+2. Navigate to the project directory:
+   ```
+   cd Food-picky-Client
+   ```
+3. Install dependencies:
+   ```
+   npm install
+   ```
+4. Configure environment variables (e.g., Firebase URI, Stripe API keys) in a `.env` file.
+5. Start the development server:
+
+```
+npm run dev
+```
