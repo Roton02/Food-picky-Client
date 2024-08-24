@@ -1,25 +1,22 @@
-
-import {Outlet} from 'react-router-dom'
-import AOS from 'aos';
-import 'aos/dist/aos.css'; 
-import Navbar from '../Shared/Navber/Navbar';
-import Footer from '../Shared/Navber/Footer/Footer';
-import Header from '../Shared/Header/Header';
+import { Outlet } from "react-router-dom";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import Navbar from "../Shared/Navber/Navbar";
+import Footer from "../Shared/Navber/Footer/Footer";
 AOS.init();
 
 const Root = () => {
-    return (
-            <div>
-               <Header></Header>      
-        <div className="my-2 overflow-x-hidden max-w-screen-xl px-3 mx-auto">
-            <Navbar></Navbar>
-            <div className=''>
-            <Outlet></Outlet>
-            </div>
-            <Footer></Footer>
+  return (
+    <div className="custom-bg">
+      <Navbar></Navbar>
+      <div className="">
+        <div className="max-w-7xl mx-auto">
+          <Outlet></Outlet>
         </div>
-            </div>
-    );
+        <Footer></Footer>
+      </div>
+    </div>
+  );
 };
 
 export default Root;

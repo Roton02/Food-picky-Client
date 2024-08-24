@@ -8,8 +8,8 @@
 * You can create food items with the information you want and you can see them in the form of a list in Manage My Food.
 
 * If you want to donate your own or other's food, you can request it by going to View Details from the Available page. And all requested data can be seen on My Request Food page.
-
-* From the Available page, you can search and shorten the data according to your needs and view all the information from the View Details.
+              
+* From the Available page, you can search and shorten the data according to your needs and view all the information from the View Details...
 
 * You can easily customize and delete all the data you have added from Manage My Food..
 

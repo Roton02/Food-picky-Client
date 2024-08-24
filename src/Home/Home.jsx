@@ -35,9 +35,6 @@ const Home = () => {
         </h1>
         <ClientReview></ClientReview>
        </div>
-        <div>
-          <Maps></Maps>
-        </div>
        
       </div>
     </div>
