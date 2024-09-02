@@ -14,8 +14,9 @@ const Navbar = () => {
 
   console.log(user);
   return (
-    <div className=" " >
-    <nav className="  navbar bg-opacity-30 bg-black   z-10  fixed  max-w-7xl mx-auto">
+    <div className=" w-full  bg-opacity-30 bg-black" >
+    <nav className="  max-w-7xl  ">
+      <div className="navbar  bg-opacity-30 bg-black   z-10  fixed ">
       <div className="navbar-start ">
         <div className="block md:block lg:hidden">
           <div className="text-center">
@@ -410,6 +411,7 @@ const Navbar = () => {
             </span>
           </Link>
         )}
+      </div>
       </div>
     </nav>
   </div>
