@@ -14,9 +14,9 @@ const Navbar = () => {
 
   console.log(user);
   return (
-    <div className=" w-full  bg-opacity-30 bg-black" >
-    <nav className="  max-w-7xl  ">
-      <div className="navbar  bg-opacity-30 bg-black   z-10  fixed ">
+    <div className=" w-full  bg-opacity-50 bg-black fixed z-50" >
+    <nav className="   ">
+      <div className="navbar max-w-screen-xl mx-auto z-10   ">
       <div className="navbar-start ">
         <div className="block md:block lg:hidden">
           <div className="text-center">
@@ -316,11 +316,11 @@ const Navbar = () => {
           </div>
         </div>
         <Link to="/">
-          <h1 className="text-3xl  font-bold "><span className="text-purple-700">Food</span> Picky</h1>
+          <h1 className="text-3xl  font-bold text-pink-700 ">Food Picky </h1>
         </Link>
       </div>
       <div className="navbar-end ">
-        <div className=" space-x-2  hidden lg:flex mr-10 ">
+        <div className=" space-x-2  hidden lg:flex mr-20 ">
           <NavLink
             to="/"
             className="btn btn-sm  border-b-2 border-gray-300 hover:bg-black hover:text-white "
@@ -421,94 +421,3 @@ const Navbar = () => {
 
 export default Navbar;
 
-{/* <div className="navbar-end ">
-<div className=" space-x-2  ml-20 hidden lg:flex ">
-    <NavLink
-      to="/"
-      className="btn btn-ghost border-2 border-gray-300 hover:bg-black hover:text-white "
-    >
-      Home
-    </NavLink>
-    <NavLink
-      to="/availFood"
-      className="btn btn-ghost border-2 border-gray-300 hover:bg-black hover:text-white "
-    >
-      Available Foods
-    </NavLink>
-    <NavLink
-      to="/addFood"
-      className="btn btn-ghost border-2 border-gray-300 hover:bg-black hover:text-white "
-    >
-      Add Food
-    </NavLink>
-    {user && (
-      <>
-        <NavLink
-          to="/ManageMyFoods"
-          className="btn btn-ghost border-2  border-gray-300 hover:bg-black hover:text-white"
-        >
-          Manage My Foods
-        </NavLink>
-        <NavLink
-          to="/MyFoodRequest"
-          className="btn btn-ghost border-2  border-gray-300 hover:bg-black hover:text-white"
-        >
-          My Food Request
-        </NavLink>
-      </>
-    )}
-  </div>
-  {user ? (
-    <div className="flex items-center ">
-      <div className="dropdown dropdown-end">
-        <div tabIndex={0} role="button">
-          <div
-            tabIndex={0}
-            role="button"
-            className=" border rounded-full border-gray-300 z-[110]  avatar"
-          >
-            <div className=" rounded-full w-9 md:w-12  ">
-              <img alt="" src={user.photoURL} />
-            </div>
-          </div>
-        </div>
-        <ul
-          tabIndex={0}
-          className="dropdown-content flex  z-[100] menu p-2 gap-2 shadow bg-base-100 rounded-box w-40"
-        >
-          <li className="mx-auto  ">{user?.displayName}</li>
-          <li>
-            <NavLink
-              to="/profile"
-              className="btn btm-nav-sm  btn-ghost border-2  border-gray-300 hover:bg-black hover:text-white"
-            >
-              Profile
-            </NavLink>
-          </li>
-
-          <button
-            onClick={Logout}
-            className="rounded-md btn btm-nav-sm m-1 overflow-hidden relative group cursor-pointer border-2 p-1 font-medium border-[#1e847f] text-[#1e847f] hover:text-white"
-          >
-            <span className="absolute w-64 h-0 transition-all duration-300 origin-center rotate-45 -translate-x-20 bg-[#1e847f] top-1/2 group-hover:h-64 group-hover:-translate-y-32 ease"></span>
-            <span className="relative  text-[#1e847f] transition duration-300 group-hover:text-white ease">
-              Logout
-            </span>
-          </button>
-        </ul>
-      </div>
-    </div>
-  ) : (
-    <Link
-      data-aos="fade-left"
-      data-aos-duration="1000"
-      to="/login"
-      className="rounded-md btn-sm md:btn-md p-1 md:p-2 lg:px-3.5 lg:py-2 m-1 overflow-hidden relative group cursor-pointer border-2 font-medium border-[#1e847f] text-[#1e847f] hover:text-white"
-    >
-      <span className="absolute w-64 h-0 transition-all duration-300 origin-center rotate-45 -translate-x-20 bg-[#1e847f] top-1/2 group-hover:h-64 group-hover:-translate-y-32 ease"></span>
-      <span className="relative text-[#1e847f] transition duration-300 group-hover:text-white ease">
-        Login
-      </span>
-    </Link>
-  )}
-</div> */}
