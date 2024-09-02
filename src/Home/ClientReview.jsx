@@ -2,25 +2,24 @@ import Marquee from "react-fast-marquee";
 
 const ClientReview = () => {
   return (
-    <div>
-        
+    <div className="text-white">
       <Marquee pauseOnHover={true}>
-        <div className="container flex flex-col w-full max-w-lg p-6  divide-y rounded-md bg-slate-800 text-white dark:divide-gray-800 dark:bg-gray-500 dark:text-gray-800 mx-5">
+        <div className="container  flex flex-col w-full max-w-lg p-6  divide-y rounded-md custom-bg  text-white  mx-5">
           <div className="flex justify-between p-4">
             <div className="flex space-x-4">
               <div>
                 <img
                   src="https://i.ibb.co/3r23bm0/mark.jpg"
                   alt=""
-                  className="object-cover w-12 h-12 rounded-full dark:bg-gray-500"
+                  className="object-cover w-12 h-12 rounded-full "
                 />
               </div>
               <div>
                 <h4 className="font-bold">Mark wood</h4>
-                <span className="text-xs dark:text-gray-600">10 days ago</span>
+                <span className="text-xs ">10 days ago</span>
               </div>
             </div>
-            <div className="flex items-center space-x-2 dark:text-yellow-700">
+            <div className="flex items-center space-x-2 dark:text-pink-500">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 512 512"
@@ -31,31 +30,30 @@ const ClientReview = () => {
               <span className="text-xl font-bold">4.2</span>
             </div>
           </div>
-          <div className="p-4 space-y-2 font-anton text-sm dark:text-gray-600">
-            <p className="text-2xl font-anton">
-            Taste
-            </p>
+          <div className="p-4 space-y-2 font-anton text-sm ">
+            <p className="text-2xl font-anton">Taste</p>
             <p>
-            The flavors were exceptional! Each dish burst with freshness and authenticity, making it a delightful culinary journey.
+              The flavors were exceptional! Each dish burst with freshness and
+              authenticity, making it a delightful culinary journey.
             </p>
           </div>
         </div>
-        <div className="  container flex flex-col w-full max-w-lg p-6 mx-auto divide-y rounded-md bg-slate-800 text-white dark:divide-gray-800 dark:bg-gray-500 dark:text-gray-800">
+        <div className="  container flex flex-col w-full max-w-lg p-6 mx-auto divide-y rounded-md custom-bg  text-white ">
           <div className="flex justify-between p-4">
             <div className="flex space-x-4">
               <div>
                 <img
                   src="https://i.ibb.co/HtsQ7Rw/women.jpg"
                   alt=""
-                  className="object-cover w-12 h-12 rounded-full dark:bg-gray-500"
+                  className="object-cover w-12 h-12 rounded-full "
                 />
               </div>
               <div>
                 <h4 className="font-bold">Leroy Jenkins</h4>
-                <span className="text-xs dark:text-gray-600">4 days ago</span>
+                <span className="text-xs ">4 days ago</span>
               </div>
             </div>
-            <div className="flex items-center space-x-2 dark:text-yellow-700">
+            <div className="flex items-center space-x-2 dark:text-pink-500">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 512 512"
@@ -66,31 +64,30 @@ const ClientReview = () => {
               <span className="text-xl font-bold">5</span>
             </div>
           </div>
-          <div className="p-4 space-y-2 font-anton text-sm dark:text-gray-600">
-            <p className="text-2xl font-anton">
-            Presentation
-            </p>
+          <div className="p-4 space-y-2 font-anton text-sm ">
+            <p className="text-2xl font-anton">Presentation</p>
             <p>
-            The presentation of the food was impeccable, almost too beautiful to eat! It truly elevated the dining experience
+              The presentation of the food was impeccable, almost too beautiful
+              to eat! It truly elevated the dining experience
             </p>
           </div>
         </div>
-        <div className=" mx-5 container flex flex-col w-full max-w-lg p-6  divide-y rounded-md bg-slate-800 text-white dark:divide-gray-800 dark:bg-gray-500 dark:text-gray-800">
-          <div className="flex justify-between p-4">
+        <div className=" mx-5 container flex flex-col w-full max-w-lg p-6  divide-y rounded-md custom-bg  text-white ">
+          <div className="flex justify-between p-4 text-white">
             <div className="flex space-x-4">
               <div>
                 <img
                   src="https://i.ibb.co/d6vyDNh/m2.jpg"
                   alt=""
-                  className="object-cover w-12 h-12 rounded-full dark:bg-gray-500"
+                  className="object-cover w-12 h-12 rounded-full "
                 />
               </div>
               <div>
                 <h4 className="font-bold">Lorens Bisnoy</h4>
-                <span className="text-xs dark:text-gray-600">7 days ago</span>
+                <span className="text-xs ">7 days ago</span>
               </div>
             </div>
-            <div className="flex items-center space-x-2 dark:text-yellow-700">
+            <div className="flex items-center space-x-2 dark:text-pink-500">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 512 512"
@@ -101,31 +98,30 @@ const ClientReview = () => {
               <span className="text-xl font-bold">4.5</span>
             </div>
           </div>
-          <div className="p-4 space-y-2 font-anton text-sm dark:text-gray-600">
-            <p className="text-2xl font-anton">
-            Service
-            </p>
+          <div className="p-4 space-y-2 font-anton text-sm text-white ">
+            <p className="text-2xl font-anton">Service</p>
             <p>
-            The staff was incredibly attentive and knowledgeable about the menu. .
+              The staff was incredibly attentive and knowledgeable about the
+              menu. .
             </p>
           </div>
         </div>
-        <div className="container flex flex-col w-full max-w-lg p-6 mx-auto divide-y rounded-md bg-slate-800 text-white dark:divide-gray-800 dark:bg-gray-500 dark:text-gray-800">
+        <div className="container flex flex-col w-full max-w-lg p-6 mx-auto divide-y rounded-md custom-bg  text-white ">
           <div className="flex justify-between p-4">
             <div className="flex space-x-4">
               <div>
                 <img
                   src="https://i.ibb.co/sysTXX2/m1.webp"
                   alt=""
-                  className="object-cover w-12 h-12 rounded-full dark:bg-gray-500"
+                  className="object-cover w-12 h-12 rounded-full "
                 />
               </div>
               <div>
                 <h4 className="font-bold">Alex</h4>
-                <span className="text-xs dark:text-gray-600">2 days ago</span>
+                <span className="text-xs ">2 days ago</span>
               </div>
             </div>
-            <div className="flex items-center space-x-2 dark:text-yellow-700">
+            <div className="flex items-center space-x-2 dark:text-pink-500">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 512 512"
@@ -136,12 +132,11 @@ const ClientReview = () => {
               <span className="text-xl font-bold">4.7</span>
             </div>
           </div>
-          <div className="p-4 space-y-2 font-anton text-sm dark:text-gray-600">
-            <p className="text-2xl font-anton">
-            Value for Money
-            </p>
-            <p>
-            Considering the quality of the food and service, the prices were quite reasonable. 
+          <div className="p-4 space-y-2 font-anton text-sm text-white ">
+            <p className="text-2xl font-anton">Value for Money</p>
+            <p >
+              Considering the quality of the food and service, the prices were
+              quite reasonable.
             </p>
           </div>
         </div>
