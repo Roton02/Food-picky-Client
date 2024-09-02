@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import FeaturedFoods from "./FeaturedFoods";
 import Slide from "./Slider";
 import { Helmet } from "react-helmet-async";
-import Maps from "./Maps";
+// import Maps from "./Maps";
 import Featured from "./Featured";
 import ClientReview from "./ClientReview";
 

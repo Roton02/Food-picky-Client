@@ -14,8 +14,8 @@ const Navbar = () => {
 
   console.log(user);
   return (
-    <div className="">
-    <nav className="  navbar z-[100] max-w-7xl mx-auto">
+    <div className=" " >
+    <nav className="  navbar bg-opacity-30 bg-black   z-10  fixed  max-w-7xl mx-auto">
       <div className="navbar-start ">
         <div className="block md:block lg:hidden">
           <div className="text-center">
@@ -318,7 +318,6 @@ const Navbar = () => {
           <h1 className="text-3xl  font-bold "><span className="text-purple-700">Food</span> Picky</h1>
         </Link>
       </div>
-
       <div className="navbar-end ">
         <div className=" space-x-2  hidden lg:flex mr-10 ">
           <NavLink

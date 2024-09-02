@@ -10,24 +10,30 @@ import img6 from '../assets/06.png';
 
 const Banner = () => {
     return (
-        <Carousel>
+        <Carousel autoPlay='true'  useKeyboardArrows='true' stopOnHover='true' infiniteLoop='true'  dynamicHeight={500} className='text-center' >
             <div>
                 <img src={img4} />
+                <p className="legend rounded-none">Welcome to our Food Picky </p>
             </div>
             <div>
                 <img src={img2} />
+                <p className="legend rounded-none">Welcome to our Food Picky </p>
             </div>
             <div>
                 <img src={img1} />
+                <p className="legend">Welcome to our Food Picky </p>
             </div>
             <div>
                 <img src={img3} />
+                <p className="legend">Welcome to our Food Picky </p>
             </div>
             <div>
                 <img src={img5} />
+                <p className="legend">Welcome to our Food Picky </p>
             </div>
             <div>
                 <img src={img6} />
+                <p className="legend">Welcome to our Food Picky </p>
             </div>
         </Carousel>
     );
