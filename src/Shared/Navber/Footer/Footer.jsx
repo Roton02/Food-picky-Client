@@ -1,8 +1,16 @@
 import { FaLinkedinIn, FaTwitter } from "react-icons/fa";
+import ScrollToTop from "react-scroll-to-top";
 
 const Footer = () => {
   return (
     <div className="relative mt-16 custom-bg ">
+      <ScrollToTop
+        height="100"
+        style={{ backgroundColor: "" }}
+        className="text-center flex justify-center items-center mx-auto bg-purple-500"
+        top={1000}
+        smooth
+      />
       <svg
         className="absolute top-0 w-full h-6 -mt-5 sm:-mt-10 sm:h-16"
         preserveAspectRatio="none"
