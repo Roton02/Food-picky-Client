@@ -7,7 +7,7 @@ AOS.init();
 
 const Root = () => {
   return (
-    <div className="custom-bg">
+    <div className=" ">
       <Navbar></Navbar>
       <div className="">
         <div className="max-w-7xl mx-auto">

@@ -26,6 +26,7 @@ const Home = () => {
           </button>
           </Link>
         </div>
+      
         <div className="mt-10">
           <Featured></Featured>
         </div>
