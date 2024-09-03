@@ -7,8 +7,8 @@ const Footer = () => {
       <ScrollToTop
         height="100"
         style={{ backgroundColor: "" }}
-        className="text-center flex justify-center items-center mx-auto bg-purple-500"
-        top={1000}
+        className="text-center flex justify-center items-center mx-auto "
+        top={800}
         smooth
       />
       <svg
