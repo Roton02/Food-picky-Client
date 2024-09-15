@@ -1,4 +1,4 @@
-*/My Assignment_ID is: 'assignment_category_0007'
+
 */WebSite Name :Food Picky
 */Live Site url: 'https://a11-kynus-foodie.web.app/'
 
