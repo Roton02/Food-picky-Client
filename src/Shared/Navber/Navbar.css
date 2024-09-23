@@ -1,8 +1,5 @@
 nav a.active{
-    color: #1e847f;
-    border-color: #1e847f;
-    
-}
-nav a.active:hover{
-    background-color: #1e847f;
+    color: #ff4880;
+    border-color: #ff4880;
+    border-bottom: 2px solid;
 }

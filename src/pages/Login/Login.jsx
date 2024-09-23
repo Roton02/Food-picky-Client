@@ -70,7 +70,7 @@ const Login = () => {
         <title>Lapse-Peat || Login</title>
         {/* <link rel="canonical" href="https://www.tacobell.com/" /> */}
       </Helmet>
-      <div className="flex items-center   w-full max-w-sm mx-auto overflow-hidden   lg:max-w-4xl">
+      <div className="flex items-center   pt-16 w-full max-w-sm mx-auto overflow-hidden   lg:max-w-4xl">
         <div className="flex flex-col max-w-md mx-auto  mt-5 ">
           <div className=" text-center">
             <h1 className=" text-3xl text-black mb-1 font-bold">
