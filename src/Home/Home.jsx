@@ -56,14 +56,7 @@ const Home = () => {
             Take your office out to lunch
           </h1>
         </div>
-       <MobileApp/>
-
-        <div>
-          <h1 className="text-3xl text-center my-5  pb-5 underline  font-semibold font-anton ">
-            Our Satisfied Customer
-          </h1>
-          <ClientReview></ClientReview>
-        </div>
+        <MobileApp />
       </div>
     </div>
   );
