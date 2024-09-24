@@ -342,7 +342,7 @@ const Navbar = () => {
               </div>
             </div>
             <Link to="/">
-              <h1 className="text-3xl  font-bold text-[#E21B70] ">
+              <h1 className="text-3xl ml-2   font-bold text-[#E21B70] ">
                 Food Picky{" "}
               </h1>
             </Link>

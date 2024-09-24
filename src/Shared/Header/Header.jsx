@@ -20,7 +20,7 @@ const Header = () => {
             Fill up Form 
           </button>
         </Link>
-        <button onClick={()=>{setShowHeader(false)}} className="ml-12 ">
+        <button onClick={()=>{setShowHeader(false)}} className="ml-7 ">
           <MdOutlineCancel className="text-white text-3xl" />
         </button>
       </div>
