@@ -7,6 +7,7 @@ import Featured from "./Featured";
 import ClientReview from "./ClientReview";
 import PrepareFood from "./PrepareFood";
 import OfficeLonch from "./OfficeLonch";
+import Country from "./Country";
 
 const Home = () => {
   return (
@@ -34,7 +35,7 @@ const Home = () => {
           </Link>
         </div> */}
 
-        <div className="mt-10">
+        <div className="my-5">
           <Featured></Featured>
         </div>
         <div className="max-w-screen-xl mx-auto">
@@ -42,6 +43,7 @@ const Home = () => {
             Find us in these cities and many more!
           </h1>
         </div>
+        <Country></Country>
         <div className="max-w-screen-xl mx-auto">
           <h1 className="text-3xl    font-semibold font-anton">
           Take your office out to lunch
