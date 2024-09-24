@@ -10,7 +10,7 @@
 
 const Banner = () => {
   return (
-    <div className="bg-gray-100  min-h-[450px] overflow-hidden">
+    <div className="bg-gray-50  min-h-[450px] overflow-hidden">
       <div className="flex justify-between items-center max-w-7xl mx-auto">
         <div className="w-1/2"> <p className="text-4xl font-extrabold">It{`'`}s the food and groceries you love, delivered</p>
         <div className="bg-white p-3  flex justify-between items-center rounded-2xl  mt-3 space-x-4">

@@ -5,6 +5,7 @@ import { Helmet } from "react-helmet-async";
 // import Maps from "./Maps";
 import Featured from "./Featured";
 import ClientReview from "./ClientReview";
+import PrepareFood from "./PrepareFood";
 
 const Home = () => {
   return (
@@ -16,9 +17,12 @@ const Home = () => {
       
       <Slide></Slide>
       <div className="my-5">
-        <h1 className="text-3xl text-center  underline font-semibold font-anton">
-          Featured Foods
+        <div className="max-w-screen-xl mx-auto">
+        <h1 className="text-3xl    font-semibold font-anton">
+        You prepare the food, we handle the rest
         </h1>
+        </div>
+        <PrepareFood></PrepareFood>
         <FeaturedFoods></FeaturedFoods>
         <div className="flex justify-center items-center my-5 ">
           <Link to='/availFood'>

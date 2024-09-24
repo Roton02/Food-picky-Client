@@ -9,8 +9,10 @@ AOS.init();
 const Root = () => {
   return (
     <div className="">
+      <div className=" ">
       <Header></Header>
       <Navbar></Navbar>
+      </div>
       <div className="">
         <div className=" ">
           <Outlet></Outlet>
