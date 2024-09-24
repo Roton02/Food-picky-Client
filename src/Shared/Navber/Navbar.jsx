@@ -349,16 +349,16 @@ const Navbar = () => {
           </div>
           <div className="navbar-center">
             <div className=" space-x-2  hidden lg:flex  ">
-              <NavLink to="/" className="  p-2 px-2 font-medium ">
+              <NavLink to="/" className="  p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150">
                 Home
               </NavLink>
-              <NavLink to="/availFood" className=" p-2 px-2 font-medium  ">
+              <NavLink to="/availFood" className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 ">
                 Available Food
               </NavLink>
-              <NavLink to="/History" className=" p-2 px-2 font-medium ">
+              <NavLink to="/History" className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150">
                 History
               </NavLink>
-              <NavLink to="/contract" className=" p-2 px-2 font-medium  ">
+              <NavLink to="/contract" className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 ">
                 Contract
               </NavLink>
             </div>
@@ -465,7 +465,7 @@ const Navbar = () => {
             </Link>
             <Link
               to="/register"
-              className="btn btn-sm btn-secondary  font-medium bg-[#E21B70] text-white cursor-pointer"
+              className="btn btn-sm btn-secondary hover:scale-105 font-medium bg-[#E21B70] text-white cursor-pointer"
             >
               Register
             </Link>
