@@ -3,6 +3,7 @@ import "animate.css";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../ContextProvider/ContextProvider";
 import { Link, NavLink } from "react-router-dom";
+import { FaCartArrowDown } from "react-icons/fa";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -39,7 +40,7 @@ const Navbar = () => {
   }, [theme]); // Re-run effect when theme changes
 
   return (
-    <div className=" w-full  bg-opacity-50 bg-black fixed z-50">
+    <div className=" w-full  bg-opacity-80 bg-white shadow-2xl ">
       <nav className="   ">
         <div className="navbar max-w-screen-xl mx-auto z-10   ">
           <div className="navbar-start ">
@@ -341,23 +342,23 @@ const Navbar = () => {
               </div>
             </div>
             <Link to="/">
-              <h1 className="text-3xl  font-bold text-[#ff4880] ">
+              <h1 className="text-3xl  font-bold text-[#E21B70] ">
                 Food Picky{" "}
               </h1>
             </Link>
           </div>
           <div className="navbar-center">
             <div className=" space-x-2  hidden lg:flex  ">
-              <NavLink to="/" className=" text-white p-2 px-2 font-medium ">
+              <NavLink to="/" className="  p-2 px-2 font-medium ">
                 Home
               </NavLink>
-              <NavLink to="/availFood" className="text-white p-2 px-2 font-medium  ">
+              <NavLink to="/availFood" className=" p-2 px-2 font-medium  ">
                 Available Food
               </NavLink>
-              <NavLink to="/History" className="text-white p-2 px-2 font-medium ">
+              <NavLink to="/History" className=" p-2 px-2 font-medium ">
                 History
               </NavLink>
-              <NavLink to="/contract" className="text-white p-2 px-2 font-medium  ">
+              <NavLink to="/contract" className=" p-2 px-2 font-medium  ">
                 Contract
               </NavLink>
             </div>
@@ -455,13 +456,24 @@ const Navbar = () => {
                 </div>
               </div>
             ) : (
+              <div className=" space-x-3 ">
               <Link
-                to="/login"
-                className="btn btn-sm btn-secondary  font-medium bg-[#ff4880] text-white cursor-pointer"
-              >
-                Login
-              </Link>
+              to="/login"
+              className="btn btn-sm  font-medium  hover:text-white cursor-pointer hover:bg-[#E21B70] border border-black text-black"
+            >
+              Login
+            </Link>
+            <Link
+              to="/register"
+              className="btn btn-sm btn-secondary  font-medium bg-[#E21B70] text-white cursor-pointer"
+            >
+              Register
+            </Link>
+            </div>
             )}
+            <button className="ml-4 text-[#E21B70]">
+              <FaCartArrowDown className="text-2xl ml-2"/>
+            </button>
           </div>
         </div>
       </nav>

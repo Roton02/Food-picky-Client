@@ -13,6 +13,7 @@ const Home = () => {
         <title>Food Picky </title>
         {/* <link rel="canonical" href="https://www.tacobell.com/" /> */}
       </Helmet>
+      
       <Slide></Slide>
       <div className="my-5">
         <h1 className="text-3xl text-center  underline font-semibold font-anton">
