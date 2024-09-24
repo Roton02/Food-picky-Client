@@ -353,7 +353,7 @@ const Navbar = () => {
                 Home
               </NavLink>
               <NavLink to="/availFood" className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 ">
-                Menu
+                Our Menu
               </NavLink>
               <NavLink to="/History" className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150">
                 Blog
@@ -365,7 +365,7 @@ const Navbar = () => {
                 Reviews
               </NavLink>
               <NavLink to="/contract" className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 ">
-                About Me
+                About Us
               </NavLink>
             </div>
           </div>

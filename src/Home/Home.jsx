@@ -9,6 +9,7 @@ import PrepareFood from "./PrepareFood";
 import OfficeLonch from "./OfficeLonch";
 import Country from "./Country";
 import MobileApp from "./MobileApp";
+import MenuFeatured from "./Featured/MenuFeatured";
 
 const Home = () => {
   return (
@@ -27,17 +28,9 @@ const Home = () => {
         </div>
         <PrepareFood></PrepareFood>
 
-        {/* <FeaturedFoods></FeaturedFoods>
-        <div className="flex justify-center items-center my-5 ">
-          <Link to='/availFood'>
-          <button className="rounded-md  btn  overflow-hidden relative group cursor-pointer border-2  font-medium border-[#1e847f] text-white bg-[#1e847f] hover:text-black">
-             Show All button
-          </button>
-          </Link>
-        </div> */}
-
         <div className="my-5">
           <Featured></Featured>
+          <MenuFeatured/>
         </div>
         <div className="max-w-screen-xl mx-auto">
           <h1 className="text-3xl    font-semibold font-anton">
