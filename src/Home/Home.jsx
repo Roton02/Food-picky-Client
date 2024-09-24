@@ -8,6 +8,7 @@ import ClientReview from "./ClientReview";
 import PrepareFood from "./PrepareFood";
 import OfficeLonch from "./OfficeLonch";
 import Country from "./Country";
+import MobileApp from "./MobileApp";
 
 const Home = () => {
   return (
@@ -50,6 +51,12 @@ const Home = () => {
           </h1>
         </div>
         <OfficeLonch></OfficeLonch>
+        <div className="max-w-screen-xl mx-auto">
+          <h1 className="text-3xl   mb-10 font-semibold font-anton">
+            Take your office out to lunch
+          </h1>
+        </div>
+       <MobileApp/>
 
         <div>
           <h1 className="text-3xl text-center my-5  pb-5 underline  font-semibold font-anton ">

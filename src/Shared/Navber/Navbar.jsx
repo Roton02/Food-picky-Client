@@ -40,7 +40,7 @@ const Navbar = () => {
   }, [theme]); // Re-run effect when theme changes
 
   return (
-    <div className=" w-full  bg-opacity-80 bg-white shadow-2xl ">
+    <div className=" w-full   bg-white shadow-2xl  ">
       <nav className="   ">
         <div className="navbar max-w-screen-xl mx-auto z-10   ">
           <div className="navbar-start ">
@@ -353,13 +353,19 @@ const Navbar = () => {
                 Home
               </NavLink>
               <NavLink to="/availFood" className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 ">
-                Available Food
+                Menu
               </NavLink>
               <NavLink to="/History" className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150">
-                History
+                Blog
               </NavLink>
               <NavLink to="/contract" className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 ">
                 Contract
+              </NavLink>
+              <NavLink to="/contract" className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 ">
+                Reviews
+              </NavLink>
+              <NavLink to="/contract" className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 ">
+                About Me
               </NavLink>
             </div>
           </div>
