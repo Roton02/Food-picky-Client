@@ -1,16 +1,17 @@
-const BannerByAllPage = () => {
+const BannerByAllPage = ({text, p}) => {
   return (
-    <div className="bg-gray-50  min-h-[450px] overflow-hidden">
+    <div className="bg-gray-50  min-h-[400px] overflow-hidden">
       <div className="flex justify-between items-center max-w-7xl mx-auto">
-        <div className="w-1/2">
+        <div className=" ml-24">
           {" "}
-          <p className="text-4xl font-extrabold">
-            It{`'`}s the food and groceries you love, delivered
-          </p>
+          <h1 className="text-4xl font-extrabold">
+          {text}
+          </h1>
+          <p className="text-xl">{p}</p>
         </div>
         <div className="w-1/2 ">
           <img
-            className="w-full h-[450px] ml-32 "
+            className="w-full h-[400px] ml-32 "
             src="https://images.deliveryhero.io/image/foodpanda/homepage/refresh-hero-home-bd.png?width=2560"
             alt=""
           />

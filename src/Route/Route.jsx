@@ -13,6 +13,9 @@ import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import SinglePage from "../pages/singlePage/SinglePage";
 import Profile from "../pages/Profile/Profile";
 import UpdateProfile from "../pages/UpdateProfile/UpdateProfile";
+import Blogs from "../pages/Blogs/Blogs";
+import Reviews from "../pages/Reviews/Reviews";
+import AboutUs from "../AboutUs/AboutUs";
 
 const router = createBrowserRouter([
   {
@@ -64,6 +67,18 @@ const router = createBrowserRouter([
       {
         path: "/contract",
         element: <Contract></Contract>,
+      },
+      {
+        path: "/blogs",
+        element: <Blogs></Blogs>,
+      },
+      {
+        path: "/reviews",
+        element: <Reviews></Reviews>,
+      },
+      {
+        path: "/aboutUs",
+        element: <AboutUs></AboutUs>,
       },
       {
         path: "/singlePage/:id",

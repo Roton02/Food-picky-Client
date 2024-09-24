@@ -335,7 +335,7 @@ const Navbar = () => {
                           </span>
                           <span className="relative invisible">Register</span>
                         </a>
-                      </Link>
+                      </Link> 
                     </div>
                   )}
                 </div>
@@ -355,16 +355,16 @@ const Navbar = () => {
               <NavLink to="/availFood" className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 ">
                 Our Menu
               </NavLink>
-              <NavLink to="/History" className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150">
+              <NavLink to="/blogs" className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150">
                 Blog
               </NavLink>
               <NavLink to="/contract" className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 ">
-                Contract
+                Contract 
               </NavLink>
-              <NavLink to="/contract" className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 ">
+              <NavLink to="/reviews" className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 ">
                 Reviews
               </NavLink>
-              <NavLink to="/contract" className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 ">
+              <NavLink to="/aboutUs" className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 ">
                 About Us
               </NavLink>
             </div>
