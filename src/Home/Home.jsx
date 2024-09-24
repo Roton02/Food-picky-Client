@@ -46,14 +46,10 @@ const Home = () => {
         <Country></Country>
         <div className="max-w-screen-xl mx-auto">
           <h1 className="text-3xl    font-semibold font-anton">
-          Take your office out to lunch
+            Take your office out to lunch
           </h1>
         </div>
         <OfficeLonch></OfficeLonch>
-
-
-
-
 
         <div>
           <h1 className="text-3xl text-center my-5  pb-5 underline  font-semibold font-anton ">
