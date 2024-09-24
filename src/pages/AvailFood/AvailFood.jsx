@@ -13,7 +13,7 @@ const AvailFood = () => {
   const [stateManage , setStateManage] = useState(true)
   const [foods, setFoods] = useState([]);
   useEffect(() => {
-    axios.get(`https://food-pocky01.vercel.app/featured/avilable?sorts=${sorts}&search=${search}`).then((res) => {
+    axios.get(`http://localhost:5000/featured/avilable?sorts=${sorts}&search=${search}`).then((res) => {
       setFoods(res.data);  
       if (res.data.length < 1) {
         Swal.fire({

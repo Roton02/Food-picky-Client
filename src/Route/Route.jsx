@@ -1,6 +1,4 @@
-import {
-    createBrowserRouter,
-  } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import Root from "../Root/Root";
@@ -16,61 +14,77 @@ import SinglePage from "../pages/singlePage/SinglePage";
 import Profile from "../pages/Profile/Profile";
 import UpdateProfile from "../pages/UpdateProfile/UpdateProfile";
 
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Root></Root>,
+    errorElement: <ErrorPage></ErrorPage>,
+    children: [
+      {
+        path: "/",
+        element: <Home></Home>,
+      },
 
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <Root></Root>,
-      errorElement: <ErrorPage></ErrorPage>,
-      children: [
-        {
-          path: '/',
-          element: <Home></Home>
-        },
-        
-        {
-          path: '/login',
-          element: <Login></Login>
-        },
-        {
-          path:'/register',
-          element: <Register></Register>
-        },
-        {
-          path:'/addFood',
-          element: <PrivateRoute><AddFood></AddFood></PrivateRoute>
-        },
-        {
-          path :'/availFood',
-          element: <AvailFood></AvailFood>
-        },
-        {
-          path:'/ManageMyFoods',
-          element:<PrivateRoute><ManageMyFoods></ManageMyFoods></PrivateRoute>
-        },
-        {
-          path:'/MyFoodRequest',
-          element:<PrivateRoute><MyFoodRequest></MyFoodRequest></PrivateRoute>
-        },
-        {
-          path:'/contract',
-          element:<Contract></Contract>
-        },
-        {
-          path:'/singlePage/:id',
-          element:<PrivateRoute><SinglePage></SinglePage></PrivateRoute>,
-          loader:({params})=>fetch(`https://food-pocky01.vercel.app/featured/${params.id}`)
-        },
-        {
-          path:'/profile',
-          element: <Profile></Profile>
-        },
-        {
-          path:'/updateProfile',
-          element:<UpdateProfile></UpdateProfile>
-        }
-      ]
-    },
-  ]);
+      {
+        path: "/login",
+        element: <Login></Login>,
+      },
+      {
+        path: "/register",
+        element: <Register></Register>,
+      },
+      {
+        path: "/addFood",
+        element: (
+          <PrivateRoute>
+            <AddFood></AddFood>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/availFood",
+        element: <AvailFood></AvailFood>,
+      },
+      {
+        path: "/ManageMyFoods",
+        element: (
+          <PrivateRoute>
+            <ManageMyFoods></ManageMyFoods>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/MyFoodRequest",
+        element: (
+          <PrivateRoute>
+            <MyFoodRequest></MyFoodRequest>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/contract",
+        element: <Contract></Contract>,
+      },
+      {
+        path: "/singlePage/:id",
+        element: (
+          <PrivateRoute>
+            <SinglePage></SinglePage>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/featured/${params.id}`),
+      },
+      {
+        path: "/profile",
+        element: <Profile></Profile>,
+      },
+      {
+        path: "/updateProfile",
+        element: <UpdateProfile></UpdateProfile>,
+      },
+    ],
+  },
+]);
 
-  export default router;
+export default router;

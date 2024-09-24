@@ -15,7 +15,7 @@ const ManageMyFoods = () => {
   const axiosSecure = useAxiosSecure()
   // useEffect(() => {
   //   // axios
-  //   //   .get(`https://food-pocky01.vercel.app/featured/?email=${user?.email}`)
+  //   //   .get(`http://localhost:5000/featured/?email=${user?.email}`)
   //   //   .then((res) => {
   //   //     setManageF(res.data);
   //   //   });
@@ -56,7 +56,7 @@ const ManageMyFoods = () => {
             text: "Your file has been deleted.",
             icon: "success",
           });
-          axios.delete(`https://food-pocky01.vercel.app/delete/${id}`).then((res) => {
+          axios.delete(`http://localhost:5000/delete/${id}`).then((res) => {
             console.log(res.data);
             if (res.data.deletedCount > 0) {
               // const remaining = manageF.filter((manage) => manage._id !== id);
@@ -96,7 +96,7 @@ const ManageMyFoods = () => {
     };
     console.log(foodDetails);
     
-    axios.patch(`https://food-pocky01.vercel.app/update/${upId}`, foodDetails)
+    axios.patch(`http://localhost:5000/update/${upId}`, foodDetails)
     .then(res=>{
         console.log(res.data);
         if (res.data.modifiedCount > 0) {
