@@ -367,12 +367,7 @@ const Navbar = () => {
               >
                 Blog
               </NavLink>
-              <NavLink
-                to="/contract"
-                className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 "
-              >
-                Contract
-              </NavLink>
+            
               <NavLink
                 to="/reviews"
                 className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 "
@@ -384,6 +379,12 @@ const Navbar = () => {
                 className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 "
               >
                 About Us
+              </NavLink>
+              <NavLink
+                to="/contract"
+                className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 "
+              >
+                Contract
               </NavLink>
             </div>
           </div>

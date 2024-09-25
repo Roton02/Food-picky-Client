@@ -7,20 +7,8 @@ const Contract = () => {
         text={"Home / Contact"}
         p={"Use the contract form below to contact us"}
       ></BannerByAllPage>
-       <h1
-        className="text-3xl font-anton font-semibold text-center
-         underline my-5 "
-      >
-        Our Office Address
-      </h1>
-      <div className="max-w-7xl mx-auto overflow-hidden mt-5  h-[400px]">
-        <iframe
-          width="100%"
-          height="100%"
-          title="map"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1326418.7529822944!2d90.51535137397207!3d23.32487093833291!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3754ab593c20ef5d%3A0xa4a537a268b0fb48!2sSubarnachar%20Upazila!5e0!3m2!1sen!2sbd!4v1715499474876!5m2!1sen!2sbd"
-        ></iframe>
-      </div>
+       
+     
       <section className="  rounded-xl">
         <div className="grid max-w-7xl mx-auto grid-cols-1 lg:px-0 lg:grid-cols-6  gap-10   md:divide-x">
           <div className="col-span-2 p-10 py-10 lg:py-0 text-white bg-slate-900 ">
