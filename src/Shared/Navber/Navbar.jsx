@@ -335,7 +335,7 @@ const Navbar = () => {
                           </span>
                           <span className="relative invisible">Register</span>
                         </a>
-                      </Link> 
+                      </Link>
                     </div>
                   )}
                 </div>
@@ -349,22 +349,40 @@ const Navbar = () => {
           </div>
           <div className="navbar-center">
             <div className=" space-x-2  hidden lg:flex  ">
-              <NavLink to="/" className="  p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150">
+              <NavLink
+                to="/"
+                className="  p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150"
+              >
                 Home
               </NavLink>
-              <NavLink to="/availFood" className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 ">
+              <NavLink
+                to="/availFood"
+                className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 "
+              >
                 Our Menu
               </NavLink>
-              <NavLink to="/blogs" className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150">
+              <NavLink
+                to="/blogs"
+                className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150"
+              >
                 Blog
               </NavLink>
-              <NavLink to="/contract" className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 ">
-                Contract 
+              <NavLink
+                to="/contract"
+                className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 "
+              >
+                Contract
               </NavLink>
-              <NavLink to="/reviews" className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 ">
+              <NavLink
+                to="/reviews"
+                className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 "
+              >
                 Reviews
               </NavLink>
-              <NavLink to="/aboutUs" className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 ">
+              <NavLink
+                to="/aboutUs"
+                className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 "
+              >
                 About Us
               </NavLink>
             </div>
@@ -463,22 +481,22 @@ const Navbar = () => {
               </div>
             ) : (
               <div className=" space-x-3 ">
-              <Link
-              to="/login"
-              className="btn btn-sm  font-medium  hover:text-white cursor-pointer hover:bg-[#E21B70] border border-black text-black"
-            >
-              Login
-            </Link>
-            <Link
-              to="/register"
-              className="btn btn-sm btn-secondary hover:scale-105 font-medium bg-[#E21B70] text-white cursor-pointer"
-            >
-              Register
-            </Link>
-            </div>
+                <Link
+                  to="/login"
+                  className="btn btn-sm  font-medium  hover:text-white cursor-pointer hover:bg-[#E21B70] border border-black text-black"
+                >
+                  Login
+                </Link>
+                <Link
+                  to="/register"
+                  className="btn btn-sm btn-secondary hover:scale-105 font-medium bg-[#E21B70] text-white cursor-pointer"
+                >
+                  Register
+                </Link>
+              </div>
             )}
             <button className="ml-4 text-[#E21B70]">
-              <FaCartArrowDown className="text-2xl ml-2"/>
+              <FaCartArrowDown className="text-2xl ml-2" />
             </button>
           </div>
         </div>
