@@ -7,48 +7,9 @@ const Contract = () => {
         text={"Home / Contact"}
         p={"Use the contract form below to contact us"}
       ></BannerByAllPage>
-        <form
-           
-           noValidate=""
-           className="flex max-w-4xl bg-slate-600 justify-center mx-auto border-2 border-black flex-col py-6 my-5 space-y-6 md:py-0 md:px-6"
-         >
-           <label className="block">
-             <span className="mb-1">Full name</span>
-             <input
-               type="text"
-               name="user_name"
-               placeholder="Leroy Jenkins"
-               className="block w-full border-2 p-3 rounded-md shadow-sm focus:ring focus:ring-opacity-75 " 
-             />
-           </label>
-           <label className="block">
-             <span className="mb-1">Email address</span>
-             <input
-               type="email"
-               name="user_email"
-               placeholder="leroy@jenkins.com"
-               className="block p-3 w-full rounded-md shadow-sm focus:ring focus:ring-opacity-75 border-2 " 
-             />
-           </label>
-           <label className="block"> 
-             <span className="mb-1">Message</span> 
-             <textarea
-               name="message"
-               placeholder="write message"
-               rows="5"
-               className="block p-5 w-full border-2 rounded-md focus:ring focus:ring-opacity-75 "
-             ></textarea>
-           </label>
-           <button
-             type="submit"
-             className="self-end px-8 py-3 text-lg rounded-lg bg-[#ff4880] text-white  hover:bg-gray-200 
-              hover:text-black duration-300"
-           >
-             Send message
-           </button>
-         </form>
+       
      
-      {/* <section className="  rounded-xl">
+      <section className="  rounded-xl">
         <div className="grid max-w-7xl mx-auto grid-cols-1 lg:px-0 lg:grid-cols-6  gap-10   md:divide-x">
           <div className="col-span-2 p-10 py-10 lg:py-0 text-white bg-slate-900 ">
             <div className="">
@@ -115,9 +76,48 @@ const Contract = () => {
               </div>
             </div>
           </div>
-         
+          <form
+           
+            noValidate=""
+            className="flex lg:col-span-4 flex-col py-6 my-5 space-y-6 md:py-0 md:px-6"
+          >
+            <label className="block">
+              <span className="mb-1">Full name</span>
+              <input
+                type="text"
+                name="user_name"
+                placeholder="Leroy Jenkins"
+                className="block border-2 w-full  p-3 rounded-md shadow-sm focus:ring focus:ring-opacity-75 " 
+              />
+            </label>
+            <label className="block">
+              <span className="mb-1">Email address</span>
+              <input
+                type="email"
+                name="user_email"
+                placeholder="leroy@jenkins.com"
+                className="block p-3 w-full rounded-md shadow-sm focus:ring focus:ring-opacity-75 border-2 " 
+              />
+            </label>
+            <label className="block"> 
+              <span className="mb-1">Message</span> 
+              <textarea
+                name="message"
+                placeholder="write message"
+                rows="5"
+                className="block p-5 border-2 w-full shadow-sm rounded-md focus:ring focus:ring-opacity-75 "
+              ></textarea>
+            </label>
+            <button
+              type="submit"
+              className="self-end px-8 py-3 text-lg rounded-lg bg-[#ff4880] text-white  hover:bg-gray-200 
+               hover:text-black duration-300"
+            >
+              Send message
+            </button>
+          </form>
         </div>
-      </section> */}
+      </section>
     </div>
   );
 };

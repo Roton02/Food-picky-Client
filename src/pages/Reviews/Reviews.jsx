@@ -1,6 +1,59 @@
+import ReactStars from "react-rating-stars-component";
+import axios from "axios";
 import BannerByAllPage from "../../Component/BannerByAllPage/BannerByAllPage";
+import Swal from "sweetalert2";
+import { useContext } from "react";
+import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { AuthContext } from "../../ContextProvider/ContextProvider";
 
 const Reviews = () => {
+  const dateString = new Date().toISOString();
+  const { user } = useContext(AuthContext);
+  const [rating, setRatings] = useState();
+
+  const { data = [], refetch } = useQuery({
+    queryKey: ["rating"],
+    queryFn: () =>
+      axios
+        .get("https://globeglimpse.vercel.app/ClientReview")
+        .then((res) => res.data),
+  });
+
+  const ratingChanged = (newRating) => {
+    setRatings(newRating);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const ratings = rating;
+    const title = form.fillings.value;
+    const description = form.description.value;
+    const client_name = user.displayName;
+    const image = user.photoURL;
+    const addRatings = {
+      ratings,
+      title,
+      description,
+      client_name,
+      image,
+      dateString,
+    };
+    axios
+      .post("https://globeglimpse.vercel.app/AddRatings", addRatings)
+      .then((res) => {
+        if (res.data.insertedId) {
+          Swal.fire({
+            title: "Add your Review!",
+            text: "Thank you for giving review in our !",
+            icon: "success",
+          });
+          form.reset();
+          refetch();
+        }
+      });
+  };
   return (
     <div>
       <BannerByAllPage
@@ -8,6 +61,94 @@ const Reviews = () => {
         p={"Read trusted reviews from our customers"}
       ></BannerByAllPage>
       <section className="bg-white">
+      <div className="max-w-7xl mx-auto">
+      <div className="flex justify-start rounded-xl border-y-2 mt-   bg-gray-100 py-2">
+      <button
+          data-aos="fade-up"
+          data-aos-duration="2000"
+          onClick={() => document.getElementById("my_modal_5").showModal()}
+          className=""
+        >
+          <a
+            href="#_"
+            className="relative border-2  rounded-l-lg  inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-pink-500 transition duration-300 ease-out  border-pink-500 shadow-md group"
+          >
+            <span className="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-pink-500 group-hover:translate-x-0 ease">
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+              </svg>
+            </span>
+            <span className="absolute flex items-center justify-center w-full h-full text-pink-500 transition-all duration-300 transform group-hover:translate-x-full ease">
+              Adopt
+            </span>
+            <span className="relative invisible">Adopt</span>
+          </a>
+        </button>
+      </div>
+      </div>
+
+        <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
+          <div className="modal-box relative">
+            <form onSubmit={handleSubmit}>
+              <div className="flex flex-col items-center py-6  space-y-3">
+                <span className="text-center">How was your experience?</span>
+                <div className="flex space-x-3">
+                  <ReactStars
+                    required
+                    count={5}
+                    onChange={ratingChanged}
+                    size={45}
+                    activeColor="#ffd700"
+                  />
+                </div>
+              </div>
+              <div className="flex flex-col w-full">
+                <input type="text" className="input input-bordered w-full max-w-2xl mb-2" name="" value={user?.displayName} id="" />
+                <input type="text" className="input input-bordered w-full max-w-2xl mb-2" name="" value={user?.email} id="" />
+                <textarea
+                  required
+                  rows="3"
+                  name="description"
+                  placeholder="Message..."
+                  className="p-4 border-2 rounded-md resize-none dark:text-gray-800 dark:bg-gray-50"
+                ></textarea>
+                <button
+                  type="submit"
+                  className="mt-4 rounded-lg transition duration-300"
+                >
+                  <a
+                    href="#_"
+                    className="relative inline-block mt-2 px-14 py-2 font-medium group"
+                  >
+                    <span className="absolute inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-black group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
+                    <span className="absolute inset-0 w-full h-full bg-white border-2 border-black group-hover:bg-black"></span>
+                    <span className="relative text-black group-hover:text-white">
+                      Submit Feedback
+                    </span>
+                  </a>
+                </button>
+              </div>
+            </form>
+            <div
+              className="modal-action absolute
+                                  top-0 right-6
+                                  flex justify-center"
+            >
+              <form method="dialog">
+                <button type="submit" className="btn ">
+                  X
+                </button>
+              </form>
+            </div>
+          </div>
+        </dialog>
+
         <div className="mx-auto max-w-screen-xl px-4  sm:px-6 lg:px-8 ">
           <div className=" [column-fill:_balance] sm:columns-2 sm:gap-6 lg:columns-3 lg:gap-8">
             <div className="mb-8 sm:break-inside-avoid">

@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import BannerByAllPage from "../../Component/BannerByAllPage/BannerByAllPage";
 
 const BlogDetails = () => {
   const { idMeal } = useParams();
@@ -15,10 +14,14 @@ const BlogDetails = () => {
   }, [idMeal]);
 
   if (!meal) {
-    return <div className="flex justify-center items-center my-auto mt-20 md:mt-52  lg:mt-[300px]"><span className="loading loading-dots loading-xs"></span>
-    <span className="loading loading-dots loading-sm"></span>
-    <span className="loading loading-dots loading-md"></span>
-    <span className="loading loading-dots loading-lg"></span></div>;
+    return (
+      <div className="flex justify-center items-center my-auto mt-20 md:mt-52  lg:mt-[300px]">
+        <span className="loading loading-dots loading-xs"></span>
+        <span className="loading loading-dots loading-sm"></span>
+        <span className="loading loading-dots loading-md"></span>
+        <span className="loading loading-dots loading-lg"></span>
+      </div>
+    );
   }
 
   return (
@@ -81,13 +84,13 @@ const BlogDetails = () => {
             {/* Chef's Note */}
             <div className="bg-gray-50 p-6 rounded-lg shadow-lg mb-10">
               <h3 className="text-3xl font-semibold text-gray-800 mb-4">
-                Chef's Note
+                Chef{`'`}s Note
               </h3>
               <p className="text-lg text-gray-600 leading-relaxed">
-                "To truly appreciate this dish, be sure to use high-quality
+                To truly appreciate this dish, be sure to use high-quality
                 ingredients and allow the flavors to develop slowly. This recipe
                 is not just about taste; it’s about bringing the culture of{" "}
-                {meal.strArea} into your home kitchen."
+                {meal.strArea} into your home kitchen.
               </p>
               <p className="text-gray-600 mt-4 italic">
                 — Chef Maria Rodriguez
