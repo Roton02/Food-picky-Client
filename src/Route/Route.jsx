@@ -16,6 +16,7 @@ import UpdateProfile from "../pages/UpdateProfile/UpdateProfile";
 import Blogs from "../pages/Blogs/Blogs";
 import Reviews from "../pages/Reviews/Reviews";
 import AboutUs from "../AboutUs/AboutUs";
+import BlogDetails from "../pages/Blogs/BlogDetails";
 
 const router = createBrowserRouter([
   {
@@ -71,6 +72,10 @@ const router = createBrowserRouter([
       {
         path: "/blogs",
         element: <Blogs></Blogs>,
+      },
+      {
+        path: "/blog/:idMeal",
+        element: <BlogDetails></BlogDetails>,
       },
       {
         path: "/reviews",

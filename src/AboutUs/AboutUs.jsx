@@ -167,7 +167,7 @@ const AboutUs = () => {
                 <div className="relative overflow-hidden transition duration-300 transform rounded shadow-lg lg:hover:-translate-y-2 hover:shadow-2xl">
                   <img
                     className="object-cover w-full h-56 md:h-64 xl:h-80"
-                    src="https://images.pexels.com/photos/2381069/pexels-photo-2381069.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260"
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKPsmahDs5dWG_koO7ciK3sclZEawvJSuXdHguVPjsz5X5e95UP6q3ulm3GCaf_lmOr8Y&usqp=CAU"
                     alt="Person"
                   />
                   <div className="absolute inset-0 flex flex-col justify-center px-5 py-4 text-center transition-opacity duration-300 bg-black bg-opacity-75 opacity-0 hover:opacity-100">
