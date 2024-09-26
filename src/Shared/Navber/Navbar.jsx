@@ -40,7 +40,7 @@ const Navbar = () => {
   }, [theme]); // Re-run effect when theme changes
 
   return (
-    <div className=" w-full   bg-white shadow-2xl  ">
+    <div className=" w-full   bg-white shadow-xl  ">
       <nav className="   ">
         <div className="navbar max-w-screen-xl mx-auto z-10   ">
           <div className="navbar-start ">
