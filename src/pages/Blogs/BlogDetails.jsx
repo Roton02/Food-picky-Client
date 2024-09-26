@@ -15,7 +15,10 @@ const BlogDetails = () => {
   }, [idMeal]);
 
   if (!meal) {
-    return <div>Loading...</div>;
+    return <div className="flex justify-center items-center my-auto mt-20 md:mt-52  lg:mt-[300px]"><span className="loading loading-dots loading-xs"></span>
+    <span className="loading loading-dots loading-sm"></span>
+    <span className="loading loading-dots loading-md"></span>
+    <span className="loading loading-dots loading-lg"></span></div>;
   }
 
   return (
