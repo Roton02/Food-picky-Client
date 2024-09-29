@@ -59,7 +59,7 @@ const Reviews = () => {
         text={"Home / Reviews"}
         p={"Read trusted reviews from our customers"}
       ></BannerByAllPage>
-      <section className="bg-gray-50">
+      <section className="bg-gray-50"> 
         <div className="max-w-7xl mx-auto">
           <div className="flex justify-start  border-b-2     py-2">
             <button

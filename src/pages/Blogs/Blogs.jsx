@@ -35,7 +35,7 @@ const Blogs = () => {
                 </p>
                 {/* Redirect to BlogDetails page */}
                 <Link to={`/blog/${meal.idMeal}`}>
-                  <button className="text-[#E21B70] mt-4 font-semibold">
+                  <button className="text-[#E21B70] btn btn-circle mt-4 font-semibold">
                     Read More
                   </button>
                 </Link>
