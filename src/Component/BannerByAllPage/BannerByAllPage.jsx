@@ -7,7 +7,7 @@ const BannerByAllPage = ({text, p}) => {
           <h1 className="text-4xl font-extrabold">
           {text}
           </h1>
-          <p className="text-xl">{p}</p>
+          <p className="text-xl mt-3">{p}</p>
         </div>
         <div className="w-1/2 ">
           <img

@@ -7,7 +7,7 @@ import { FaCartArrowDown } from "react-icons/fa";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-
+const [userRole , setUserRole] = useState(false)
   const toggleDrawer = () => {
     setIsOpen(!isOpen);
   };
@@ -349,43 +349,47 @@ const Navbar = () => {
           </div>
           <div className="navbar-center">
             <div className=" space-x-2  hidden lg:flex  ">
-              <NavLink
-                to="/"
-                className="  p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150"
-              >
-                Home
-              </NavLink>
-              <NavLink
-                to="/availFood"
-                className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 "
-              >
-                Our Menu
-              </NavLink>
-              <NavLink
-                to="/blogs"
-                className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150"
-              >
-                Blog
-              </NavLink>
-            
-              <NavLink
-                to="/reviews"
-                className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 "
-              >
-                Reviews
-              </NavLink>
-              <NavLink
-                to="/aboutUs"
-                className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 "
-              >
-                About Us
-              </NavLink>
-              <NavLink
-                to="/contract"
-                className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 "
-              >
-                Contract
-              </NavLink>
+             {
+              userRole ?  
+             <>  <NavLink
+             to="/"
+             className="  p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150"
+           >
+             Home
+           </NavLink>
+           <NavLink
+             to="/availFood"
+             className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 "
+           >
+             Our Menu
+           </NavLink>
+           <NavLink
+             to="/blogs"
+             className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150"
+           >
+             Blog
+           </NavLink>
+           <NavLink
+             to="/reviews"
+             className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 "
+           >
+             Reviews
+           </NavLink>
+           <NavLink
+             to="/aboutUs"
+             className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 "
+           >
+             About Us
+           </NavLink>
+           <NavLink
+             to="/contract"
+             className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 "
+           >
+             Contract
+           </NavLink>  </> : <><NavLink to='/availFood'>
+              All Food 
+            </NavLink></>
+             }
             </div>
           </div>
           <div className="navbar-end ">

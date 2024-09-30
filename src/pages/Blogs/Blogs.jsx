@@ -15,7 +15,7 @@ const Blogs = () => {
 
   return (
     <div>
-      <BannerByAllPage text={"Home / Blogs"} />
+      <BannerByAllPage text={"Home / Blogs"} p={'A blog, short for weblog, is a frequently updated web page used for personal commentary or business content.'} />
       <div className="bg-gradient-to-b from-white to-gray-50 min-h-screen p-10">
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto'>
           {meals.map((meal) => (

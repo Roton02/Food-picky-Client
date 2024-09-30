@@ -4,7 +4,7 @@ import roton from "../assets/roton_passport_size.png";
 const AboutUs = () => {
   return (
     <div>
-      <BannerByAllPage text={"Home / About us"}></BannerByAllPage>
+      <BannerByAllPage text={"Home / About us"} p={'Welcome to Food Picky – the go-to platform for food lovers!'} ></BannerByAllPage>
       <div className="bg-gradient-to-b md:px-20 from-white to-gray-50 min-h-screen p-8">
         {/* Header Section */}
         <div className="max-w-screen-xl mx-auto ">

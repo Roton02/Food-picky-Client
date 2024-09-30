@@ -78,11 +78,11 @@ const AvailFood = () => {
           <div className="flex justify-between items-center max-w-7xl mx-auto">
             <div className="w-1/2">
               {" "}
-              <h1 className="text-4xl ml-10 font-extrabold">
+              <h1 className="text-4xl ml-4 font-extrabold">
               Home / Available Food 
               </h1>
               <form
-                className="bg-white p-3  flex justify-between items-center rounded-2xl  mt-3  space-x-4"
+                className="bg-white p-3   flex justify-between items-center rounded-2xl  mt-3  space-x-4"
                 onSubmit={handleSubmit}
               >
                 <input
