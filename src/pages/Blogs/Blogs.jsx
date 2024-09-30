@@ -19,7 +19,7 @@ const Blogs = () => {
       <div className="bg-gradient-to-b from-white to-gray-50 min-h-screen p-10">
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto'>
           {meals.map((meal) => (
-            <div key={meal.idMeal} className="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+            <div key={meal.idMeal} className="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105">
               <div className="relative group">
                 <img src={meal.strMealThumb} alt={meal.strMeal} className="w-full h-56 object-cover group-hover:opacity-80 transition-opacity duration-300" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -35,7 +35,7 @@ const Blogs = () => {
                 </p>
                 {/* Redirect to BlogDetails page */}
                 <Link to={`/blog/${meal.idMeal}`}>
-                  <button className="text-[#E21B70] btn btn-circle mt-4 font-semibold">
+                  <button className=" text-nowrap text-[#E21B70]  mt-4 font-semibold">
                     Read More
                   </button>
                 </Link>
