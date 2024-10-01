@@ -7,7 +7,7 @@ import { FaCartArrowDown } from "react-icons/fa";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-const [userRole , setUserRole] = useState(false)
+  const [userRole, setUserRole] = useState(false);
   const toggleDrawer = () => {
     setIsOpen(!isOpen);
   };
@@ -349,47 +349,91 @@ const [userRole , setUserRole] = useState(false)
           </div>
           <div className="navbar-center">
             <div className=" space-x-2  hidden lg:flex  ">
-             {
-              userRole ?  
-             <>  <NavLink
-             to="/"
-             className="  p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150"
-           >
-             Home
-           </NavLink>
-           <NavLink
-             to="/availFood"
-             className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 "
-           >
-             Our Menu
-           </NavLink>
-           <NavLink
-             to="/blogs"
-             className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150"
-           >
-             Blog
-           </NavLink>
-           <NavLink
-             to="/reviews"
-             className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 "
-           >
-             Reviews
-           </NavLink>
-           <NavLink
-             to="/aboutUs"
-             className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 "
-           >
-             About Us
-           </NavLink>
-           <NavLink
-             to="/contract"
-             className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 "
-           >
-             Contract
-           </NavLink>  </> : <><NavLink to='/availFood'>
-              All Food 
-            </NavLink></>
-             }
+              {userRole ? (
+                <>
+                  {" "}
+                  <NavLink
+                    to="/"
+                    className="  p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150"
+                  >
+                    Home
+                  </NavLink>
+                  <NavLink
+                    to="/availFood"
+                    className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 "
+                  >
+                    Our Menu
+                  </NavLink>
+                  <NavLink
+                    to="/blogs"
+                    className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150"
+                  >
+                    Blog
+                  </NavLink>
+                  <NavLink
+                    to="/reviews"
+                    className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 "
+                  >
+                    Reviews
+                  </NavLink>
+                  <NavLink
+                    to="/aboutUs"
+                    className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 "
+                  >
+                    About Us
+                  </NavLink>
+                  <NavLink
+                    to="/contract"
+                    className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 "
+                  >
+                    Contract
+                  </NavLink>{" "}
+                </>
+              ) : (
+                <>
+                  <NavLink
+                    className={
+                      "p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150"
+                    }
+                    to="/"
+                  >
+                    Home
+                  </NavLink>
+
+                  <NavLink
+                    className={
+                      "p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150"
+                    }
+                    to="/availFood"
+                  >
+                    All User / Admin
+                  </NavLink>
+                  <NavLink
+                    className={
+                      "p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150"
+                    }
+                    to="/availFood"
+                  >
+                    Manage All Food
+                  </NavLink>
+                  <NavLink
+                    className={
+                      "p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150"
+                    }
+                    to="/availFood"
+                  >
+                    My Added Food
+                  </NavLink>
+                  <NavLink
+                    className={
+                      "p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150"
+                    }
+                    to="/availFood"
+                  >
+                    All Requested Food
+                  </NavLink>
+                </>
+              )}
             </div>
           </div>
           <div className="navbar-end ">
@@ -450,37 +494,33 @@ const [userRole , setUserRole] = useState(false)
                   >
                     <div className="flex justify-center">
                       <img
-                        className="rounded-full w-20 text-center"
+                        className="rounded-full w-20 h-20 text-center"
                         src={user?.photoURL || ""}
                         alt=""
                       />
                     </div>
-                    <li className="mx-auto text-xl font-bold ">
-                      - {user?.displayName} -
+                    <li className="  rounded-lg bg-black text-white font-bold  text-start "> 
+                     <span>
+                     {user?.displayName} 
+                     </span>
                     </li>
                     <li>
                       <NavLink
                         to="/profile"
-                        className="btn btn-sm btn-ghost border-2  border-gray-300 hover:bg-black hover:text-white"
+                        className=" border-b-2 font-bold border-gray-300 hover:bg-black hover:text-white"
                       >
                         Profile
                       </NavLink>
                     </li>
-                    <li>
-                      <NavLink
-                        to="/dashboard/addPet"
-                        className="btn btn-sm btn-ghost border-2  border-gray-300 hover:bg-black hover:text-white"
+                    
+                    <li className="pb-6 mt-3">
+                      <button
+                        onClick={Logout}
+                        className="border-b-2 font-bold  border-gray-300 hover:bg-black hover:text-white"
                       >
-                        DashBoard
-                      </NavLink>
+                        Logout
+                      </button>
                     </li>
-
-                    <button
-                      onClick={Logout}
-                      className="btn btn-sm btn-ghost border-2  border-gray-300 hover:bg-black hover:text-white"
-                    >
-                      Logout
-                    </button>
                   </ul>
                 </div>
               </div>
