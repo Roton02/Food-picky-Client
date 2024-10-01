@@ -17,6 +17,7 @@ import Blogs from "../pages/Blogs/Blogs";
 import Reviews from "../pages/Reviews/Reviews";
 import AboutUs from "../AboutUs/AboutUs";
 import BlogDetails from "../pages/Blogs/BlogDetails";
+import Users from "../AdminAccesable/Users/Users";
 
 const router = createBrowserRouter([
   {
@@ -98,6 +99,14 @@ const router = createBrowserRouter([
       {
         path: "/profile",
         element: <Profile></Profile>,
+      },
+      {
+        path: "/updateProfile",
+        element: <UpdateProfile></UpdateProfile>,
+      },
+      {
+        path: "/Users",
+        element: <Users></Users>,
       },
       {
         path: "/updateProfile",

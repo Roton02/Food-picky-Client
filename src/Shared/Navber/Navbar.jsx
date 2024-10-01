@@ -404,7 +404,7 @@ const Navbar = () => {
                     className={
                       "p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150"
                     }
-                    to="/availFood"
+                    to="/Users"
                   >
                     All User / Admin
                   </NavLink>
