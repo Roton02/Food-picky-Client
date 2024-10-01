@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import { imageUpload } from "../../util";
 import { AuthContext } from "../../ContextProvider/ContextProvider";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const location = useLocation();
@@ -81,7 +82,7 @@ const Register = () => {
               email: email,
               image: photoLink,
             };
-            axios.post("/users", userInfo).then((res) => {
+            axios.post("http://localhost:5000/users", userInfo).then((res) => {
               if (res.data.insertedId) {
                 console.log("user added to the database");
                 e.target.reset();
@@ -92,21 +93,18 @@ const Register = () => {
                   showConfirmButton: false,
                   timer: 1500,
                 });
-                navigate("/");
+                Logout();
+                navigate("/login");
               }
             });
           })
-            Logout();
-            navigate("/login");
+            
           })
           .catch((error) => {
             console.log(error.message);
           });
-      })
-      .catch((error) => {
-        setError(error.message.split("(")[1]);
-        toast.warning(error.message.split("(")[1]);
-      });
+      
+     
   };
   const handleSigninWithGoogle = () => {
     googleSignIn()
