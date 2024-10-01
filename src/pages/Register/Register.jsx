@@ -6,6 +6,7 @@ import { IoIosEyeOff } from "react-icons/io";
 import { toast } from "react-toastify";
 import { imageUpload } from "../../util";
 import { AuthContext } from "../../ContextProvider/ContextProvider";
+import axios from "axios";
 
 const Register = () => {
   const location = useLocation();
@@ -27,14 +28,14 @@ const Register = () => {
       console.log(err);
     }
     const name = e.target.name.value;
-    const photoLnk = image;
+    const photoLink = image;
     const email = e.target.email.value;
     const password = e.target.password.value;
-    console.log(typeof name, photoLnk, email, password);
+    console.log(typeof name, photoLink, email, password);
     setError(" ");
     if (
       name.length <= 0 ||
-      photoLnk.length <= 0 ||
+      photoLink.length <= 0 ||
       email.length <= 0 ||
       password.length <= 0
     ) {
@@ -72,9 +73,29 @@ const Register = () => {
           progress: undefined,
           theme: "dark",
           });
-        UpdateUser(name, photoLnk)
+        UpdateUser(name, photoLink)
           .then((result) => {
             console.log(result);
+            const userInfo = {
+              name: name,
+              email: email,
+              image: photoLink,
+            };
+            axios.post("/users", userInfo).then((res) => {
+              if (res.data.insertedId) {
+                console.log("user added to the database");
+                e.target.reset();
+                Swal.fire({
+                  position: "top-center",
+                  icon: "success",
+                  title: "User created successfully.",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
+                navigate("/");
+              }
+            });
+          })
             Logout();
             navigate("/login");
           })
