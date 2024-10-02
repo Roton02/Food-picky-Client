@@ -12,7 +12,6 @@ const ManageMyFoods = () => {
   // const [manageF, setManageF] = useState([]);
   const { user } = useAuth()
   const [upId , setupId] = useState(null)
-  const axiosSecure = useAxiosSecure()
   // useEffect(() => {
   //   // axios
   //   //   .get(`http://localhost:5000/featured/?email=${user?.email}`)
@@ -26,7 +25,7 @@ const ManageMyFoods = () => {
   })
   console.log(manageF)
   const getData = async () => {
-      const { data } = await axiosSecure(`/featured-info/${user?.email}`)
+      const { data } = await axios(`http://localhost:5000/featured-info/${user?.email}`)
       return data;
   }
   console.log(manageF);

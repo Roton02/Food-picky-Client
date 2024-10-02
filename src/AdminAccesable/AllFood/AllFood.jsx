@@ -12,6 +12,8 @@ import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 
 const AllFood = () => {
+  const [upId, setupId] = useState(null);
+
   // Fetching data with React Query
   const { data: pets = [], refetch } = useQuery({
     queryKey: ["pets"],
@@ -79,37 +81,86 @@ const AllFood = () => {
     []
   );
 
-  const handleUpdate = (_id) => {
-    console.log(`Update pet with ID: ${_id}`);
+  const handleUpdate = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const food_name = form.name.value;
+    const food_image = form.image.value;
+    const pickup_location = form.location.value;
+    const expired_datetime = form.expired.value;
+    const quantity = form.quantity.value;
+    const additional_notes = form.notes.value;
+    const foodDetails = {
+      food_name,
+      food_image,
+      pickup_location,
+      expired_datetime,
+      quantity,
+      additional_notes,
+    };
+    console.log(foodDetails);
+
+    axios
+      .patch(`http://localhost:5000/update/${upId}`, foodDetails)
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.modifiedCount > 0) {
+          toast.success("Update successfully !");
+          refetch();
+        } else {
+          toast.error("No Update ");
+        }
+      });
+  };
+  const handleUp = (id) => {
+    console.log(id);
+    setupId(id);
   };
 
-  const handleDelete = async (_id) => {
-    console.log(`Delete pet with ID: ${_id}`);
-    Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        axios
-          .delete(`http://localhost:5000/allcategory/admin/delete/${_id}`)
-          .then((res) => {
+  const handleDelete = (id) => {
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: "btn btn-success",
+        cancelButton: "btn btn-danger",
+      },
+      buttonsStyling: false,
+    });
+    swalWithBootstrapButtons
+      .fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "No, cancel!",
+        reverseButtons: true,
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          swalWithBootstrapButtons.fire({
+            title: "Deleted!",
+            text: "Your file has been deleted.",
+            icon: "success",
+          });
+          axios.delete(`http://localhost:5000/delete/${id}`).then((res) => {
             console.log(res.data);
             if (res.data.deletedCount > 0) {
-              Swal.fire({
-                title: "Deleted!",
-                text: "Your file has been deleted.",
-                icon: "success",
-              });
+              // const remaining = manageF.filter((manage) => manage._id !== id);
+              // setManageF(remaining);
               refetch();
             }
           });
-      }
-    });
+        } else if (
+          /* Read more about handling dismissals below */
+          result.dismiss === Swal.DismissReason.cancel
+        ) {
+          swalWithBootstrapButtons.fire({
+            title: "Cancelled",
+            text: "Your imaginary file is safe :)",
+            icon: "error",
+          });
+        }
+      });
   };
 
   const [pageIndex, setPageIndex] = useState(0);
@@ -194,11 +245,123 @@ const AllFood = () => {
                 <td className="p-3 px-2 text-sm ">{row.expired_datetime}</td>
                 <td className=" text-sm ">
                   <div className="space-x-7 flex justify-center">
-                    <Link to={`updatepets/${row._id}`}>
-                      <button className="bg-blue-500 text-white px-2 py-1 rounded">
-                        Update
-                      </button>
-                    </Link>
+                    <button
+                      onClick={() =>
+                        document.getElementById(row._id).showModal()
+                      }
+                      className="bg-blue-500 text-white px-2 py-1 rounded"
+                    >
+                      Update
+                    </button>
+                    <dialog
+                      id={row._id}
+                      className="modal text-start modal-bottom sm:modal-middle"
+                    >
+                      <div className="modal-box relative">
+                        <form onSubmit={handleUpdate}>
+                          <h1 className="text-center font-anton my-5  text-2xl md:text-3xl font-bold underline">
+                            Update Food
+                          </h1>
+                          <div className="flex mb-2 gap-2">
+                            <div>
+                              <label htmlFor="FoodName ">Food Name</label> <br />
+                              <input
+                                name="name"
+                                type="text"
+                                required
+                                defaultValue={row.food_name}
+                                placeholder="Write Food Name"
+                                className="input input-bordered w-full px-6"
+                              />
+                            </div>
+                            <div>
+                              <label htmlFor="FoodName">Image URL</label> <br />
+                              <input
+                                name="image"
+                                type="text"
+                                required
+                                defaultValue={row.food_image}
+                                placeholder="Write Valid URL"
+                                className="input input-bordered w-full px-6"
+                              />
+                            </div>
+                          </div>
+                          <div className="flex mb-2 gap-2">
+                            <div>
+                              <label htmlFor="quantity">Food Quantity</label>{" "}
+                              <br />
+                              <input
+                                name="quantity"
+                                type="number"
+                                required
+                                defaultValue={row.quantity}
+                                placeholder="Write Quantity"
+                                className="input input-bordered w-full px-6"
+                              />
+                            </div>
+                            <div>
+                              <label htmlFor="expired">Expired</label> <br />
+                              <input
+                                name="expired"
+                                type="date"
+                                required
+                                defaultValue={row.expired_datetime}
+                                placeholder=""
+                                className="input input-bordered  w-full px-10"
+                              />
+                            </div>
+                          </div>
+                          <div className="mr-3 ">
+                            <div>
+                              <label htmlFor="Location">Location</label>
+                              <br />
+                              <input
+                                name="location"
+                                required
+                                defaultValue={row.pickup_location}
+                                type="text"
+                                placeholder="Type here your pickup location"
+                                className="input input-bordered mb-2 input-md w-full "
+                              />
+                            </div>
+                            <div>
+                              <label htmlFor="notes">Additional Notes</label>
+                              <br />
+                              <textarea
+                                rows={3}
+                                name="notes"
+                                required
+                                defaultValue={row.additional_notes}
+                                type="text"
+                                placeholder="Type here Additional Notes"
+                                className="textarea textarea-primary w-full "
+                              />
+                            </div>
+                          </div>
+                          <div className="flex justify-center mt-2">
+                            <button
+                              onClick={() => handleUp(row._id)}
+                              type="submit"
+                              className=" px-12  py-2 rounded-lg hover:bg-gray-300 font-bold  bg-[#e21b70] text-white hover:text-black"
+                            >
+                              Submit
+                            </button>
+                          </div>
+                        </form>
+                        <div
+                          className="modal-action absolute
+                                  top-0 right-6
+                                  flex justify-center"
+                        >
+                          <form method="dialog">
+                            <button type="submit" className="btn ">
+                              X
+                            </button>
+                          </form>
+                        </div>
+                      </div>
+                    </dialog>
+
                     <button
                       onClick={() => handleDelete(row._id)}
                       className="bg-red-500 text-white px-2 py-1 rounded"
