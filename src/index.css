@@ -13,12 +13,20 @@ p{
     font-family: 'Times New Roman', Times, serif;    letter-spacing: 1px;
 }
 
+.minh{
+  min-height: 300px
+}
 
 
 .min-h-calc {
     min-height: calc(100vh - 180px);
   }
 
+  .border-user{
+    box-sizing: content-box;
+    border-bottom: 2px solid black ;
+
+  }
 
 /* styles.css */
 .custom-bg {

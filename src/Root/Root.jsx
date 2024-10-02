@@ -10,11 +10,11 @@ const Root = () => {
   return (
     <div className="">
       <div className=" ">
-      <Header></Header>
-      <Navbar></Navbar>
+        <Header></Header>
+        <Navbar></Navbar>
       </div>
       <div className="">
-        <div className=" ">
+        <div className="minh ">
           <Outlet></Outlet>
         </div>
         <Footer></Footer>

@@ -1,38 +1,45 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import Swal from "sweetalert2";
+import { toast } from "react-toastify";
 
 const Users = () => {
-  
-  const {data: users = [],  refetch} = useQuery({
+  const { data: users = [], refetch } = useQuery({
     queryKey: ["user"],
-    queryFn: async()=>{
-    const {data} = await axios.get("http://localhost:5000/Admin/user")
-    return data;
+    queryFn: async () => {
+      const { data } = await axios.get("http://localhost:5000/Admin/user");
+      return data;
     },
   });
 
   console.log(users);
   const handleMakeAdmin = (id) => {
-    axios.patch(`/users/admin/${id}`).then((res) => {
+    axios.patch(`http://localhost:5000/users/admin/${id}`).then((res) => {
       console.log(res.data);
       if (res.data.modifiedCount > 0) {
         refetch();
-        Swal.fire({
-          position: "top-end",
-          icon: "success",
-          title: `You Achive Admin Role !`,
-          showConfirmButton: false,
-          timer: 1500,
+        toast.success("succesfully change the user Role", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
         });
       }
     });
   };
   return (
-    <div className="max-w-6xl mx-auto mt-10">
-      <div className="relative overflow-x-auto  ">
+    <div className="max-w-6xl mx-auto ">
+      <div className="w-1/5 pt-10">
+        <h1 className="text-4xl  font-medium mt-10 border-user ">
+          All User Collection 
+        </h1>
+      </div>
+      <div className="relative overflow-x-auto  mt-10">
         <table className="w-full text-sm text-left rtl:text-right ">
-          <thead className="text-xs bg-slate-200  uppercase ">
+          <thead className="text-xs bg-slate-300 bg-transparent uppercase ">
             <tr>
               <th scope="col" className="px-6 py-3">
                 No
@@ -79,7 +86,7 @@ const Users = () => {
                 </th>
 
                 <td className=" py-4 ">{user.email}</td>
-                <td className="px-6 py-4">Admin</td>
+                <td className="px-6 py-4">{user.role? <span className="bg-pink-300 rounded-lg px-1 font-bold">{user.role}</span> : 'Normal User'}</td>
                 <td className="px-6 py-4">
                   <button
                     onClick={() => {
