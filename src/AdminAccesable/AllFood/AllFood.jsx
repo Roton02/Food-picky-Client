@@ -230,7 +230,7 @@ const AllFood = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(`allcategory/admin/delete/${_id}`).then((res) => {
+        axios.delete(`http://localhost:5000/allcategory/admin/delete/${_id}`).then((res) => {
           console.log(res.data);
           if (res.data.deletedCount > 0) {
             Swal.fire({
@@ -375,7 +375,7 @@ const AllFood = () => {
                     </button>
                     <button
                       onClick={() => handleDelete(row._id)}
-                      className="bg-red-500 text-white px-2 py-1 rounded"
+                      className="bg-green-500 text-white px-2 py-1 rounded"
                     >
                       Details
                     </button>
