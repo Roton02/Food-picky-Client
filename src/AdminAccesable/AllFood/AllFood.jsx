@@ -38,56 +38,61 @@ const AllFood = () => {
         </h1>
       </div>
       <div className="relative overflow-x-auto  mt-10">
+        
         <table className="w-full text-sm text-left rtl:text-right ">
           <thead className="text-xs bg-slate-100  uppercase ">
             <tr>
-              <th scope="col" className="px-6 py-3">
+              <th scope="col" className="px-3 py-2">
                 No
               </th>
-              <th scope="col" className="px-6 py-3">
+              <th scope="col" className="px-3 py-2">
                 Profile
               </th>
-              <th scope="col" className="px-6 py-3">
-                User name
+              <th scope="col" className="px-3 py-2">
+              Food name
               </th>
-              <th scope="col" className="px-6 py-3">
-                Gmail
+              <th scope="col" className="px-3 py-2">
+              status
               </th>
-              <th scope="col" className="px-6 py-3">
-                Role
-              </th>
+             
 
-              <th scope="col" className="px-6 py-3">
+              <th scope="col" className="px-3 py-2">
                 Action
+              </th>
+              <th scope="col" className="px-3 py-2">
+                
+              </th>
+              <th scope="col" className="px-3 py-2">
+                
               </th>
             </tr>
           </thead>
           <tbody>
             {users.map((user, i) => (
               <tr key={i} className="b ">
-                <th scope="row" className="px-6 py-4   whitespace-nowrap ">
+                <th scope="row" className="px-3 py-2   whitespace-nowrap ">
                   {i + 1}
                 </th>
                 <th
                   scope="row"
-                  className="px-3 py-4 font-medium  whitespace-nowrap "
+                  className="px-3 py-2 font-medium  whitespace-nowrap "
                 >
                   <img
-                    className="w-16  object-cover rounded-full"
-                    src={user.image}
+                    className="w-14 h-14  object-cover rounded-full"
+                    src={user.food_image}
                     alt=""
                   />
                 </th>
                 <th
                   scope="row"
-                  className="px-6 py-4 font-medium  whitespace-nowrap "
+                  className="px-3 py-2 font-medium  whitespace-nowrap "
                 >
-                  {user.name}
+                  {user.food_name}
                 </th>
 
-                <td className=" py-4 ">{user.email}</td>
-                <td className="px-6 py-4">{user.role? <span className="bg-pink-300 rounded-lg px-1 font-bold">{user.role}</span> : 'Normal User'}</td>
-                <td className="px-6 py-4">
+                <th className=" py-2 px-3 ">{user.status}</th>
+                
+                <th className="px- py-2">
                   <button
                     onClick={() => {
                       handleMakeAdmin(user._id);
@@ -95,9 +100,31 @@ const AllFood = () => {
                     href="#"
                     className="font-medium bg-green-200 px-2 rounded-lg text-blue-600 dark:text-blue-500 hover:underline"
                   >
-                    Make Admin
+                    Update
                   </button>
-                </td>
+                </th>
+                <th className="px- py-2">
+                  <button
+                    onClick={() => {
+                      handleMakeAdmin(user._id);
+                    }}
+                    href="#"
+                    className="font-medium bg-green-200 px-2 rounded-lg text-blue-600 dark:text-blue-500 hover:underline"
+                  >
+                    Delete
+                  </button>
+                </th>
+                <th className="px- py-2">
+                  <button
+                    onClick={() => {
+                      handleMakeAdmin(user._id);
+                    }}
+                    href="#"
+                    className="font-medium bg-green-200 px-2 rounded-lg text-blue-600 dark:text-blue-500 hover:underline"
+                  >
+                    Details
+                  </button>
+                </th>
               </tr>
             ))}
           </tbody>
