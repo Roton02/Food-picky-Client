@@ -12,140 +12,6 @@ import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 
 const AllFood = () => {
-//   const { data: users = [], refetch } = useQuery({
-//     queryKey: ["user"],
-//     queryFn: async () => {
-//       const { data } = await axios.get("http://localhost:5000/Admin/AllFood");
-//       return data;
-//     },
-//   });
-
-//   console.log(users);
-//   const handleMakeAdmin = (id) => {
-//     axios.patch(`http://localhost:5000/users/admin/${id}`).then((res) => {
-//       console.log(res.data);
-//       if (res.data.modifiedCount > 0) {
-//         refetch();
-//         toast.success("succesfully change the user Role", {
-//           position: "top-center",
-//           autoClose: 5000,
-//           hideProgressBar: false,
-//           closeOnClick: true,
-//           pauseOnHover: true,
-//           draggable: true,
-//           progress: undefined,
-//           theme: "dark",
-//         });
-//       }
-//     });
-//   };
-//   return (
-//     <div className="max-w-6xl mx-auto ">
-//       <div className="w-1/5 pt-10">
-//         <h1 className="text-4xl  font-medium mt-10 border-user ">
-//           All User Collection 
-//         </h1>
-//       </div>
-//       <div className="relative overflow-x-auto  mt-10">
-        
-//         <table className="w-full text-sm text-left rtl:text-right ">
-//           <thead className="text-xs bg-slate-100  uppercase ">
-//             <tr>
-//               <th scope="col" className="px-3 py-2">
-//                 No
-//               </th>
-//               <th scope="col" className="px-3 py-2">
-//                 Profile
-//               </th>
-//               <th scope="col" className="px-3 py-2">
-//               Food name
-//               </th>
-//               <th scope="col" className="px-3 py-2">
-//               status
-//               </th>
-             
-
-//               <th scope="col" className="px-3 py-2">
-//                 Action
-//               </th>
-//               <th scope="col" className="px-3 py-2">
-                
-//               </th>
-//               <th scope="col" className="px-3 py-2">
-                
-//               </th>
-//             </tr>
-//           </thead>
-//           <tbody>
-//             {users.map((user, i) => (
-//               <tr key={i} className="b ">
-//                 <th scope="row" className="px-3 py-2   whitespace-nowrap ">
-//                   {i + 1}
-//                 </th>
-//                 <th
-//                   scope="row"
-//                   className="px-3 py-2 font-medium  whitespace-nowrap "
-//                 >
-//                   <img
-//                     className="w-14 h-14  object-cover rounded-full"
-//                     src={user.food_image}
-//                     alt=""
-//                   />
-//                 </th>
-//                 <th
-//                   scope="row"
-//                   className="px-3 py-2 font-medium  whitespace-nowrap "
-//                 >
-//                   {user.food_name}
-//                 </th>
-
-//                 <th className=" py-2 px-3 ">{user.status}</th>
-                
-//                 <th className="px- py-2">
-//                   <button
-//                     onClick={() => {
-//                       handleMakeAdmin(user._id);
-//                     }}
-//                     href="#"
-//                     className="font-medium bg-green-200 px-2 rounded-lg text-blue-600 dark:text-blue-500 hover:underline"
-//                   >
-//                     Update
-//                   </button>
-//                 </th>
-//                 <th className="px- py-2">
-//                   <button
-//                     onClick={() => {
-//                       handleMakeAdmin(user._id);
-//                     }}
-//                     href="#"
-//                     className="font-medium bg-green-200 px-2 rounded-lg text-blue-600 dark:text-blue-500 hover:underline"
-//                   >
-//                     Delete
-//                   </button>
-//                 </th>
-//                 <th className="px- py-2">
-//                   <button
-//                     onClick={() => {
-//                       handleMakeAdmin(user._id);
-//                     }}
-//                     href="#"
-//                     className="font-medium bg-green-200 px-2 rounded-lg text-blue-600 dark:text-blue-500 hover:underline"
-//                   >
-//                     Details
-//                   </button>
-//                 </th>
-//               </tr>
-//             ))}
-//           </tbody>
-//         </table>
-//       </div>
-//     </div>
-//   );
-// };
-
-
-
-
   // Fetching data with React Query
   const { data: pets = [], refetch } = useQuery({
     queryKey: ["pets"],
@@ -208,7 +74,6 @@ const AllFood = () => {
           </div>
         ),
       },
-      
     ],
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []
@@ -230,54 +95,19 @@ const AllFood = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(`http://localhost:5000/allcategory/admin/delete/${_id}`).then((res) => {
-          console.log(res.data);
-          if (res.data.deletedCount > 0) {
-            Swal.fire({
-              title: "Deleted!",
-              text: "Your file has been deleted.",
-              icon: "success",
-            });
-            refetch();
-          }
-        });
-      }
-    });
-  };
-  const handleChangeStatusByNotAdopted = async (id) => {
-    await axios
-      .patch(`/AdminChangeStatusByNotAdopted/${id}`)
-      .then((res) => {
-        // console.log(res.data);
-        if (res.data.modifiedCount > 0) {
-          toast.success("pet  status changed by Not Adopted", {
-            position: "top-center",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "dark",
+        axios
+          .delete(`http://localhost:5000/allcategory/admin/delete/${_id}`)
+          .then((res) => {
+            console.log(res.data);
+            if (res.data.deletedCount > 0) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your file has been deleted.",
+                icon: "success",
+              });
+              refetch();
+            }
           });
-          refetch();
-        }
-      });
-  };
-  const handleChangeStatusByAdopted = async (id) => {
-    await axios.patch(`/AdminChangeStatusByAdopted/${id}`).then((res) => {
-      if (res.data.modifiedCount > 0) {
-        toast.success("pet  status changed by Adopted", {
-          position: "top-center",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "dark",
-        });
-        refetch();
       }
     });
   };
@@ -316,7 +146,6 @@ const AllFood = () => {
 
   return (
     <div className="max-w-7xl mx-auto   mt-7 md:mt-0">
-      
       <h1 className="text-4xl text-center  my-10 mb-4">All Pets</h1>
       <div className="w-[90vw] md:w-full    ">
         <table className="table max-w-5xl mx-auto overflow-scroll ">
@@ -346,8 +175,13 @@ const AllFood = () => {
           </thead>
           <tbody>
             {paginatedData.map((row, i) => (
-              <tr key={row._id} className="border-b text-center border-gray-300">
-                <td className="p-3 px-2 text-sm pl-4">{i + 1 + pageIndex * pageSize}</td>
+              <tr
+                key={row._id}
+                className="border-b text-center border-gray-300"
+              >
+                <td className="p-3 px-2 text-sm pl-4">
+                  {i + 1 + pageIndex * pageSize}
+                </td>
                 <td className="p-3 px-2 text-sm flex justify-center ">
                   <img
                     src={row.food_image}
@@ -357,9 +191,7 @@ const AllFood = () => {
                 </td>
                 <td className="p-3 px-2 text-sm ">{row.food_name}</td>
                 <td className="p-3 px-2 text-sm ">{row.status}</td>
-                <td className="p-3 px-2 text-sm ">
-                 {row.expired_datetime}
-                </td>
+                <td className="p-3 px-2 text-sm ">{row.expired_datetime}</td>
                 <td className=" text-sm ">
                   <div className="space-x-7 flex justify-center">
                     <Link to={`updatepets/${row._id}`}>
@@ -374,14 +206,64 @@ const AllFood = () => {
                       Delete
                     </button>
                     <button
-                      onClick={() => handleDelete(row._id)}
+                      onClick={() =>
+                        document.getElementById("my_modal_3").showModal()
+                      }
                       className="bg-green-500 text-white px-2 py-1 rounded"
                     >
                       Details
                     </button>
+                    {/* You can open the modal using document.getElementById('ID').showModal() method */}
+
+                    <dialog id="my_modal_3" className="modal">
+                      <div className="modal-box">
+                        <form method="dialog">
+                          {/* if there is a button in form, it will close the modal */}
+                          <button className="btn btn-sm btn-circle bg-slate-200 btn-ghost absolute right-2 top-2">
+                            ✕
+                          </button>
+                        </form>
+                        <div className="mt-5">
+                          <img
+                            className="h-60 rounded-lg w-full"
+                            src={row.food_image}
+                            alt=""
+                          />
+                          <div className="text-start">
+                            <h3 className="font-bold  text-2xl ml-2 mt-2 ">
+                              - {row.food_name} -
+                            </h3>
+                          </div>
+                          <p className="font-semibold py-1  text-start ml-2">
+                            quantity : {row.quantity}
+                          </p>
+                          <p className=" font-semibold  pb-1 text-start ml-2">
+                            pickup location : {row.pickup_location}
+                          </p>
+                          <p className=" text-start mt-3 ml-2">
+                            {row.additional_notes}
+                          </p>
+                          <div>
+                            <h3 className="font-bold  text-xl ml-2 mt-2 ">
+                              - Donator Details -
+                            </h3>
+                            <div className="flex mt-2 gap-4">
+                              <img
+                                className=" mt-2 w-20 rounded-lg"
+                                src={row.donator.image}
+                                alt=""
+                              />
+                              <div className="text-start mt-12">
+                                <p>{row.donator.name}</p>
+                                <p>{row.donator.email}</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </dialog>
                   </div>
                 </td>
-               
               </tr>
             ))}
           </tbody>
@@ -410,5 +292,6 @@ const AllFood = () => {
         </div>
       )}
     </div>
-  );}
+  );
+};
 export default AllFood;
