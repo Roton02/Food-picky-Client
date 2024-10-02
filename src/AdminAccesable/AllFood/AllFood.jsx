@@ -2,11 +2,11 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-const Users = () => {
+const AllFood = () => {
   const { data: users = [], refetch } = useQuery({
     queryKey: ["user"],
     queryFn: async () => {
-      const { data } = await axios.get("http://localhost:5000/Admin/user");
+      const { data } = await axios.get("http://localhost:5000/Admin/AllFood");
       return data;
     },
   });
@@ -107,4 +107,5 @@ const Users = () => {
   );
 };
 
-export default Users;
+
+export default AllFood;

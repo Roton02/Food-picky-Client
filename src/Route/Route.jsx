@@ -18,6 +18,7 @@ import Reviews from "../pages/Reviews/Reviews";
 import AboutUs from "../AboutUs/AboutUs";
 import BlogDetails from "../pages/Blogs/BlogDetails";
 import Users from "../AdminAccesable/Users/Users";
+import AllFood from "../AdminAccesable/AllFood/AllFood";
 
 const router = createBrowserRouter([
   {
@@ -108,10 +109,12 @@ const router = createBrowserRouter([
         path: "/Users",
         element: <Users></Users>,
       },
+     
       {
-        path: "/updateProfile",
-        element: <UpdateProfile></UpdateProfile>,
+        path: "/Admin/allFood",
+        element: <AllFood></AllFood>,
       },
+     
     ],
   },
 ]);
