@@ -7,29 +7,33 @@ import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 
 const MyFoodRequest = () => {
-  const {user} = useAuth()
+  const { user } = useAuth();
   // const [foods, setFoods] = useState([]);
-  const axiosSecure = useAxiosSecure()
+  const axiosSecure = useAxiosSecure();
   // useEffect(() => {
   //   axios.get(`http://localhost:5000/requested/${user.email}, {withCredentials:true}`).then((res) => {
   //     setFoods(res.data);
   //   });
   // }, [user]);
-  const { data: foods = [], isLoading, refetch } = useQuery({
+  const {
+    data: foods = [],
+    isLoading,
+    refetch,
+  } = useQuery({
     queryFn: () => getData(),
-    queryKey: ['manageFoods', user?.email]   // 2nd index a jodi dependency dita pari. mane user?.email asle abar refetch hobe. ex:  queryKey: ['rooms', user?.email] 
-})
-console.log(foods)
-const getData = async () => {
-    const { data } = await axiosSecure(`/requested/${user.email}`)
+    queryKey: ["manageFoods", user?.email], // 2nd index a jodi dependency dita pari. mane user?.email asle abar refetch hobe. ex:  queryKey: ['rooms', user?.email]
+  });
+  console.log(foods);
+  const getData = async () => {
+    const { data } = await axiosSecure(`/requested/${user.email}`);
     return data;
-}
-console.log(foods);
+  };
+  console.log(foods);
 
   console.log(foods);
   return (
     <div>
-       <Helmet>
+      <Helmet>
         <title>Food Picky || My Food</title>
         {/* <link rel="canonical" href="https://www.tacobell.com/" /> */}
       </Helmet>
