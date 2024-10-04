@@ -1,11 +1,10 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Helmet } from "react-helmet-async";
 import useAuth from "../../Hooks/useAuth";
-import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 
 const ManageMyFoods = () => {
@@ -129,69 +128,27 @@ if (isLoading) {
         {/* <link rel="canonical" href="https://www.tacobell.com/" /> */}
       </Helmet>
       <div>
-        <header className="bg-white dark:bg-gray-900">
-          <div className="container px-6  mx-auto">
-            <div className="items-center lg:flex">
-              <div className="w-full lg:w-1/2">
-                <div className="lg:max-w-lg">
-                  <h1 className="text-3xl font-semibold font-anton text-gray-800 dark:text-white lg:text-4xl">
-                    Here are all the foods{" "}
-                    <span className="text-[#1e847f]">you have been adding</span>
-                  </h1>
-
-                  <p className="mt-3 font-anton text-gray-600 dark:text-gray-400">
-                    {" "}
-                    and{" "}
-                    <span className="font-medium text-[#1e847f]">
-                      also have the option to update and delete
-                    </span>{" "}
-                  </p>
-
-                  <div className="flex flex-col mt-6 space-y-3 lg:space-y-0 lg:flex-row">
-                    <input
-                      id="email"
-                      type="text"
-                      className="px-4 py-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-opacity-40 focus:ring-blue-300"
-                      placeholder="Email Address"
-                    />
-
-                    <button className="w-full px-5 py-2 text-sm tracking-wider text-white uppercase transition-colors duration-300 transform bg-[#1e847f] rounded-lg lg:w-auto lg:mx-4  ">
-                      Subscribe
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex items-center justify-center w-full mt-6 lg:mt-0 lg:w-1/2">
-                <img
-                  className="w-full h-full max-w-md"
-                  src="https://merakiui.com/images/components/Email-campaign-bro.svg"
-                  alt="email illustration vector art"
-                />
-              </div>
-            </div>
-          </div>
-        </header>
-      </div>
-      <div>
-        <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+        <div className="max-w-6xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+        <h1 className="text-4xl text-center font-medium mt-">
+          My added food 
+        </h1>
           <div className="flex flex-col">
             <div className="-m-1.5 overflow-x-auto">
               <div className="p-1.5 min-w-full inline-block align-middle">
-                <div className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden dark:bg-neutral-800 dark:border-neutral-700">
-                  <div className="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-b border-gray-200 dark:border-neutral-700">
+                <div className=" overflow-hidden ">
+                  <div className="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center ">
                     <div>
-                      <h2 className="text-xl font-semibold text-gray-800 dark:text-neutral-200">
+                      <h2 className="text-xl font-semibold ">
                         Foods Collection
                       </h2>
-                      <p className="text-sm text-gray-600 dark:text-neutral-400">
+                      <p className="text-sm ">
                         Add Foods, edit and more.
                       </p>
                     </div>
 
                     <div>
                       <div className="inline-flex gap-x-2">
-                        <Link to="/availFood">
+                        <Link to="/Admin/allFood">
                           <button
                             className="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800"
                             href="#"
@@ -224,14 +181,14 @@ if (isLoading) {
                     </div>
                   </div>
                   <table className="min-w-full divide-y divide-gray-200 dark:divide-neutral-700">
-                    <thead className="bg-gray-50 dark:bg-neutral-800">
+                    <thead className="bg-gray-100">
                       <tr>
                         <th
                           scope="col"
                           className="ps-6 lg:ps-3 xl:ps-0 pe-6 py-3 text-start"
                         >
                           <div className="flex items-center gap-x-2">
-                            <span className="text-xs ml-6 font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
+                            <span className="text-xs ml-6 font-semibold uppercase tracking-wide ">
                               Food Name
                             </span>
                           </div>
@@ -239,7 +196,7 @@ if (isLoading) {
 
                         <th scope="col" className="px-3 py-3 text-start">
                           <div className="flex items-center gap-x-2">
-                            <span className="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
+                            <span className="text-xs font-semibold uppercase tracking-wide ">
                               Quantity
                             </span>
                           </div>
@@ -247,7 +204,7 @@ if (isLoading) {
 
                         <th scope="col" className="px-3 py-3 text-start">
                           <div className="flex items-center gap-x-2">
-                            <span className="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
+                            <span className="text-xs font-semibold uppercase tracking-wide ">
                               Status
                             </span>
                           </div>
@@ -255,24 +212,23 @@ if (isLoading) {
 
                         <th scope="col" className="px-3 py-3 text-start">
                           <div className="flex items-center gap-x-2">
-                            <span className="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
+                            <span className="text-xs font-semibold uppercase tracking-wide ">
                               Pickup Location
                             </span>
                           </div>
                         </th>
 
-                        <th scope="col" className="px-3 py-3 text-start"></th>
-                        <th scope="col" className="px-3 py-3 text-end"></th>
+                        <th scope="col" className="px-3  py-3 text-center"> Action</th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-gray-200 dark:divide-neutral-700">
+                    <tbody className="divide-y divide-gray-300">
                       {manageF.map((manage) => (
                         <tr key={manage._id}>
                           <td className="size-px whitespace-nowrap">
                             <div className="ps-6 lg:ps-3 xl:ps-0 ml-10 pe-6 py-3">
                               <div className="flex items-center  gap-x-3">
                                 <div>
-                                  <span className="block text-sm font-semibold text-gray-800 dark:text-neutral-200">
+                                  <span className="block text-sm font-semibold ">
                                     {manage.food_name}
                                   </span>
                                 </div>
@@ -281,7 +237,7 @@ if (isLoading) {
                           </td>
                           <td className="h-px w-72 whitespace-nowrap">
                             <div className="pl-6 py-3">
-                              <span className="block text-sm font-semibold text-gray-800 dark:text-neutral-200">
+                              <span className="block text-sm font-semibold ">
                                 {manage.quantity}
                               </span>
                             </div>
@@ -459,19 +415,7 @@ if (isLoading) {
                       ))}
                     </tbody>
                   </table>
-                  <div className="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-t border-gray-200 dark:border-neutral-700">
-                    <div>
-                      <p className="text-sm text-gray-600 dark:text-neutral-400">
-                        <span
-                          className="font-semibold text-gray-800
-                 dark:text-neutral-200"
-                        >
-                          Total results
-                        </span>{" "}
-                        {manageF.length}
-                      </p>
-                    </div>
-                  </div>
+                  
                 </div>
               </div>
             </div>

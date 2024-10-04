@@ -412,6 +412,14 @@ const Navbar = () => {
                     className={
                       "p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150"
                     }
+                    to="/addFood"
+                  >
+                    Add New
+                  </NavLink>
+                  <NavLink
+                    className={
+                      "p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150"
+                    }
                     to="/Admin/allFood"
                   >
                     Manage All Food
@@ -420,7 +428,7 @@ const Navbar = () => {
                     className={
                       "p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150"
                     }
-                    to="/availFood"
+                    to="/ManageMyFoods"
                   >
                     My Added Food
                   </NavLink>
@@ -428,7 +436,7 @@ const Navbar = () => {
                     className={
                       "p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150"
                     }
-                    to="/availFood"
+                    to="/AllFoodRequest"
                   >
                     All Requested Food
                   </NavLink>

@@ -19,6 +19,7 @@ import AboutUs from "../AboutUs/AboutUs";
 import BlogDetails from "../pages/Blogs/BlogDetails";
 import Users from "../AdminAccesable/Users/Users";
 import AllFood from "../AdminAccesable/AllFood/AllFood";
+import AllRequested from "../AdminAccesable/AllRequestedFood/AllRequested";
 
 const router = createBrowserRouter([
   {
@@ -64,6 +65,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <MyFoodRequest></MyFoodRequest>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/AllFoodRequest",
+        element: (
+          <PrivateRoute>
+            <AllRequested></AllRequested>
           </PrivateRoute>
         ),
       },

@@ -9,7 +9,6 @@ import {
   flexRender,
 } from "@tanstack/react-table";
 import Swal from "sweetalert2";
-import { Link } from "react-router-dom";
 
 const AllFood = () => {
   const [upId, setupId] = useState(null);
@@ -319,7 +318,7 @@ const AllFood = () => {
                                 name="location"
                                 required
                                 defaultValue={row.pickup_location}
-                                type="text"
+                                type="text "
                                 placeholder="Type here your pickup location"
                                 className="input input-bordered mb-2 input-md w-full "
                               />
@@ -334,7 +333,7 @@ const AllFood = () => {
                                 defaultValue={row.additional_notes}
                                 type="text"
                                 placeholder="Type here Additional Notes"
-                                className="textarea textarea-primary w-full "
+                                className="textarea textarea-bordered w-full "
                               />
                             </div>
                           </div>
@@ -407,12 +406,12 @@ const AllFood = () => {
                             {row.additional_notes}
                           </p>
                           <div>
-                            <h3 className="font-bold  text-xl ml-2 mt-2 ">
+                            <h5 className="font-bold  text-xl ml-2 mt-6 ">
                               - Donator Details -
-                            </h3>
-                            <div className="flex mt-2 gap-4">
+                            </h5>
+                            <div className="flex mt- gap-4">
                               <img
-                                className=" mt-2 w-20 rounded-lg"
+                                className=" mt- w-20 rounded-lg"
                                 src={row.donator.image}
                                 alt=""
                               />
