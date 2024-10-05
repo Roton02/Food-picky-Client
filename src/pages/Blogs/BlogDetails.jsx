@@ -28,7 +28,7 @@ const BlogDetails = () => {
     <div>
       <div className="min-h-screen  py-10 mt-">
         {/* Main container */}
-        <div className="max-w-7xl mx-auto  shadow-md overflow-hidden transition-transform duration-500 ">
+        <div className="max-w-6xl mx-auto  shadow-md overflow-hidden transition-transform duration-500 ">
           {/* Hero Section */}
           <div className="relative">
             <img

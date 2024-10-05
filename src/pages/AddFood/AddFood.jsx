@@ -5,9 +5,10 @@ import { Helmet } from "react-helmet-async";
 import useAuth from "../../Hooks/useAuth";
 
 const AddFood = () => {
-  const {user} = useAuth()
-  const handleAdd = e => {
-    e.preventDefault()
+  const { user } = useAuth();
+  
+  const handleAdd = (e) => {
+    e.preventDefault();
     const form = e.target;
     const food_name = form.name.value;
     const food_image = form.image.value;
@@ -17,185 +18,167 @@ const AddFood = () => {
     const additional_notes = form.notes.value;
     const image = user.photoURL;
     const name = user.displayName;
-    const email = user.email
-    const status = 'available'
+    const email = user.email;
+    const status = 'available';
+
     const foodDetails = {
-      food_name, food_image,pickup_location, expired_datetime, quantity,additional_notes,
-      donator:{image, name,email},status
-    }
-    // console.log(foodDetails);
+      food_name,
+      food_image,
+      pickup_location,
+      expired_datetime,
+      quantity,
+      additional_notes,
+      donator: { image, name, email },
+      status,
+    };
+
     axios.post('http://localhost:5000/addFood', foodDetails)
-    .then(res => {
-      console.log(res.data);
-      if (res.data.acknowledged) {
-        Swal.fire({
-          title: "Added !",
-          text: "Your file has been added Successfull.",
-          icon: "success"
-        });
-      }
-    })
-    
-  }
+      .then(res => {
+        if (res.data.acknowledged) {
+          Swal.fire({
+            title: "Added!",
+            text: "Your food has been added successfully.",
+            icon: "success",
+          });
+        }
+      });
+  };
+
   return (
-    <div> 
-       <Helmet>
+    <div>
+      <Helmet>
         <title>Food Picky || Add Food</title>
-        {/* <link rel="canonical" href="https://www.tacobell.com/" /> */}
       </Helmet>
-      <div className="relative bg-gradient-to-bl from-blue-100 via-transparent dark:from-blue-950 dark:via-transparent">
-        <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+
+      <div className="relative bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 py-12 min-h-screen flex items-center justify-center">
+        <div className="max-w-screen-lg px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto rounded-lg shadow-lg bg-white relative z-10">
           <div className="grid items-center md:grid-cols-2 gap-8 lg:gap-12">
-            <div>
-              <p className="inline-block text-sm font-medium font-anton ">
-                Food Picky 
+            {/* Left Section */}
+            <div className="md:pr-8">
+              <h1 className="text-4xl font-bold text-gradient bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 text-transparent bg-clip-text">
+                Add Your Unique Food Here!
+              </h1>
+              <p className="mt-4 text-lg text-gray-600">
+                Share your extra food with others by adding details here. Manage it in your dashboard and help make a difference!
               </p>
+              
+            </div>
 
-              <div className="mt-4 md:mb-12 max-w-2xl">
-                <h1 className="mb-4 text-3xl font-semibold font-anton ">
-                You can add as you like unique needs .!
-                </h1>
-                <p className="">
-                As a user you can add your own foods which you can view in your Manage My Foods section.
-                </p>
-              </div>
-              <blockquote className="hidden md:block relative max-w-sm">
-               
+            {/* Form Section */}
+            <div>
+              <form onSubmit={handleAdd} className="bg-gradient-to-r from-green-50 via-yellow-50 to-orange-50 p-6 rounded-lg shadow-xl">
+                <h2 className="text-center text-2xl font-semibold text-indigo-600">Add New Food</h2>
 
-                <div className="relative z-10">
-                  <p className="text-xl italic">
-                  We are very happy and proud to have you as a user .
-                  </p>
+                <div className="mt-6 grid grid-cols-2 gap-4">
+                  {/* Food Name */}
+                  <div className="col-span-2">
+                    <label className="block text-sm font-medium text-gray-700" htmlFor="FoodName">
+                      Food Name
+                    </label>
+                    <input
+                      name="name"
+                      type="text"
+                      required
+                      placeholder="Enter Food Name"
+                      className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    />
+                  </div>
+
+                  {/* Food Image */}
+                  <div className="col-span-2">
+                    <label className="block text-sm font-medium text-gray-700" htmlFor="image">
+                      Food Image URL
+                    </label>
+                    <input
+                      name="image"
+                      type="text"
+                      required
+                      placeholder="Enter Image URL"
+                      className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    />
+                  </div>
+
+                  {/* Quantity */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700" htmlFor="quantity">
+                      Quantity
+                    </label>
+                    <input
+                      name="quantity"
+                      type="number"
+                      required
+                      placeholder="Enter Quantity"
+                      className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    />
+                  </div>
+
+                  {/* Expiration Date */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700" htmlFor="expired">
+                      Expiration Date
+                    </label>
+                    <input
+                      name="expired"
+                      type="date"
+                      required
+                      className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    />
+                  </div>
+
+                  {/* Location */}
+                  <div className="col-span-2">
+                    <label className="block text-sm font-medium text-gray-700" htmlFor="Location">
+                      Pickup Location
+                    </label>
+                    <input
+                      name="location"
+                      type="text"
+                      required
+                      placeholder="Enter Pickup Location"
+                      className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    />
+                  </div>
+
+                  {/* Additional Notes */}
+                  <div className="col-span-2">
+                    <label className="block text-sm font-medium text-gray-700" htmlFor="notes">
+                      Additional Notes
+                    </label>
+                    <textarea
+                      name="notes"
+                      required
+                      rows={4}
+                      placeholder="Enter any additional information"
+                      className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    />
+                  </div>
                 </div>
 
-                <footer className="mt-3">
-                  <div className="flex items-center">
-                    <div className="flex-shrink-0">
-                      <img
-                        className="size-8 rounded-full"
-                        src={user.photoURL}
-                        alt="Image Description"
-                      />
-                    </div>
-                    <div className="grow ms-4">
-                      <div className="font-semibold ">
-                       {user.displayName}
-                      </div>
-                      <div className="text-xs ">
-                        Viewer & User of FoodPicky 
-                      </div>
-                    </div>
-                  </div>
-                </footer>
-              </blockquote>
-            </div>
-            {/*---------------------------- Form info --------------------- */}
-            <div>
-              <form onSubmit={handleAdd}>
-                <div className="lg:max-w-lg lg:mx-auto lg:me-0 ms-auto">
-                  <div className="p-4 sm:p-7 flex flex-col bg-white rounded-2xl shadow-lg dark:bg-neutral-900">
-                    <div className="text-center">
-                      <h1
-                        className="block text-2xl font-bold text-gray-800
-                 dark:text-white"
-                      >
-                        Add A new Food{" "}
-                      </h1>
-                    </div>
-
-                    <div className="mt-5">
-                      <div className="py-3 flex items-center text-xs text-gray-400 uppercase before:flex-1 before:border-t before:border-gray-200 before:me-6 after:flex-1 after:border-t after:border-gray-200 after:ms-6 dark:text-neutral-500 dark:before:border-neutral-700 dark:after:border-neutral-700">
-                        <BiVerticalBottom />
-                      </div>
-                      <div className="grid grid-cols-2 gap-4">
-                        <div>
-                          <div className="relative">
-                            <label htmlFor="FoodName">Food Name</label>
-                            <input
-                              name="name"
-                              type="text"
-                              required
-                              placeholder="Write Food Name"
-                              className="input input-bordered w-full max-w-xs"
-                            />
-                          </div>
-                        </div>
-
-                        <div>
-                          <div className="relative">
-                            <label htmlFor="image">Food Image</label>
-                            <input
-                              name="image"
-                              type="text"
-                              required
-                              placeholder="Write Image URL"
-                              className="input input-bordered w-full max-w-xs"
-                            />
-                          </div>
-                        </div>
-                        <div>
-                          <div className="relative">
-                            <label htmlFor="quantity">Food quantity</label>
-                            <input
-                              name="quantity"
-                              required
-                              type="number"
-                              placeholder="Write Valid Quantity"
-                              className="input input-bordered w-full max-w-xs"
-                            />
-                          </div>
-                        </div>
-                        <div>
-                          <div className="relative">
-                            <label htmlFor="expired">Expired in</label>
-                            <input
-                              name="expired"
-                              required
-                              type="date"
-                              placeholder="Write pick-up Location"
-                              className="input input-bordered w-full max-w-xs"
-                            />
-                          </div>
-                        </div>
-                        <div className="relative col-span-full">
-                          <div className="relative">
-                            <label htmlFor="Location">Location</label>
-                            <input
-                              name="location"
-                              required
-                              type="text"
-                              placeholder="Type here your pickup location"
-                              className="input input-bordered input-md w-full max-w-full"
-                            />
-                          </div>
-                        </div>
-                        <div className="relative col-span-full">
-                          <div className="relative">
-                            <label htmlFor="notes">Additional Notes</label>
-                            <input
-                              name="notes"
-                              required
-                              type="text"
-                              placeholder="Type here Additional Notes"
-                              className="input input-bordered input-md w-full max-w-full"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      <div className="mt-5 flex justify-center ">
-                        <button type="submit" className="rounded-md w-1/3  btn  overflow-hidden relative group cursor-pointer border-2  font-medium border-[#1e847f] text-[#1e847f]hover:text-white">
-                          <span className="absolute w-64 h-0 transition-all duration-300 origin-center rotate-45 -translate-x-20 bg-[#1e847f] top-1/2 group-hover:h-64 group-hover:-translate-y-32 ease"></span>
-                          <span className="relative my-auto  text-[#1e847f] transition duration-300 group-hover:text-white ease">
-                            Add
-                          </span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
+                <div className="mt-6 text-center">
+                  <button
+                    type="submit"
+                    className="px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-full shadow-lg transition duration-300 transform hover:scale-105"
+                  >
+                    Add Food
+                  </button>
                 </div>
               </form>
             </div>
           </div>
+        </div>
+
+        {/* Background Animation */}
+        <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
+          <div className="bg-gradient-to-t from-purple-300 via-transparent to-transparent w-64 h-64 absolute rounded-full opacity-50 -top-20 -left-50 animate-pulse"></div>
+          <div className="bg-gradient-to-t from-pink-300 via-transparent to-transparent w-64 h-64 absolute rounded-full opacity-50 top-64 right-10 animate-pulse"></div>
+        </div>
+        <div className="absolute bottom-0 left-0 w-full h-full overflow-hidden">
+          <div className="bg-gradient-to-t from-purple-300 via-transparent to-transparent w-64 h-64 absolute rounded-full opacity-50 -top-20 -left-50 animate-pulse"></div>
+          <div className="bg-gradient-to-t from-pink-300 via-transparent to-transparent w-64 h-64 absolute rounded-full opacity-50 top-64 right-10 animate-pulse"></div>
+        </div>
+        <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
+          <div className="bg-gradient-to-t from-purple-300 via-transparent to-transparent w-64 h-64 absolute rounded-full opacity-50 -top-20 -left-50 animate-pulse"></div>
+          <div className="bg-gradient-to-t from-pink-300 via-transparent to-transparent w-64 h-64 absolute rounded-full opacity-50 bottom-0 left-10 animate-pulse"></div>
         </div>
       </div>
     </div>

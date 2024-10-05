@@ -7,7 +7,7 @@ import { FaCartArrowDown } from "react-icons/fa";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [userRole, setUserRole] = useState(false);
+  const [userRole, setUserRole] = useState(true);
   const toggleDrawer = () => {
     setIsOpen(!isOpen);
   };
@@ -365,6 +365,12 @@ const Navbar = () => {
                     Our Menu
                   </NavLink>
                   <NavLink
+                    to="/MyFoodRequest"
+                    className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 "
+                  >
+                    My Order
+                  </NavLink>
+                  <NavLink
                     to="/blogs"
                     className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150"
                   >
@@ -438,7 +444,7 @@ const Navbar = () => {
                     }
                     to="/AllFoodRequest"
                   >
-                    All Requested Food
+                    All Order 
                   </NavLink>
                 </>
               )}
