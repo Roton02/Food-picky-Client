@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const AllRequested = () => {
   const { user } = useAuth();
@@ -13,11 +14,7 @@ const AllRequested = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 7;
 
-  const {
-    data: foods = [],
-    isLoading,
-    refetch,
-  } = useQuery({
+  const { data: foods = [], refetch } = useQuery({
     queryFn: () => getData(),
     queryKey: ["manageFoods", user?.email],
   });
@@ -34,11 +31,45 @@ const AllRequested = () => {
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
-  const handleAccept = (id)=>{
-    axios.patch('http://localhost:5000/admin/updateAccepted',{id}).then(res => console.log(res.data))
-  }
-  const handleStockover = (id)=>{
-    axios.patch('http://localhost:5000/admin/updateStockover',{id}).then(res => console.log(res.data))  }
+  const handleAccept = (id) => {
+    axios
+      .patch("http://localhost:5000/admin/updateAccepted", { id })
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.modifiedCount > 0) {
+          refetch();
+          toast.success("Accept the Order", {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+          });
+        }
+      });
+  };
+  const handleStockover = (id) => {
+    axios
+      .patch("http://localhost:5000/admin/updateStockover", { id })
+      .then((res) => {
+        if (res.data.modifiedCount > 0) {
+          refetch();
+          toast.success("Cancel Order ", {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+          });
+        }
+      });
+  };
 
   return (
     <div>
@@ -108,9 +139,7 @@ const AllRequested = () => {
               <th className="px-3 py-2 text-start text-sm font-semibold">
                 Quantity
               </th>
-              <th className="px-3 py-2 text-start text-sm font-semibold">
-                Status
-              </th>
+
               <th className="px-3 py-2 text-start text-sm font-semibold">
                 Pickup Location
               </th>
@@ -136,18 +165,20 @@ const AllRequested = () => {
                 </td>
                 <td className="px-3 py-2">{manage.food_name}</td>
                 <td className="px-3 py-2">{manage.quantity}</td>
-                <td className="px-3 py-2">
-                  {manage.status === "available" ? (
-                    <span className="text-green-600">Available</span>
-                  ) : (
-                    <span className="text-red-600">Requested</span>
-                  )}
-                </td>
+
                 <td className="px-3 py-2">{manage.pickup_location}</td>
                 <td className="px-3 py-2">{manage.expired_datetime}</td>
                 <td className="px-3 py-2">
-                  <button onClick={()=>handleAccept(manage._id)} className="btn btn-sm bg-green-400">Accept</button>
-                  <button onClick={()=>handleStockover(manage._id)} className="btn btn-sm text-nowrap bg-red-400 ml-2">
+                  <button
+                    onClick={() => handleAccept(manage._id)}
+                    className="btn btn-sm bg-green-400"
+                  >
+                    Confirmed
+                  </button>
+                  <button
+                    onClick={() => handleStockover(manage._id)}
+                    className="btn btn-sm text-nowrap bg-red-400 ml-2"
+                  >
                     Stock over
                   </button>
                 </td>
