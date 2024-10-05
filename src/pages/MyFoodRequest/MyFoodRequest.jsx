@@ -8,13 +8,7 @@ import { useQuery } from "@tanstack/react-query";
 
 const MyFoodRequest = () => {
   const { user } = useAuth();
-  // const [foods, setFoods] = useState([]);
   const axiosSecure = useAxiosSecure();
-  // useEffect(() => {
-  //   axios.get(`http://localhost:5000/requested/${user.email}, {withCredentials:true}`).then((res) => {
-  //     setFoods(res.data);
-  //   });
-  // }, [user]);
   const {
     data: foods = [],
     isLoading,
@@ -37,61 +31,28 @@ const MyFoodRequest = () => {
         <title>Food Picky || My Food</title>
         {/* <link rel="canonical" href="https://www.tacobell.com/" /> */}
       </Helmet>
-      <div className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden dark:bg-neutral-800 dark:border-neutral-700">
+      <div className="max-w-screen-lg mx-auto  overflow-hidden ">
+        <h1 className="text-4xl text-center  mt-10 ">My Order History </h1>
         <div className="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-b border-gray-200 dark:border-neutral-700">
           <div>
-            <h2 className="text-xl font-semibold text-gray-800 dark:text-neutral-200">
-              Requested Foods Collection
+            <h2 className="text-xl font-semibold ">
+              Order Foods Collection
             </h2>
-            <p className="text-sm text-gray-600 dark:text-neutral-400">
-              Add Foods, edit and more.
+            <p className="text-sm ">
+              Manage Your order
             </p>
-          </div>
-
-          <div>
-            <div className="inline-flex gap-x-2">
-              <Link to="/availFood">
-                <button
-                  className="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800"
-                  href="#"
-                >
-                  View all
-                </button>
-              </Link>
-
-              <Link to="/addFood">
-                <button
-                  className="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-[#1e847f] text-white  disabled:opacity-50 disabled:pointer-events-none"
-                  href="#"
-                >
-                  <svg
-                    className="flex-shrink-0 size-4"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                  >
-                    <path d="M5 12h14" />
-                    <path d="M12 5v14" />
-                  </svg>
-                  Add new food
-                </button>
-              </Link>
-            </div>
           </div>
         </div>
         <table className="min-w-full divide-y divide-gray-200 dark:divide-neutral-700">
-          <thead className="bg-gray-50 dark:bg-neutral-800">
+          <thead className=" text-white bg-neutral-800">
             <tr>
               <th
                 scope="col"
                 className="ps-6 lg:ps-3 xl:ps-0 pe-6 py-3 text-start"
               >
                 <div className="flex items-center gap-x-2">
-                  <span className="text-xs ml-6 font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
-                    Donator
+                  <span className="text-xs text-nowrap ml-6 font-semibold uppercase tracking-wide ">
+                    Food Image
                   </span>
                 </div>
               </th>
@@ -100,7 +61,7 @@ const MyFoodRequest = () => {
                 className="ps-6 lg:ps-3 xl:ps-0 pe-6 py-3 text-start"
               >
                 <div className="flex items-center gap-x-2">
-                  <span className="text-xs ml-6 font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
+                  <span className="text-xs text-nowrap ml-6 font-semibold uppercase tracking-wide ">
                     Food Name
                   </span>
                 </div>
@@ -108,7 +69,7 @@ const MyFoodRequest = () => {
 
               <th scope="col" className="px-3 py-3 text-start">
                 <div className="flex items-center gap-x-2">
-                  <span className="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
+                  <span className="text-xs font-semibold uppercase tracking-wide ">
                     Quantity
                   </span>
                 </div>
@@ -116,7 +77,7 @@ const MyFoodRequest = () => {
 
               <th scope="col" className="px-3 py-3 text-start">
                 <div className="flex items-center gap-x-2">
-                  <span className="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
+                  <span className="text-xs font-semibold uppercase tracking-wide ">
                     Status
                   </span>
                 </div>
@@ -124,14 +85,14 @@ const MyFoodRequest = () => {
 
               <th scope="col" className="px-3 py-3 text-start">
                 <div className="flex items-center gap-x-2">
-                  <span className="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
+                  <span className="text-xs font-semibold uppercase tracking-wide ">
                     Pickup Location
                   </span>
                 </div>
               </th>
               <th scope="col" className="px-3 py-3 text-start">
                 <div className="flex items-center gap-x-2">
-                  <span className="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
+                  <span className="text-xs font-semibold uppercase tracking-wide ">
                     expired_datetime
                   </span>
                 </div>
@@ -145,19 +106,17 @@ const MyFoodRequest = () => {
                   <div className="">
                     <div className="avatar">
                       <div className="w-12 rounded-xl">
-                        <img src={manage.donator?.image} />
+                        <img src={manage.food_image} />
                       </div>
                     </div>
-                    <h2 className="text-sm font-medium font-anton">
-                      {manage.donator?.name}{" "}
-                    </h2>
+                  
                   </div>
                 </td>
                 <td className="size-px whitespace-nowrap">
                   <div className="ps-6 lg:ps-3 xl:ps-0 px-6 pe-6 py-3">
                     <div className="flex items-center  gap-x-3">
                       <div>
-                        <span className="block text-sm font-semibold text-gray-800 dark:text-neutral-200">
+                        <span className="block text-sm font-semibold ">
                           {manage.food_name}
                         </span>
                       </div>
@@ -166,7 +125,7 @@ const MyFoodRequest = () => {
                 </td>
                 <td className="h-px w-72 whitespace-nowrap">
                   <div className="pl-6 py-3">
-                    <span className="block text-sm font-semibold text-gray-800 dark:text-neutral-200">
+                    <span className="block text-sm font-semibold ">
                       {manage.quantity}
                     </span>
                   </div>
@@ -216,10 +175,9 @@ const MyFoodRequest = () => {
         </table>
         <div className="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-t border-gray-200 dark:border-neutral-700">
           <div>
-            <p className="text-sm text-gray-600 dark:text-neutral-400">
+            <p className="text-sm ">
               <span
-                className="font-semibold text-gray-800
-                 dark:text-neutral-200"
+                className="font-semibold "
               >
                 Total results
               </span>{" "}
