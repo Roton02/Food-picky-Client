@@ -33,7 +33,7 @@ const JobCard = ({key, postedBy, jobTitle, postedDate, type, salery, deadLine, i
           <h1 className="text-xl md:text-2xl font-semibold">{jobTitle}</h1>
           <div className="flex items-center gap-1 text-sm md:text-base">
             <BsCalendar2Date />
-            <p>Posted Date: {postedDate}</p>
+            <p>Expired Date: {postedDate}</p>
           </div>
         </div>
       </div>
@@ -60,7 +60,7 @@ const JobCard = ({key, postedBy, jobTitle, postedDate, type, salery, deadLine, i
         <div className="flex justify-between mt-3 flex-col md:flex-row">
           <div className="flex items-center gap-1 text-sm  md:text-lg">
             <LuCircleDollarSign />
-            <h1>{salery} /year</h1>
+            <h1>{salery} /-</h1>
           </div>
           <div className="flex items-center gap-1 text-sm md:text-lg">
             <IoTimerSharp />

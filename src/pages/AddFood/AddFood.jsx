@@ -6,42 +6,40 @@ import useAuth from "../../Hooks/useAuth";
 
 const AddFood = () => {
   const { user } = useAuth();
-  
+
   const handleAdd = (e) => {
     e.preventDefault();
     const form = e.target;
     const food_name = form.name.value;
     const food_image = form.image.value;
-    const pickup_location = form.location.value;
     const expired_datetime = form.expired.value;
     const quantity = form.quantity.value;
     const additional_notes = form.notes.value;
     const image = user.photoURL;
     const name = user.displayName;
     const email = user.email;
-    const status = 'available';
+    const status = "available";
 
     const foodDetails = {
       food_name,
       food_image,
-      pickup_location,
       expired_datetime,
       quantity,
       additional_notes,
       donator: { image, name, email },
       status,
     };
+    console.log(foodDetails);
 
-    axios.post('http://localhost:5000/addFood', foodDetails)
-      .then(res => {
-        if (res.data.acknowledged) {
-          Swal.fire({
-            title: "Added!",
-            text: "Your food has been added successfully.",
-            icon: "success",
-          });
-        }
-      });
+    axios.post("http://localhost:5000/addFood", foodDetails).then((res) => {
+      if (res.data.acknowledged) {
+        Swal.fire({
+          title: "Added!",
+          text: "Your food has been added successfully.",
+          icon: "success",
+        });
+      }
+    });
   };
 
   return (
@@ -59,20 +57,28 @@ const AddFood = () => {
                 Add Your Unique Food Here!
               </h1>
               <p className="mt-4 text-lg text-gray-600">
-                Share your extra food with others by adding details here. Manage it in your dashboard and help make a difference!
+                Share your extra food with others by adding details here. Manage
+                it in your dashboard and help make a difference!
               </p>
-              
             </div>
 
             {/* Form Section */}
             <div>
-              <form onSubmit={handleAdd} className="bg-gradient-to-r from-green-50 via-yellow-50 to-orange-50 p-6 rounded-lg shadow-xl">
-                <h2 className="text-center text-2xl font-semibold text-indigo-600">Add New Food</h2>
+              <form
+                onSubmit={handleAdd}
+                className="bg-gradient-to-r from-green-50 via-yellow-50 to-orange-50 p-6 rounded-lg shadow-xl"
+              >
+                <h2 className="text-center text-2xl font-semibold text-indigo-600">
+                  Add New Food
+                </h2>
 
                 <div className="mt-6 grid grid-cols-2 gap-4">
                   {/* Food Name */}
                   <div className="col-span-2">
-                    <label className="block text-sm font-medium text-gray-700" htmlFor="FoodName">
+                    <label
+                      className="block text-sm font-medium text-gray-700"
+                      htmlFor="FoodName"
+                    >
                       Food Name
                     </label>
                     <input
@@ -86,7 +92,10 @@ const AddFood = () => {
 
                   {/* Food Image */}
                   <div className="col-span-2">
-                    <label className="block text-sm font-medium text-gray-700" htmlFor="image">
+                    <label
+                      className="block text-sm font-medium text-gray-700"
+                      htmlFor="image"
+                    >
                       Food Image URL
                     </label>
                     <input
@@ -100,21 +109,43 @@ const AddFood = () => {
 
                   {/* Quantity */}
                   <div>
-                    <label className="block text-sm font-medium text-gray-700" htmlFor="quantity">
-                      Quantity
+                    <label
+                      className="block text-sm font-medium text-gray-700"
+                      htmlFor="branch"
+                    >
+                      Branch
                     </label>
-                    <input
+                    <select
                       name="quantity"
-                      type="number"
                       required
-                      placeholder="Enter Quantity"
                       className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    />
+                    >
+                      <option value="">Select Branch</option>
+                      <option value="dhaka">Dhaka</option>
+                      <option value="chottogram">Chottogram</option>
+                      <option value="noakhali">Noakhali</option>
+                      <option value="dinajpur">Dinajpur</option>
+                      <option value="barisal">Barisal</option>
+                      <option value="gazipur">Gazipur</option>
+                      <option value="sylhet">Sylhet</option>
+                      <option value="narayanganj">Narayanganj</option>
+                      <option value="khulna">Khulna</option>
+                      <option value="feni">Feni</option>
+                      <option value="pabna">Pabna</option>
+                      <option value="cox_bazar">Cox{`'`}s Bazar</option>
+                      <option value="jessore">Jessore</option>
+                      <option value="tangail">Tangail</option>
+                      <option value="sirajganj">Sirajganj</option>
+                      <option value="rajshahi">Rajshahi</option>
+                    </select>
                   </div>
 
                   {/* Expiration Date */}
                   <div>
-                    <label className="block text-sm font-medium text-gray-700" htmlFor="expired">
+                    <label
+                      className="block text-sm font-medium text-gray-700"
+                      htmlFor="expired"
+                    >
                       Expiration Date
                     </label>
                     <input
@@ -125,23 +156,12 @@ const AddFood = () => {
                     />
                   </div>
 
-                  {/* Location */}
-                  <div className="col-span-2">
-                    <label className="block text-sm font-medium text-gray-700" htmlFor="Location">
-                      Pickup Location
-                    </label>
-                    <input
-                      name="location"
-                      type="text"
-                      required
-                      placeholder="Enter Pickup Location"
-                      className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    />
-                  </div>
-
                   {/* Additional Notes */}
                   <div className="col-span-2">
-                    <label className="block text-sm font-medium text-gray-700" htmlFor="notes">
+                    <label
+                      className="block text-sm font-medium text-gray-700"
+                      htmlFor="notes"
+                    >
                       Additional Notes
                     </label>
                     <textarea

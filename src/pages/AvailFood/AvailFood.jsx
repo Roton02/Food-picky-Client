@@ -155,7 +155,7 @@ const AvailFood = () => {
               </figure>
               <div className="m-2 space-y-0 ">
                 <h2 className="text-2xl font-bold">{food.food_name}</h2>
-                <p>{food.additional_notes}</p>
+                <p>{food.additional_notes.slice(0,70)}</p>
                 <p className="flex items-center gap-5">
                   {" "}
                   <ImLocation2 />
