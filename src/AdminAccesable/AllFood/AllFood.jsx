@@ -341,7 +341,7 @@ const AllFood = () => {
                             <button
                               onClick={() => handleUp(row._id)}
                               type="submit"
-                              className=" px-12  py-2 rounded-lg hover:bg-gray-300 font-bold  bg-[#e21b70] text-white hover:text-black"
+                              className=" px-12  py-2 rounded-lg hover:bg-gray-300 font-bold  bg-[#E21B70] text-white hover:text-black"
                             >
                               Submit
                             </button>

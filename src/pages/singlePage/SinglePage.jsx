@@ -50,12 +50,12 @@ const handleUp = id =>{
       </Helmet>
      
         <div>
-          <div className="max-w-[85rem] mx-auto md:p-5">
-            <div className="grid lg:grid-cols-7 lg:gap-x-8 xl:gap-x-12 lg:items-center">
+          <div className="max-w-screen-xl mx-auto md:p-5">
+            <div className="grid lg:grid-cols-7 lg:gap-x-8 xl:gap-x-12 justify-center lg:items-center">
               <div className="lg:col-span-3">
-                <div className="bg-slate-100 p-5">
+                <div className="bg-slate-100 px-5">
                   <h1 className="text-2xl underline font-anton text-center">
-                    Donator information -{" "}
+                    Seller information -{" "}
                   </h1>
                   <div className="flex gap-5 items-center">
                     <div className="avatar">
@@ -64,8 +64,8 @@ const handleUp = id =>{
                       </div>
                     </div>
                     <div className="text-sm font-anton">
-                      <p>{donator?.name}</p>
-                      <p> pickup_location : {pickup_location}</p>
+                      <p>Name : {donator.name}</p>
+                      <p> Email : {donator.email}</p>
                     </div>
                   </div>
                 </div>
@@ -85,9 +85,9 @@ const handleUp = id =>{
                     onClick={() =>
                       document.getElementById("my_modal_5").showModal()
                     }
-                    className="btn bg-[#1e847f] text-white hover:bg-[#1e547f] "
+                    className="btn  hover:bg-[#E21B90] text-white font-extrabold hover:scale-105 bg-[#E21B70]"
                   >
-                    Request
+                    Order
                   </button>
 
                   <dialog
@@ -199,9 +199,9 @@ const handleUp = id =>{
                   </dialog>
                 </div>
               </div>
-              <div className="lg:col-span-4 items-center mt-10 lg:mt-0">
+              <div className="lg:col-span-4 p-10  items-center justify-center mt-10 lg:mt-0">
                 <img
-                  className="w-full rounded-xl"
+                  className="w-full  rounded-xl"
                   src={food_image}
                   alt="Image Loading..............."
                 />
