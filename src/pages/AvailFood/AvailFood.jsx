@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { FaArrowDown } from "react-icons/fa";
+import { FaArrowDown, FaSearch } from "react-icons/fa";
 import { ImLocation2 } from "react-icons/im";
 import { MdTimeline } from "react-icons/md";
 import { Link } from "react-router-dom";
@@ -79,27 +79,8 @@ const AvailFood = () => {
             <div className="w-1/2">
               {" "}
               <h1 className="text-4xl ml-4 font-extrabold">
-              Home / Available Food 
+                Home / Available Food
               </h1>
-              <form
-                className="bg-white p-3   flex justify-between items-center rounded-2xl  mt-3  space-x-4"
-                onSubmit={handleSubmit}
-              >
-                <input
-                  className="input input-bordered w-full max-w-2xl"
-                  type="text"
-                  name="serching"
-                  placeholder="Search by Foods Name And get the food details "
-                  id=""
-                />
-
-                <button
-                  type="submit"
-                  className="btn  hover:bg-[#E21B90] text-white font-extrabold hover:scale-105 bg-[#E21B70]"
-                >
-                  Find Food
-                </button>
-              </form>
             </div>
             <div className="w-1/2 ">
               <img
@@ -111,87 +92,111 @@ const AvailFood = () => {
           </div>
         </div>
       </div>
-      <div className="max-w-screen-xl mx-auto flex my-5">
-      <button
-        onClick={handleStateManage}
-        className="btn bg-[#E21B70] text-white hover:text-black "
-      >
-        Change Layout{" "}
-      </button>
-      <div className="  ">
-          <details className="dropdown">
-            <summary className="  btn  border border-[#E21B70] hover:text-black bg-[#E21B70]  transition text-white">
-              Sort By Expired<FaArrowDown></FaArrowDown>
-            </summary>
-            <ul className="p-2 space-y-2 bg-gray-200 shadow menu dropdown-content z-[1]  rounded-box w-36">
-              <li
+      <div className="flex max-w-screen-xl mx-auto mb-5">
+        <div className="max-w-screen-xl mx-auto  w-1/4 mt-2 px-1 border border-black">
+          <form
+            className="bg-white    flex justify-between items-center rounded-2xl  mt-  space-x-1"
+            onSubmit={handleSubmit}
+          >
+            <input
+              className="input input-bordered w-full "
+              type="text"
+              name="serching"
+              placeholder="Search by Foods Name  "
+              id=""
+            />
+
+            <button
+              type="submit"
+              className="btn  hover:bg-[#E21B90] text-white font-extrabold hover:scale-95 bg-[#E21B70]"
+            >
+              <FaSearch />
+            </button>
+          </form>
+          <ul className="mt-1">
+            <li>
+              <button
+                onClick={handleStateManage}
+                className="btn w-full hover:bg-[#E21B90] text-white font-extrabold hover:scale-95  bg-[#E21B70]"
+              >
+                Change Layout{" "}
+              </button>
+            </li>
+            <li>
+              <button
                 onClick={() => sort("recentDays")}
-                className="hover:bg-black border border-black hover:text-white rounded-lg"
+                className="btn  w-full hover:bg-[#E21B90] text-white font-extrabold hover:scale-95 bg-[#E21B70] "
               >
-                <button>Recent Days</button>
-              </li>
-              <li
+                Recent Days
+              </button>
+            </li>
+            <li>
+              <button
                 onClick={() => sort("fastDays")}
-                className="hover:bg-black border border-black hover:text-white rounded-lg"
+                className="btn w-full hover:bg-[#E21B90] text-white font-extrabold hover:scale-95 bg-[#E21B70] "
               >
-                <button>Fast Days</button>
-              </li>
-            </ul>
-          </details>
+                Fast Days
+              </button>
+            </li>
+          </ul>
         </div>
-      </div>
-      <div
-        className={stateManage? "grid grid-cols-1 max-w-screen-xl mx-auto md:grid-cols-2 lg:grid-cols-4 gap-4 mt-2": " grid grid-cols-1 max-w-screen-xl mx-auto md:grid-cols-2  lg:grid-cols-3 gap-10 mt-2"}
-      >
-        {foods.map((food) => (
-          <div key={food._id}>
-            <div className=" px-0 border-2 rounded-xl ">
-              <figure className=" ">
-                <img
-                  src={food.food_image}
-                  alt="Shoes"
-                  className="rounded-t-xl w-full h-64"
-                />
-              </figure>
-              <div className="m-2 space-y-0 ">
-                <h2 className="text-2xl font-bold">{food.food_name}</h2>
-                <p>{food.additional_notes.slice(0,70)}</p>
-                <p className="flex items-center gap-5">
-                  {" "}
-                  <ImLocation2 />
-                  {food.pickup_location}
-                </p>
-                <p className="flex items-center gap-5">
-                  {" "}
-                  <MdTimeline />
-                  {food.expired_datetime}
-                </p>
-                <div className="flex mt-2 justify-between">
-                  <div className=" mt-2">
-                    <div className="avatar">
-                      <div className="w-12 rounded-xl">
-                        <img src={food.donator.image} />
+        <div
+          className={
+            stateManage
+              ? "grid grid-cols-1 px-3 border border-black max-w-screen-xl mx-auto md:grid-cols-2 lg:grid-cols-3 gap-4 mt-2 flex-1"
+              : " grid grid-cols-1 px-3 border border-black flex-1 max-w-screen-xl mx-auto md:grid-cols-2  lg:grid-cols-2 lg:px-8 gap-10 mt-2"
+          }
+        >
+          {foods.map((food) => (
+            <div key={food._id}>
+              <div className=" px-0 border-2 rounded-xl ">
+                <figure className=" ">
+                  <img
+                    src={food.food_image}
+                    alt="Shoes"
+                    className="rounded-t-xl w-full h-64"
+                  />
+                </figure>
+                <div className="m-2 space-y-0 ">
+                  <h2 className="text-2xl font-bold">{food.food_name}</h2>
+                  <p>{food.additional_notes.slice(0, 70)}</p>
+                  <p className="flex items-center gap-5">
+                    {" "}
+                    <ImLocation2 />
+                    {food.pickup_location}
+                  </p>
+                  <p className="flex items-center gap-5">
+                    {" "}
+                    <MdTimeline />
+                    {food.expired_datetime}
+                  </p>
+                  <div className="flex mt-2 justify-between">
+                    <div className=" mt-2">
+                      <div className="avatar">
+                        <div className="w-12 rounded-xl">
+                          <img src={food.donator.image} />
+                        </div>
                       </div>
+                      <h2 className="text-sm font-medium font-anton">
+                        {food.donator.name}{" "}
+                      </h2>
                     </div>
-                    <h2 className="text-sm font-medium font-anton">
-                      {food.donator.name}{" "}
-                    </h2>
-                  </div>
-                  <div className=" mt-10 ">
-                    <Link to={`/singlePage/${food._id}`}>
-                      <button className="rounded-md  btn btn-sm  overflow-hidden relative group cursor-pointer border-2  font-medium border-[#1e847f] text-[#1e847f]hover:text-white">
-                        <span className="absolute w-64 h-0 transition-all duration-300 origin-center rotate-45 -translate-x-20 bg-[#1e847f] top-1/2 group-hover:h-64 group-hover:-translate-y-32 ease"></span>
-                        <span className="relative my-auto  text-[#1e847f] transition duration-300 group-hover:text-white ease">
-                          View Details
-                        </span>
-                      </button>
-                    </Link>
+                    <div className=" mt-10 ">
+                      <Link to={`/singlePage/${food._id}`}>
+                        <button className="rounded-md  btn btn-sm  overflow-hidden relative group cursor-pointer border-2  font-medium border-[#1e847f] text-[#1e847f]hover:text-white">
+                          <span className="absolute w-64 h-0 transition-all duration-300 origin-center rotate-45 -translate-x-20 bg-[#1e847f] top-1/2 group-hover:h-64 group-hover:-translate-y-32 ease"></span>
+                          <span className="relative my-auto  text-[#1e847f] transition duration-300 group-hover:text-white ease">
+                            View Details
+                          </span>
+                        </button>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );
