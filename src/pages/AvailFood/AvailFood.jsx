@@ -67,6 +67,13 @@ const AvailFood = () => {
     setStateManage(!stateManage);
   };
   console.log(stateManage);
+  const handleBrandChange = (brand) => {
+    if (brands.includes(brand)) {
+      setBrands(brands.filter((b) => b !== brand));
+    } else {
+      setBrands([...brands, brand]);
+    }
+  };
   return (
     <div>
       <Helmet>
@@ -93,9 +100,12 @@ const AvailFood = () => {
         </div>
       </div>
       <div className="flex max-w-screen-xl mx-auto mb-5">
-        <div className="max-w-screen-xl mx-auto  w-1/4 mt-2 px-1 border border-black">
+        <div className="max-w-screen-xl mx-auto  w-1/4   bg-gray-200 mt-2  border border-black">
+        <h1 className="bg-slate-400 lg:text-2xl  text-center py-1">
+              Query by Food Name
+            </h1>
           <form
-            className="bg-white    flex justify-between items-center rounded-2xl  mt-  space-x-1"
+            className=" mt-2   flex justify-between items-center rounded-2xl  mt-  space-x-1"
             onSubmit={handleSubmit}
           >
             <input
@@ -113,30 +123,55 @@ const AvailFood = () => {
               <FaSearch />
             </button>
           </form>
-          <ul className="mt-1">
-            <li>
-              <button
-                onClick={handleStateManage}
-                className="btn w-full hover:bg-[#E21B90] text-white font-extrabold hover:scale-95  bg-[#E21B70]"
-              >
-                Change Layout{" "}
-              </button>
+          <div className="py-3">
+            <h1 className="bg-slate-400 lg:text-2xl text-center w-full py-1">
+              Sort by Area Name
+            </h1>
+            <div className="grid px-4 grid-cols-1 lg:grid-cols-2 text-center  gap-2 mt-3">
+              {[
+                "Dhaka",
+                "Noakhali",
+                "chattogram",
+                "Sylhet",
+                "Rajshahi",
+                "Khulna",
+                "Barishal",
+                "Rangpur",
+                "Cumilla",
+                "Jassore",
+              ].map((brand) => (
+                <div className="form-control" key={brand}>
+                  <label className="cursor-pointer label">
+                    <h1 className="label-text text-xl text-black">{brand}</h1>
+                    <input
+                      type="checkbox"
+                      onChange={() => handleBrandChange(brand)}
+                      className="checkbox checkbox-secondary"
+                    />
+                  </label>
+                </div>
+              ))}
+            </div>
+    
+        </div>
+          <ul className="mt-1 space-y-2">
+            <li
+              onClick={handleStateManage}
+              className=" border-b-2 border-[#E21B70] font-bold  hover:bg-[#E21B70] transition hover:text-white w-full p-2 rounded-lg "
+            >
+              Change Layout{" "}
             </li>
-            <li>
-              <button
-                onClick={() => sort("recentDays")}
-                className="btn  w-full hover:bg-[#E21B90] text-white font-extrabold hover:scale-95 bg-[#E21B70] "
-              >
-                Recent Days
-              </button>
+            <li
+              onClick={() => sort("recentDays")}
+              className="border-b-2 border-[#E21B70] font-bold  hover:bg-[#E21B70] transition hover:text-white w-full p-2 rounded-lg "
+            >
+              Recent Days
             </li>
-            <li>
-              <button
-                onClick={() => sort("fastDays")}
-                className="btn w-full hover:bg-[#E21B90] text-white font-extrabold hover:scale-95 bg-[#E21B70] "
-              >
-                Fast Days
-              </button>
+            <li
+              onClick={() => sort("fastDays")}
+              className=" border-b-2 border-[#E21B70] font-bold  hover:bg-[#E21B70] transition hover:text-white w-full p-2 rounded-lg "
+            >
+              Fast Days
             </li>
           </ul>
         </div>
@@ -144,7 +179,7 @@ const AvailFood = () => {
           className={
             stateManage
               ? "grid grid-cols-1 px-3 border border-black max-w-screen-xl mx-auto md:grid-cols-2 lg:grid-cols-3 gap-4 mt-2 flex-1"
-              : " grid grid-cols-1 px-3 border border-black flex-1 max-w-screen-xl mx-auto md:grid-cols-2  lg:grid-cols-2 lg:px-8 gap-10 mt-2"
+              : " grid grid-cols-1 px-3 border border-black flex-1 max-w-screen-xl mx-auto md:grid-cols-2  lg:grid-cols-2 lg:px-20 gap-10 mt-2"
           }
         >
           {foods.map((food) => (
