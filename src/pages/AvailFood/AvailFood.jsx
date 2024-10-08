@@ -124,6 +124,14 @@ const AvailFood = () => {
             </button>
           </form>
           <div className="py-3">
+          <ul>
+          <li
+              onClick={handleStateManage}
+              className=" border-b-2 mb-3 border-[#E21B70] font-bold  hover:bg-[#E21B70] transition hover:text-white w-full p-2 rounded-lg "
+            >
+              Change Layout{" "}
+            </li>
+          </ul>
             <h1 className="bg-slate-400 lg:text-2xl text-center w-full py-1">
               Sort by Area Name
             </h1>
@@ -141,7 +149,7 @@ const AvailFood = () => {
                 "Jassore",
               ].map((brand) => (
                 <div className="form-control" key={brand}>
-                  <label className="cursor-pointer label">
+                  <label className="cursor-pointer label px-4">
                     <h1 className="label-text text-xl text-black">{brand}</h1>
                     <input
                       type="checkbox"
@@ -154,13 +162,11 @@ const AvailFood = () => {
             </div>
     
         </div>
+        <h1 className="bg-slate-400 lg:text-2xl text-center w-full py-1">
+              Sort by Date
+            </h1>
           <ul className="mt-1 space-y-2">
-            <li
-              onClick={handleStateManage}
-              className=" border-b-2 border-[#E21B70] font-bold  hover:bg-[#E21B70] transition hover:text-white w-full p-2 rounded-lg "
-            >
-              Change Layout{" "}
-            </li>
+            
             <li
               onClick={() => sort("recentDays")}
               className="border-b-2 border-[#E21B70] font-bold  hover:bg-[#E21B70] transition hover:text-white w-full p-2 rounded-lg "
