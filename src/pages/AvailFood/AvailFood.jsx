@@ -129,7 +129,7 @@ const AvailFood = () => {
                 onClick={handleStateManage}
                 className={
                   stateManage
-                    ? "border-b-2 mb-3 border-[#E21B70] font-bold  bg-[#E21B70] transition hover:bg-black text-white w-full p-2 rounded-b-lg hover:cursor-pointer hover:scale-95 "
+                    ? "border-b-2 mb-3 border-[#E21B70] font-bold  bg-[#E21B70] transition  text-white w-full p-2 rounded-b-lg hover:bg-black hover:cursor-pointer hover:scale-95 "
                     : "border-b-2 mb-3 border-black font-bold  bg-black transition text-white w-full p-2 hover:bg-[#E21B70] rounded-b-lg hover:cursor-pointer hover:scale-95 "
                 }
               >
@@ -144,7 +144,7 @@ const AvailFood = () => {
                 <li
           
                   className={
-                    "border-b-2 mb-1 border-[#E21B70] font-bold  bg-[#E21B70] transition text-white w-full p-2 rounded-b-lg hover:cursor-pointer "
+                    "border-b-2 mb-1  hover:bg-black hover:cursor-pointer hover:scale-95  border-[#E21B70] font-bold  bg-[#E21B70] transition text-white w-full p-2 rounded-b-lg  "
                   }
                 >
                  Price Low To High
@@ -152,7 +152,7 @@ const AvailFood = () => {
                 <li
           
                   className={
-                    "border-b-2 mb-3 border-[#E21B70] font-bold  bg-[#E21B70] transition text-white w-full p-2 rounded-b-lg hover:cursor-pointer "
+                    "border-b-2 mb-3 border-[#E21B70] font-bold  bg-[#E21B70] transition text-white w-full p-2 rounded-b-lg  hover:bg-black hover:cursor-pointer hover:scale-95 "
                   }
                 >
                  Price High To Low
@@ -195,13 +195,13 @@ const AvailFood = () => {
           <ul className="mt-2 space-y-2">
             <li
               onClick={() => sort("recentDays")}
-              className="border-b-2 border-[#E21B70] font-bold  bg-[#E21B70] transition text-white w-full p-2 rounded-b-lg "
+              className="border-b-2 border-[#E21B70]  hover:bg-black hover:cursor-pointer hover:scale-95 font-bold  bg-[#E21B70] transition text-white w-full p-2 rounded-b-lg "
             >
               <span className="ml-5  font-extrabold"> Recent Post</span>
             </li>
             <li
               onClick={() => sort("fastDays")}
-              className=" border-b-2 border-[#E21B70] font-bold bg-[#E21B70] transition text-white w-full p-2 rounded-b-lg "
+              className=" border-b-2 border-[#E21B70]  hover:bg-black hover:cursor-pointer hover:scale-95 font-bold bg-[#E21B70] transition text-white w-full p-2 rounded-b-lg "
             >
               <span className="ml-5  font-extrabold"> Previous Post</span>
             </li>
