@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { FaArrowDown, FaSearch } from "react-icons/fa";
+import { FaArrowDown, FaLocationArrow, FaSearch } from "react-icons/fa";
 import { ImLocation2 } from "react-icons/im";
 import { MdTimeline } from "react-icons/md";
 import { Link } from "react-router-dom";
@@ -142,20 +142,18 @@ const AvailFood = () => {
               </h1>
               <ul className="mt-2">
                 <li
-          
                   className={
                     "border-b-2 mb-1  hover:bg-black hover:cursor-pointer hover:scale-95  border-[#E21B70] font-bold  bg-[#E21B70] transition text-white w-full p-2 rounded-b-lg  "
                   }
                 >
-                 Price Low To High
+                  Price Low To High
                 </li>
                 <li
-          
                   className={
                     "border-b-2 mb-3 border-[#E21B70] font-bold  bg-[#E21B70] transition text-white w-full p-2 rounded-b-lg  hover:bg-black hover:cursor-pointer hover:scale-95 "
                   }
                 >
-                 Price High To Low
+                  Price High To Low
                 </li>
               </ul>
             </div>
@@ -207,7 +205,7 @@ const AvailFood = () => {
             </li>
           </ul>
         </div>
-        <div
+        {/* <div
           className={
             stateManage
               ? "grid grid-cols-1 px-3 border border-black max-w-screen-xl mx-auto md:grid-cols-2 lg:grid-cols-3 gap-1 mt-2 flex-1"
@@ -221,12 +219,12 @@ const AvailFood = () => {
                   <img
                     src={food.food_image}
                     alt="Shoes"
-                    className="rounded-t-xl w-full h-64"
+                    className=" w-full h-52"
                   />
                 </figure>
                 <div className="m-2 space-y-0 ">
                   <h2 className="text-2xl font-bold">{food.food_name}</h2>
-                  <p>{food.additional_notes.slice(0, 70)}</p>
+                 
                   <p className="flex items-center gap-5">
                     {" "}
                     <ImLocation2 />
@@ -237,18 +235,9 @@ const AvailFood = () => {
                     <MdTimeline />
                     {food.expired_datetime}
                   </p>
+                 
                   <div className="flex mt-2 justify-between">
-                    <div className=" mt-2">
-                      <div className="avatar">
-                        <div className="w-12 rounded-xl">
-                          <img src={food.donator.image} />
-                        </div>
-                      </div>
-                      <h2 className="text-sm font-medium font-anton">
-                        {food.donator.name}{" "}
-                      </h2>
-                    </div>
-                    <div className=" mt-10 ">
+                    <div className="  ">
                       <Link to={`/singlePage/${food._id}`}>
                         <button className="rounded-md  btn btn-sm  overflow-hidden relative group cursor-pointer border-2  font-medium border-[#1e847f] text-[#1e847f]hover:text-white">
                           <span className="absolute w-64 h-0 transition-all duration-300 origin-center rotate-45 -translate-x-20 bg-[#1e847f] top-1/2 group-hover:h-64 group-hover:-translate-y-32 ease"></span>
@@ -263,6 +252,55 @@ const AvailFood = () => {
               </div>
             </div>
           ))}
+        </div> */}
+     
+          <div  className={
+            stateManage
+              ? "grid grid-cols-1 px-3 border border-black max-w-screen-xl mx-auto md:grid-cols-2 lg:grid-cols-4 gap-1 mt-2 flex-1"
+              : " grid grid-cols-1 px-3 border border-black flex-1 max-w-screen-xl mx-auto md:grid-cols-2  lg:grid-cols-3 lg:px-10 gap-10 mt-2"
+          }>
+            {foods.map((p) => (
+              <div key={p._id} className="   shadow-xl  h-80">
+                <div className="relative p-2">
+                  <figure className="flex justify-center items-center">
+                    <img
+                      className="w-64 h-52  hover:scale-105 transition hover:delay-75  object-cover"
+                      src={p.food_image}
+                    />
+                  </figure>
+                  <p className="card-lavel bg-[#f81276] flex items-center gap-2 bg-red absolute py-3 px-7 -bottom-0 left-14 text-white">
+                    <FaLocationArrow size={20} />
+                    <span>  <p>{p.pickup_location}</p></span>
+                  </p>
+                </div>
+
+                <div className="md:p-4 px-2 md:px-14 lg:px-3">
+                  <div className="flex justify-between items-center gap-2">
+                    <h2 className="font-semibold text-xl md:text-2xl text-nowrap ">
+                      {p.food_name}
+                    </h2>
+                    <p className="font-semibold text-red  ">
+                     1000 {p.food_price} TK
+                    </p>
+                  </div>
+
+                  <div className="flex  justify-between">
+                    <p className="mt-1">{p.expired_datetime}</p>
+                    <div className="  ">
+                      <Link to={`/singlePage/${p._id}`}>
+                        <button className="rounded-md  btn btn-sm border-t-0 border-x-0  overflow-hidden relative group cursor-pointer border-2  font-medium border-[#f81276] text-[#f81276]hover:text-white">
+                          <span className="absolute w-64 h-0 transition-all duration-300 origin-center rotate-45 -translate-x-20 bg-[#f81276] top-1/2 group-hover:h-64 group-hover:-translate-y-32 ease"></span>
+                          <span className="relative my-auto  text-[#f81276] transition duration-300 group-hover:text-white ease">
+                             Details
+                          </span>
+                        </button>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+        
         </div>
       </div>
     </div>

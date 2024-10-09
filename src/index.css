@@ -28,6 +28,10 @@ p{
 
   }
 
+  .card-lavel {
+    clip-path: polygon(9% 0, 90% 3%, 100% 92%, 0 100%)
+  }
+
 /* styles.css */
 .custom-bg {
     background-image: 
