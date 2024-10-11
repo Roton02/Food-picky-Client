@@ -7,7 +7,7 @@ import { FaCartArrowDown } from "react-icons/fa";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [userRole, setUserRole] = useState(true);
+  const [userRole, setUserRole] = useState(false);
   const toggleDrawer = () => {
     setIsOpen(!isOpen);
   };

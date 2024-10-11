@@ -88,6 +88,7 @@ const AvailFood = () => {
               <h1 className="text-4xl ml-4 font-extrabold">
                 Home / Available Food
               </h1>
+              <p className="text-lg ml-4 mt-2">Explore our products. Click on details button to order.</p>
             </div>
             <div className="w-1/2 ">
               <img
