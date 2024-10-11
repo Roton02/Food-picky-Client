@@ -116,12 +116,12 @@ const router = createBrowserRouter([
       },
       {
         path: "/Users",
-        element: <Users></Users>,
+        element: <PrivateRoute><Users></Users></PrivateRoute>,
       },
      
       {
         path: "/Admin/allFood",
-        element: <AllFood></AllFood>,
+        element: <PrivateRoute><AllFood></AllFood></PrivateRoute>,
       },
      
     ],

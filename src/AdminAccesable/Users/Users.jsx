@@ -31,7 +31,7 @@ const Users = () => {
     });
   };
   return (
-    <div className="max-w-6xl mx-auto ">
+    <div className="max-w-6xl mx-auto pb-6">
       <div className="w-1/5 pt-10">
         <h1 className="text-4xl  font-medium mt-10 border-user ">
           All User Collection
