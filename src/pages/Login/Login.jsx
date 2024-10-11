@@ -104,11 +104,18 @@ const Login = () => {
   };
 
   return (
-    <div className="">
+    <div className="max-w-4xl mx-auto">
       <Helmet>
         <title>Lapse-Pet || Login</title>
         {/* <link rel="canonical" href="https://www.tacobell.com/" /> */}
       </Helmet>
+      <div className="mt-5 w-72 text-nowrap mx-auto rounded-lg  flex flex-col justify-center items-center bg-[#fc398e]  py-1 px-10">
+        <p className="text-center text-lg  underline">Admin Credintial  </p>
+        <div className="text-start text-slate-950">
+        <p className=""> <span className="text-lg">Gmail :</span> roton@gmail.com</p>
+        <p><span className="text-lg">Pass :</span> 121212Aa@</p>
+        </div>
+      </div>
       <div className="flex items-center   w-full max-w-sm mx-auto overflow-hidden    lg:max-w-4xl">
         <div className="hidden  lg:block lg:w-1/2 ">
           <video
@@ -119,9 +126,9 @@ const Login = () => {
             type="video/mp4"
           ></video>
         </div>
-        <div className="flex flex-col max-w-md mx-auto  mt-5 ">
+        <div className="flex flex-col max-w-md mx-auto   ">
           <div className=" text-center">
-            <h1 className=" text-3xl text-black mb-1 font-bold">
+            <h1 className=" text-3xl text-black mb-1 pt-3 font-bold">
               Login to your Account
             </h1>
           </div>

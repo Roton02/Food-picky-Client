@@ -4,10 +4,13 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../ContextProvider/ContextProvider";
 import { Link, NavLink } from "react-router-dom";
 import { FaCartArrowDown } from "react-icons/fa";
+import useAdmin from "../../Hooks/useAdmin";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [userRole, setUserRole] = useState(false);
+  const [userRole, setUserRole] = useState(true);
+  const {isAdmin} = useAdmin()
+  console.log(isAdmin);
   const toggleDrawer = () => {
     setIsOpen(!isOpen);
   };
