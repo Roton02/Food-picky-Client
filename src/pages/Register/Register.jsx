@@ -154,7 +154,7 @@ const Register = () => {
   };
 
   return (
-    <div className="bg-white">
+    <div className="bg-white mt-6">
       <Helmet>
         <title>Register</title>
         <link rel="canonical" href="https://www.tacobell.com/" />
@@ -267,9 +267,9 @@ const Register = () => {
                   onClick={() => setToggle(!toggle)}
                 >
                   {toggle ? (
-                    <IoIosEye className="text-white" />
+                    <IoIosEye className="text-black" />
                   ) : (
-                    <IoIosEyeOff className="text-white" />
+                    <IoIosEyeOff className="text-black" />
                   )}
                 </span>
               </div>
@@ -279,7 +279,7 @@ const Register = () => {
               <div>
                 <button
                   type="submit"
-                  className="w-full mt-2 px-8 py-2 font-semibold rounded-md bg-purple-500 text-white"
+                  className="w-full mt-2 px-8 py-2 font-semibold rounded-md bg-[#E21B70] text-white"
                 >
                   Register
                 </button>

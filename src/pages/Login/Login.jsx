@@ -199,9 +199,9 @@ const Login = () => {
                   onClick={() => setToggle(!toggle)}
                 >
                   {toggle ? (
-                    <IoIosEye className="text-white" />
+                    <IoIosEye className="text-black" />
                   ) : (
-                    <IoIosEyeOff className="text-white" />
+                    <IoIosEyeOff className="text-black" />
                   )}
                 </span>
               </div>
@@ -210,7 +210,7 @@ const Login = () => {
               <div>
                 <button
                   type="submit"
-                  className="w-full px-8 py-2 font-semibold rounded-md bg-purple-500 text-white"
+                  className="w-full px-8 py-2 font-semibold rounded-md bg-[#E21B70] text-white"
                 >
                   Login
                 </button>
