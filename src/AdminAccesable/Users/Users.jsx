@@ -34,7 +34,7 @@ const Users = () => {
     <div className="max-w-6xl mx-auto ">
       <div className="w-1/5 pt-10">
         <h1 className="text-4xl  font-medium mt-10 border-user ">
-          All User Collection 
+          All User Collection
         </h1>
       </div>
       <div className="relative overflow-x-auto  mt-10">
@@ -86,17 +86,31 @@ const Users = () => {
                 </th>
 
                 <td className=" py-4 ">{user.email}</td>
-                <td className="px-6 py-4">{user.role? <span className="bg-pink-300 rounded-lg px-1 font-bold">{user.role}</span> : 'Normal User'}</td>
                 <td className="px-6 py-4">
-                  <button
-                    onClick={() => {
-                      handleMakeAdmin(user._id);
-                    }}
-                    href="#"
-                    className="font-medium bg-green-200 px-2 rounded-lg text-blue-600 dark:text-blue-500 hover:underline"
-                  >
-                    Make Admin
-                  </button>
+                  {user.role ? (
+                    <span className="bg-green-500 px-3 rounded-lg font-bold">
+                      {user.role}
+                    </span>
+                  ) : (
+                    "Normal User"
+                  )}
+                </td>
+                <td className="px-6 py-4">
+                  {user.role == "admin" ? (
+                    <button className="font-medium bg-green-500 px-2 rounded-lg hover:underline">
+                      Already Admin
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => {
+                        handleMakeAdmin(user._id);
+                      }}
+                      href="#"
+                      className="font-medium bg-green-200 px-2 rounded-lg text-blue-800  hover:underline"
+                    >
+                      Make Admin
+                    </button>
+                  )}
                 </td>
               </tr>
             ))}
