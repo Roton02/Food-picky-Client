@@ -14,13 +14,12 @@ const useAdmin = () => {
                 console.error('User email is undefined');
                 return false;
             }
-    
             try {
                 console.log('Checking if user is admin', user);
                 const res = await axios.get(`http://localhost:5000/users/admins/${user?.email}`);
                 console.log('IsAdmin:', res?.data);
     
-                return res.data?.admin || false;
+                return res.data?.role || false;
             } catch (error) {
                 console.error('Error fetching admin status:', error);
                 return false; // Return false in case of error

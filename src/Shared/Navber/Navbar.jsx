@@ -1,29 +1,50 @@
 import "./Navbar.css";
 import "animate.css";
-import { useContext, useEffect, useState } from "react";
+import { useContext,  useEffect,  useState } from "react";
 import { AuthContext } from "../../ContextProvider/ContextProvider";
 import { Link, NavLink } from "react-router-dom";
 import { FaCartArrowDown } from "react-icons/fa";
 import axios from "axios";
-import useAdminn from '../../Hooks/useAdmin'
 
 const Navbar = () => {
   const { Logout, user } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
-  // const [userRole, setUserRole] = useState(true);
-  const {isAdmin} = useAdminn()
-  console.log(isAdmin);
-  // useEffect(() => {
-  //   console.log(user?.email);
-  //   if (user?.email) {
-  //     console.log(user.email); 
-  //     axios
-  //       .get(`http://localhost:5000/users/admins/${user.email}`)
-  //       .then((res) => {
-  //         console.log("admin form navbar ", res);
-  //       });
-  //   }
-  // }, [user]);
+  const [userRole, setUserRole] = useState(false);
+  // const {isAdmin} = useAdmin()
+  // console.log(isAdmin);
+  useEffect(() => {
+    console.log(user?.email);
+    if (user?.email) {
+      console.log(user.email); 
+      axios
+        .get(`http://localhost:5000/users/admins/${user.email}`)
+        .then((res) => {
+          console.log("admin form navbar ", res.data);
+          setUserRole(res.data.role && true)
+        });
+    }
+  }, [user,userRole,Logout]);
+
+//   const { data: isAdmin, } = useQuery({
+//     queryKey: ['isAdmin'],
+//     queryFn: async () => {
+//         try {
+//             // Use async/await to fetch the admin status
+//             const res = await axios.get(`http://localhost:5000/users/admins/${user?.email}`);
+//             console.log("admin from navbar", res.data);
+//             // Return the admin status from the response
+//            if (res.data) {
+//             return res.data.role == 'admin'? true : false ;
+//            }
+//         } catch (error) {
+//             console.error('Error fetching admin status:', error);
+//             return false; // Return false if there's an error
+//         }
+//     },
+// });
+
+// console.log(isAdmin);
+
 
   const toggleDrawer = () => {
     setIsOpen(!isOpen);
@@ -341,104 +362,105 @@ const Navbar = () => {
           </div>
           <div className="navbar-center">
             <div className=" space-x-2  hidden lg:flex  ">
-              {false ? (
+              {userRole ? (
+                
                 <>
-                  {" "}
-                  <NavLink
-                    to="/"
-                    className="  p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150"
-                  >
-                    Home
-                  </NavLink>
-                  <NavLink
-                    to="/availFood"
-                    className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 "
-                  >
-                    Our Menu
-                  </NavLink>
-                  <NavLink
-                    to="/MyFoodRequest"
-                    className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 "
-                  >
-                    My Order
-                  </NavLink>
-                  <NavLink
-                    to="/blogs"
-                    className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150"
-                  >
-                    Blog
-                  </NavLink>
-                  <NavLink
-                    to="/reviews"
-                    className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 "
-                  >
-                    Reviews
-                  </NavLink>
-                  <NavLink
-                    to="/aboutUs"
-                    className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 "
-                  >
-                    About Us
-                  </NavLink>
-                  <NavLink
-                    to="/contract"
-                    className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 "
-                  >
-                    Contract
-                  </NavLink>{" "}
-                </>
+                <NavLink
+                  className={
+                    "p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150"
+                  }
+                  to="/"
+                >
+                  Home
+                </NavLink>
+
+                <NavLink
+                  className={
+                    "p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150"
+                  }
+                  to="/Users"
+                >
+                  All User / Admin
+                </NavLink>
+                <NavLink
+                  className={
+                    "p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150"
+                  }
+                  to="/addFood"
+                >
+                  Add New
+                </NavLink>
+                <NavLink
+                  className={
+                    "p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150"
+                  }
+                  to="/Admin/allFood"
+                >
+                  Manage All Food
+                </NavLink>
+                <NavLink
+                  className={
+                    "p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150"
+                  }
+                  to="/ManageMyFoods"
+                >
+                  My Added Food
+                </NavLink>
+                <NavLink
+                  className={
+                    "p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150"
+                  }
+                  to="/AllFoodRequest"
+                >
+                  All Order
+                </NavLink>
+              </>
               ) : (
                 <>
-                  <NavLink
-                    className={
-                      "p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150"
-                    }
-                    to="/"
-                  >
-                    Home
-                  </NavLink>
-
-                  <NavLink
-                    className={
-                      "p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150"
-                    }
-                    to="/Users"
-                  >
-                    All User / Admin
-                  </NavLink>
-                  <NavLink
-                    className={
-                      "p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150"
-                    }
-                    to="/addFood"
-                  >
-                    Add New
-                  </NavLink>
-                  <NavLink
-                    className={
-                      "p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150"
-                    }
-                    to="/Admin/allFood"
-                  >
-                    Manage All Food
-                  </NavLink>
-                  <NavLink
-                    className={
-                      "p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150"
-                    }
-                    to="/ManageMyFoods"
-                  >
-                    My Added Food
-                  </NavLink>
-                  <NavLink
-                    className={
-                      "p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150"
-                    }
-                    to="/AllFoodRequest"
-                  >
-                    All Order
-                  </NavLink>
-                </>
+                {" "}
+                <NavLink
+                  to="/"
+                  className="  p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150"
+                >
+                  Home
+                </NavLink>
+                <NavLink
+                  to="/availFood"
+                  className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 "
+                >
+                  Our Menu
+                </NavLink>
+                <NavLink
+                  to="/MyFoodRequest"
+                  className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 "
+                >
+                  My Order
+                </NavLink>
+                <NavLink
+                  to="/blogs"
+                  className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150"
+                >
+                  Blog
+                </NavLink>
+                <NavLink
+                  to="/reviews"
+                  className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 "
+                >
+                  Reviews
+                </NavLink>
+                <NavLink
+                  to="/aboutUs"
+                  className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 "
+                >
+                  About Us
+                </NavLink>
+                <NavLink
+                  to="/contract"
+                  className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 "
+                >
+                  Contract
+                </NavLink>{" "}
+              </>
               )}
             </div>
           </div>
