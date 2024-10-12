@@ -4,20 +4,27 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../ContextProvider/ContextProvider";
 import { Link, NavLink } from "react-router-dom";
 import { FaCartArrowDown } from "react-icons/fa";
-import useAdmin from "../../Hooks/useAdmin";
 import axios from "axios";
+import useAdminn from '../../Hooks/useAdmin'
 
 const Navbar = () => {
   const { Logout, user } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
   // const [userRole, setUserRole] = useState(true);
-  // const {isAdmin} = useAdmin()
-  // console.log(isAdmin);
-  useEffect(()=>{
-    axios.get(`http://localhost:5000/users/admin/${user?.email}`).then(res=> (
-      console.log("admin form navbar ", res)
-    ))
-  }, [user])
+  const {isAdmin} = useAdminn()
+  console.log(isAdmin);
+  // useEffect(() => {
+  //   console.log(user?.email);
+  //   if (user?.email) {
+  //     console.log(user.email); 
+  //     axios
+  //       .get(`http://localhost:5000/users/admins/${user.email}`)
+  //       .then((res) => {
+  //         console.log("admin form navbar ", res);
+  //       });
+  //   }
+  // }, [user]);
+
   const toggleDrawer = () => {
     setIsOpen(!isOpen);
   };

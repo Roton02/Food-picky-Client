@@ -17,7 +17,7 @@ const useAdmin = () => {
     
             try {
                 console.log('Checking if user is admin', user);
-                const res = await axios.get(`http://localhost:5000/users/admin/${user?.email}`);
+                const res = await axios.get(`http://localhost:5000/users/admins/${user?.email}`);
                 console.log('IsAdmin:', res?.data);
     
                 return res.data?.admin || false;

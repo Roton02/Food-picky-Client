@@ -71,7 +71,7 @@ const Register = () => {
             console.log(result);
             const userInfo = {
               name: name,
-              email: email,
+              email: email.toLowerCase(),
               image: photoLnk,
             };
             axiosPublic.post("/users", userInfo).then((res) => {
