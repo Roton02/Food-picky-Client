@@ -1,22 +1,28 @@
 import "./Navbar.css";
 import "animate.css";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../ContextProvider/ContextProvider";
 import { Link, NavLink } from "react-router-dom";
 import { FaCartArrowDown } from "react-icons/fa";
 import useAdmin from "../../Hooks/useAdmin";
+import axios from "axios";
 
 const Navbar = () => {
   const { Logout, user } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
   // const [userRole, setUserRole] = useState(true);
-  const {isAdmin} = useAdmin()
-  console.log(isAdmin);
+  // const {isAdmin} = useAdmin()
+  // console.log(isAdmin);
+  useEffect(()=>{
+    axios.get(`http://localhost:5000/users/admin/${user?.email}`).then(res=> (
+      console.log("admin form navbar ", res)
+    ))
+  }, [user])
   const toggleDrawer = () => {
     setIsOpen(!isOpen);
   };
 
-  console.log(user);
+  // console.log(user);
 
   return (
     <div className=" w-full   bg-white shadow-xl  ">
@@ -328,7 +334,7 @@ const Navbar = () => {
           </div>
           <div className="navbar-center">
             <div className=" space-x-2  hidden lg:flex  ">
-              {!isAdmin ? (
+              {false ? (
                 <>
                   {" "}
                   <NavLink
