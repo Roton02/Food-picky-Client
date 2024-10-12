@@ -25,25 +25,25 @@ const Navbar = () => {
     }
   }, [user,userRole,Logout]);
 
-//   const { data: isAdmin, } = useQuery({
-//     queryKey: ['isAdmin'],
-//     queryFn: async () => {
-//         try {
-//             // Use async/await to fetch the admin status
-//             const res = await axios.get(`http://localhost:5000/users/admins/${user?.email}`);
-//             console.log("admin from navbar", res.data);
-//             // Return the admin status from the response
-//            if (res.data) {
-//             return res.data.role == 'admin'? true : false ;
-//            }
-//         } catch (error) {
-//             console.error('Error fetching admin status:', error);
-//             return false; // Return false if there's an error
-//         }
-//     },
-// });
+  const { data: isAdmin, } = useQuery({
+    queryKey: ['isAdmin'],
+    queryFn: async () => {
+        try {
+            // Use async/await to fetch the admin status
+            const res = await axios.get(`http://localhost:5000/users/admins/${user?.email}`);
+            console.log("admin from navbar", res.data);
+            // Return the admin status from the response
+           if (res.data) {
+            return res.data.role == 'admin'? true : false ;
+           }
+        } catch (error) {
+            console.error('Error fetching admin status:', error);
+            return false; // Return false if there's an error
+        }
+    },
+});
 
-// console.log(isAdmin);
+console.log(isAdmin);
 
 
   const toggleDrawer = () => {
