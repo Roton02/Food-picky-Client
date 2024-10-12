@@ -7,14 +7,14 @@ import { FaCartArrowDown } from "react-icons/fa";
 import useAdmin from "../../Hooks/useAdmin";
 
 const Navbar = () => {
+  const { Logout, user } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
-  const [userRole, setUserRole] = useState(true);
+  // const [userRole, setUserRole] = useState(true);
   const {isAdmin} = useAdmin()
   console.log(isAdmin);
   const toggleDrawer = () => {
     setIsOpen(!isOpen);
   };
-  const { Logout, user } = useContext(AuthContext);
 
   console.log(user);
 
@@ -328,7 +328,7 @@ const Navbar = () => {
           </div>
           <div className="navbar-center">
             <div className=" space-x-2  hidden lg:flex  ">
-              {userRole ? (
+              {!isAdmin ? (
                 <>
                   {" "}
                   <NavLink
