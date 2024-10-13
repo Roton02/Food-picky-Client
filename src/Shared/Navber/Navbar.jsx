@@ -5,46 +5,16 @@ import { AuthContext } from "../../ContextProvider/ContextProvider";
 import { Link, NavLink } from "react-router-dom";
 import { FaCartArrowDown } from "react-icons/fa";
 import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
+import useAdmin from "../../Hooks/useAdmin";
+
 
 const Navbar = () => {
   const { Logout, user } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
   const [userRole, setUserRole] = useState(false);
-  // const {isAdmin} = useAdmin()
-  // console.log(isAdmin);
-  useEffect(() => {
-    console.log(user?.email);
-    if (user?.email) {
-      console.log(user.email); 
-      axios
-        .get(`http://localhost:5000/users/admins/${user.email}`)
-        .then((res) => {
-          console.log("admin form navbar ", res.data);
-          setUserRole(res.data.role && true)
-        });
-    }
-  }, [user,userRole,Logout]);
-
-  const { data: isAdmin, } = useQuery({
-    queryKey: ['isAdmin'],
-    queryFn: async () => {
-        try {
-            // Use async/await to fetch the admin status
-            const res = await axios.get(`http://localhost:5000/users/admins/${user?.email}`);
-            console.log("admin from navbar", res.data);
-            // Return the admin status from the response
-           if (res.data) {
-            return res.data.role == 'admin'? true : false ;
-           }
-        } catch (error) {
-            console.error('Error fetching admin status:', error);
-            return false; // Return false if there's an error
-        }
-    },
-});
-
-console.log(isAdmin);
-
+  const [isAdmin] = useAdmin();
+  console.log(isAdmin);
 
   const toggleDrawer = () => {
     setIsOpen(!isOpen);
@@ -362,7 +332,7 @@ console.log(isAdmin);
           </div>
           <div className="navbar-center">
             <div className=" space-x-2  hidden lg:flex  ">
-              {userRole ? (
+              {isAdmin ? (
                 
                 <>
                 <NavLink
