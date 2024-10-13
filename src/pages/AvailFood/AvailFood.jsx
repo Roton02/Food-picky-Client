@@ -1,9 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { FaArrowDown, FaLocationArrow, FaSearch } from "react-icons/fa";
-import { ImLocation2 } from "react-icons/im";
-import { MdTimeline } from "react-icons/md";
+import { FaLocationArrow, FaSearch } from "react-icons/fa";
+import { GiSelfLove } from "react-icons/gi";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
@@ -103,7 +102,7 @@ const AvailFood = () => {
         </div>
       </div>
       <div className="flex max-w-screen-xl mx-auto mb-5">
-        <div className="max-w-screen-xl mx-auto  w-1/4   bg-gray-200 mt-2  border border-black">
+        <div className="max-w-screen-xl mx-auto  w-1/4   bg-gray-200 mt-2  ">
           <h1 className="bg-slate-400 lg:text-2xl  text-center py-1">
             Query by Food Name
           </h1>
@@ -212,8 +211,8 @@ const AvailFood = () => {
         <div
           className={
             stateManage
-              ? "grid grid-cols-1 px-3 border border-black max-w-screen-xl mx-auto md:grid-cols-2 lg:grid-cols-4 gap-1 mt-2 flex-1"
-              : " grid grid-cols-1 px-3 border border-black flex-1 max-w-screen-xl mx-auto md:grid-cols-2  lg:grid-cols-3 lg:px-10 gap-10 mt-2"
+              ? "grid grid-cols-1 px-3  max-w-screen-xl mx-auto md:grid-cols-2 lg:grid-cols-4 gap-1 mt-2 flex-1"
+              : " grid grid-cols-1 px-3  flex-1 max-w-screen-xl mx-auto md:grid-cols-2  lg:grid-cols-3 lg:px-10 gap-10 mt-2"
           }
         >
           {foods.map((p) => (
@@ -225,6 +224,10 @@ const AvailFood = () => {
                     src={p.food_image}
                   />
                 </figure>
+                <button className="absolute right-4 top-4 flex justify-center items-center bg-white p-1 hover:bg-slate-700 transition rounded-md">
+                  {" "}
+                  <GiSelfLove className="text-[#f81276] text-2xl" />{" "}
+                </button>
                 <p className="card-lavel bg-[#f81276] flex items-center gap-2 bg-red absolute py-3 px-7 -bottom-0 left-14 text-white">
                   <FaLocationArrow size={20} />
                   <span>
