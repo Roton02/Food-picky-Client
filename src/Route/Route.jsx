@@ -44,9 +44,9 @@ const router = createBrowserRouter([
       {
         path: "/addFood",
         element: (
-          <PrivateRoute>
+          <AdminRoute>
             <AddFood></AddFood>
-          </PrivateRoute>
+          </AdminRoute>
         ),
       },
       {
@@ -56,9 +56,9 @@ const router = createBrowserRouter([
       {
         path: "/ManageMyFoods",
         element: (
-          <PrivateRoute>
+          <AdminRoute>
             <ManageMyFoods></ManageMyFoods>
-          </PrivateRoute>
+          </AdminRoute>
         ),
       },
       {
@@ -72,9 +72,9 @@ const router = createBrowserRouter([
       {
         path: "/AllFoodRequest",
         element: (
-          <PrivateRoute>
+          <AdminRoute>
             <AllRequested></AllRequested>
-          </PrivateRoute>
+          </AdminRoute>
         ),
       },
       {
@@ -122,7 +122,7 @@ const router = createBrowserRouter([
      
       {
         path: "/Admin/allFood",
-        element: <PrivateRoute><AllFood></AllFood></PrivateRoute>,
+        element: <AdminRoute><AllFood></AllFood></AdminRoute>,
       },
      
     ],

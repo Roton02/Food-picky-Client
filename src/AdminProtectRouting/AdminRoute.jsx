@@ -1,13 +1,21 @@
 /* eslint-disable react/prop-types */
+import { useEffect } from "react";
 import { Navigate, useLocation } from "react-router-dom";
 import "react-loading-skeleton/dist/skeleton.css";
 import useAuth from "../Hooks/useAuth";
 import useAdmin from "../Hooks/useAdmin";
 
 const AdminRoute = ({ children }) => {
-  const { user, loading } = useAuth();
+  const { user, loading, Logout } = useAuth();
   const [isAdmin, isAdminLoading] = useAdmin();
   const location = useLocation();
+
+  useEffect(() => {
+    if (!user || !isAdmin) {
+      Logout(); // Call Logout if the user is not an admin
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ isAdmin]);
 
   if (loading || isAdminLoading) {
     return (
@@ -21,10 +29,10 @@ const AdminRoute = ({ children }) => {
   }
 
   if (user && isAdmin) {
-    return children;
+    return children; // Render the children if user is authenticated and is an admin
   }
 
-  return <Navigate state={location.pathname} to="/login"></Navigate>;
+  return <Navigate state={{ from: location.pathname }} to="/login" />;
 };
 
 export default AdminRoute;
