@@ -1,18 +1,14 @@
 import "./Navbar.css";
 import "animate.css";
-import { useContext,  useEffect,  useState } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../ContextProvider/ContextProvider";
 import { Link, NavLink } from "react-router-dom";
 import { FaCartArrowDown } from "react-icons/fa";
-import axios from "axios";
-import { useQuery } from "@tanstack/react-query";
 import useAdmin from "../../Hooks/useAdmin";
-
 
 const Navbar = () => {
   const { Logout, user } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
-  const [userRole, setUserRole] = useState(false);
   const [isAdmin] = useAdmin();
   console.log(isAdmin);
 
@@ -333,104 +329,103 @@ const Navbar = () => {
           <div className="navbar-center">
             <div className=" space-x-2  hidden lg:flex  ">
               {isAdmin ? (
-                
                 <>
-                <NavLink
-                  className={
-                    "p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150"
-                  }
-                  to="/"
-                >
-                  Home
-                </NavLink>
+                  <NavLink
+                    className={
+                      "p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150"
+                    }
+                    to="/"
+                  >
+                    Home
+                  </NavLink>
 
-                <NavLink
-                  className={
-                    "p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150"
-                  }
-                  to="/Users"
-                >
-                  All User / Admin
-                </NavLink>
-                <NavLink
-                  className={
-                    "p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150"
-                  }
-                  to="/addFood"
-                >
-                  Add New
-                </NavLink>
-                <NavLink
-                  className={
-                    "p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150"
-                  }
-                  to="/Admin/allFood"
-                >
-                  Manage All Food
-                </NavLink>
-                <NavLink
-                  className={
-                    "p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150"
-                  }
-                  to="/ManageMyFoods"
-                >
-                  My Added Food
-                </NavLink>
-                <NavLink
-                  className={
-                    "p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150"
-                  }
-                  to="/AllFoodRequest"
-                >
-                  All Order
-                </NavLink>
-              </>
+                  <NavLink
+                    className={
+                      "p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150"
+                    }
+                    to="/Users"
+                  >
+                    All User / Admin
+                  </NavLink>
+                  <NavLink
+                    className={
+                      "p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150"
+                    }
+                    to="/addFood"
+                  >
+                    Add New
+                  </NavLink>
+                  <NavLink
+                    className={
+                      "p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150"
+                    }
+                    to="/Admin/allFood"
+                  >
+                    Manage All Food
+                  </NavLink>
+                  <NavLink
+                    className={
+                      "p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150"
+                    }
+                    to="/ManageMyFoods"
+                  >
+                    My Added Food
+                  </NavLink>
+                  <NavLink
+                    className={
+                      "p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150"
+                    }
+                    to="/AllFoodRequest"
+                  >
+                    All Order
+                  </NavLink>
+                </>
               ) : (
                 <>
-                {" "}
-                <NavLink
-                  to="/"
-                  className="  p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150"
-                >
-                  Home
-                </NavLink>
-                <NavLink
-                  to="/availFood"
-                  className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 "
-                >
-                  Our Menu
-                </NavLink>
-                <NavLink
-                  to="/MyFoodRequest"
-                  className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 "
-                >
-                  My Order
-                </NavLink>
-                <NavLink
-                  to="/blogs"
-                  className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150"
-                >
-                  Blog
-                </NavLink>
-                <NavLink
-                  to="/reviews"
-                  className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 "
-                >
-                  Reviews
-                </NavLink>
-                <NavLink
-                  to="/aboutUs"
-                  className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 "
-                >
-                  About Us
-                </NavLink>
-                <NavLink
-                  to="/contract"
-                  className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 "
-                >
-                  Contract
-                </NavLink>{" "}
-              </>
+                  {" "}
+                  <NavLink
+                    to="/"
+                    className="  p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150"
+                  >
+                    Home
+                  </NavLink>
+                  <NavLink
+                    to="/availFood"
+                    className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 "
+                  >
+                    Our Menu
+                  </NavLink>
+                  <NavLink
+                    to="/MyFoodRequest"
+                    className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 "
+                  >
+                    My Order
+                  </NavLink>
+                  <NavLink
+                    to="/blogs"
+                    className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150"
+                  >
+                    Blog
+                  </NavLink>
+                  <NavLink
+                    to="/reviews"
+                    className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 "
+                  >
+                    Reviews
+                  </NavLink>
+                  <NavLink
+                    to="/aboutUs"
+                    className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 "
+                  >
+                    About Us
+                  </NavLink>
+                  <NavLink
+                    to="/contract"
+                    className=" p-2 px-2 font-medium  hover:scale-105 hover:transition-transform delay-150 "
+                  >
+                    Contract
+                  </NavLink>{" "}
+                </>
               )}
             </div>
           </div>

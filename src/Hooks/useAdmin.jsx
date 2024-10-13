@@ -1,9 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "./useAuth";
 import axios from "axios";
-
+import useAxiosSecure from './useAxiosSecure'
 const useAdmin = () => {
     const { user, loading } = useAuth();
+    const axiosSecure = useAxiosSecure()
 
     // Use the query with error handling and email validation
     const { data: isAdmin, isLoading: isAdminLoading, error } = useQuery({
@@ -16,7 +17,7 @@ const useAdmin = () => {
             }
             try {
                 console.log('Checking if user is admin', user);
-                const res = await axios.get(`http://localhost:5000/users/admins/${user?.email}`);
+                const res = await axiosSecure.get(`/users/admins/${user?.email}`);
                 console.log('IsAdmin:', res?.data);
     
                 return res.data?.role || false;

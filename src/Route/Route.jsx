@@ -20,6 +20,7 @@ import BlogDetails from "../pages/Blogs/BlogDetails";
 import Users from "../AdminAccesable/Users/Users";
 import AllFood from "../AdminAccesable/AllFood/AllFood";
 import AllRequested from "../AdminAccesable/AllRequestedFood/AllRequested";
+import AdminRoute from "../AdminProtectRouting/AdminRoute";
 
 const router = createBrowserRouter([
   {
@@ -116,7 +117,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/Users",
-        element: <PrivateRoute><Users></Users></PrivateRoute>,
+        element: <AdminRoute><Users></Users></AdminRoute>,
       },
      
       {
