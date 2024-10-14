@@ -49,8 +49,8 @@ const Home = () => {
             Take your office out to lunch
           </h1>
         </div>
-        <MobileApp />
       </div>
+      <MobileApp />
     </div>
   );
 };

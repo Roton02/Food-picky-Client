@@ -4,7 +4,7 @@ import Social from "../assets/social.png"
 
 const MobileApp = () => {
   return (
-    <div className="bg-[#E21B70] mt-">
+    <div className="bg-[#E21B70] pb-6">
       <div className="flex justify-between max-w-screen-xl h-80 mx-auto ">
         <div className='w-1/2 py-10 text-white'>
             <h3 className='text-3xl'>Download the food and groceries you love</h3>
