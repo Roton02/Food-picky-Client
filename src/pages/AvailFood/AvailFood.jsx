@@ -211,7 +211,7 @@ const AvailFood = () => {
         <div
           className={
             stateManage
-              ? "grid grid-cols-1 px-3  max-w-screen-xl mx-auto md:grid-cols-2 lg:grid-cols-4 gap-1 mt-2 flex-1"
+              ? "grid grid-cols-1 px-3  max-w-screen-xl mx-auto md:grid-cols-2 lg:grid-cols-4 gap-1 mt- flex-1"
               : " grid grid-cols-1 px-3  flex-1 max-w-screen-xl mx-auto md:grid-cols-2  lg:grid-cols-3 lg:px-10 gap-10 mt-2"
           }
         >

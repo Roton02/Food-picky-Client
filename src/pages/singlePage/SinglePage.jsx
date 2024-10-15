@@ -1,10 +1,13 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { toast } from "react-toastify";
 import useAuth from "../../Hooks/useAuth";
 import MobileApp from "../../Home/MobileApp";
+import Swal from "sweetalert2";
+import { FaLocationArrow } from "react-icons/fa";
+import { GiSelfLove } from "react-icons/gi";
 
 const SinglePage = () => {
   const { user } = useAuth();
@@ -13,6 +16,19 @@ const SinglePage = () => {
   const [comments, setComments] = useState([]);
   const [commentText, setCommentText] = useState("");
   const loadData = useLoaderData();
+  const [foods, setFoods] = useState([]);
+  useEffect(() => {
+    axios.get(`http://localhost:5000/featured/avilable`).then((res) => {
+      setFoods(res.data);
+      if (res.data.length < 1) {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Data is not found ",
+        });
+      }
+    });
+  }, []);
   const {
     _id,
     additional_notes,
@@ -66,17 +82,19 @@ const SinglePage = () => {
   };
 
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div className="bg-gray-50 min-h-screen ">
       <Helmet>
         <title>Food Picky || Food Details</title>
       </Helmet>
 
-      <div className="max-w-screen-xl mx-auto p-6">
+      <div className="max-w-screen-xl mx-auto p-6 mb-16">
         <div className="grid lg:grid-cols-8 gap-6">
           {/* Seller Information & Food Details */}
           <div className="lg:col-span-4 bg-white p-6 rounded-lg shadow-lg">
             <div className="mb-5">
-              <h1 className="text-3xl font-bold text-gray-800 text-center">Seller Information</h1>
+              <h1 className="text-3xl font-bold text-gray-800 text-center">
+                Seller Information
+              </h1>
               <div className="flex items-center mt-5">
                 <div className="avatar w-16 rounded-full">
                   <img src={donator?.image} alt="Seller" />
@@ -88,14 +106,18 @@ const SinglePage = () => {
               </div>
             </div>
 
-            <h2 className="text-4xl font-bold text-pink-600 mt-5">{food_name}</h2>
+            <h2 className="text-4xl font-bold text-pink-600 mt-5">
+              {food_name}
+            </h2>
             <p className="text-gray-700 mt-2">
               Expired: <span className="font-semibold">{expired_datetime}</span>
             </p>
 
             {/* Additional Notes */}
             <p className="mt-4 text-gray-700">
-              {showMore ? additional_notes : `${additional_notes.slice(0, 150)}...`}{" "}
+              {showMore
+                ? additional_notes
+                : `${additional_notes.slice(0, 350)}...`}{" "}
               <span
                 onClick={handleSeeMoreToggle}
                 className="text-pink-500 cursor-pointer hover:underline"
@@ -113,7 +135,6 @@ const SinglePage = () => {
                     name="quantity"
                     type="number"
                     required
-                    
                     placeholder="Write Quantity"
                     className="input input-bordered w-full mt-2"
                   />
@@ -132,7 +153,9 @@ const SinglePage = () => {
                 </div>
 
                 <div>
-                  <label className="block text-gray-700">Additional Notes</label>
+                  <label className="block text-gray-700">
+                    Additional Notes
+                  </label>
                   <textarea
                     name="notes"
                     rows={4}
@@ -155,21 +178,81 @@ const SinglePage = () => {
           {/* Food Image */}
           <div className="lg:col-span-4">
             <img
-              className="w-full h-auto rounded-lg shadow-lg object-cover"
+              className="w-full h-auto mt-5 shadow-lg object-cover"
               src={food_image}
               alt={food_name}
             />
+            <div>
+              <div
+                className={
+                  "grid grid-cols-1 px-3  max-w-screen-xl mx-auto md:grid-cols-2 gap-1 md:gap-10 mt-2 flex-1"
+                }
+              >
+                {foods.slice(0,2).map((p) => (
+                  <div key={p._id} className="   shadow-xl  h-80">
+                    <div className="relative p-2">
+                      <figure className="flex justify-center items-center">
+                        <img
+                          className="w-64 h-52  hover:scale-105 transition hover:delay-75  object-cover"
+                          src={p.food_image}
+                        />
+                      </figure>
+                      <button className="absolute right-4 top-4 flex justify-center items-center bg-white p-1 hover:bg-slate-700 transition rounded-md">
+                        {" "}
+                        <GiSelfLove className="text-[#f81276] text-2xl" />{" "}
+                      </button>
+                      <p className="card-lavel bg-[#f81276] flex items-center gap-2 bg-red absolute py-3 px-7 -bottom-0 left-14 text-white">
+                        <FaLocationArrow size={20} />
+                        <span>
+                          {" "}
+                          <p>{p.pickup_location}</p>
+                        </span>
+                      </p>
+                    </div>
+
+                    <div className="md:p-4 px-2 md:px-14 lg:px-3">
+                      <div className="flex justify-between items-center gap-2">
+                        <h2 className="font-semibold text-xl md:text-2xl text-nowrap ">
+                          {p.food_name}
+                        </h2>
+                        <p className="font-semibold text-red  ">
+                          1000 {p.food_price} TK
+                        </p>
+                      </div>
+
+                      <div className="flex  justify-between">
+                        <p className="mt-1">{p.expired_datetime}</p>
+                        <div className="  ">
+                          <Link to={`/singlePage/${p._id}`}>
+                            <button className="rounded-md  btn btn-sm border-t-0 border-x-0  overflow-hidden relative group cursor-pointer border-2  font-medium border-[#f81276] text-[#f81276]hover:text-white">
+                              <span className="absolute w-64 h-0 transition-all duration-300 origin-center rotate-45 -translate-x-20 bg-[#f81276] top-1/2 group-hover:h-64 group-hover:-translate-y-32 ease"></span>
+                              <span className="relative my-auto  text-[#f81276] transition duration-300 group-hover:text-white ease">
+                                Details
+                              </span>
+                            </button>
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 
         {/* Comments Section */}
         <div className="mt-10 bg-white p-6 rounded-lg shadow-lg">
           <h2 className="text-2xl font-bold text-gray-800 mb-4">Comments</h2>
-          
+
           {/* Comment Form */}
           <form onSubmit={handleCommentSubmit} className="mb-6">
             <div className="flex items-center gap-4">
-              <img src={user?.photoURL} alt="User" className="w-12 h-12 rounded-full" />
+              <img
+                src={user?.photoURL}
+                alt="User"
+                className="w-12 h-12 rounded-full"
+              />
               <input
                 type="text"
                 className="input input-bordered flex-grow"
@@ -205,7 +288,9 @@ const SinglePage = () => {
               ))}
             </div>
           ) : (
-            <p className="text-gray-600">No comments yet. Be the first to comment!</p>
+            <p className="text-gray-600">
+              No comments yet. Be the first to comment!
+            </p>
           )}
         </div>
       </div>
