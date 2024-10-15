@@ -182,7 +182,7 @@ const SinglePage = () => {
                 type="submit"
                 className="btn bg-pink-600 hover:bg-pink-700 text-white"
               >
-                Post
+                Do Post
               </button>
             </div>
           </form>
