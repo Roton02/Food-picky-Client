@@ -27,28 +27,11 @@ const AvailFood = () => {
         }
       });
   }, [sorts, search]);
-  //
-  //
-  // const filterByStatus = [...foods];
-  // setFoods([...filterByStatus]);
-  // console.log(foods);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
     setSearch(form.serching.value);
-    // const filterByName = allFoods.filter( (f) => f.food_name === form.serching.value);
-    // console.log(filterByName);
-    // if (filterByName.length > 0) { setFoods([...filterByName]);
-    // } else {
-    //   // form.serching.value =' '
-    //   Swal.fire({
-    //     icon: "error",
-    //     title: "Oops...",
-    //     text: "Data is not found ",
-
-    //   });
-    //   setFoods([])
-    // }
   };
 
   // console.log(search);
