@@ -4,8 +4,9 @@ import "./Featured.css";
 const MenuFeatured = () => {
   return (
     <div className="featured-item bg-fixed text-white my-10">
-      <div className="md:flex justify-center items-center bg-slate-500 bg-opacity-80 py-20 px-36">
-        <div className="w-1/2">
+     <div className=" ">
+     <div className="md:flex  justify-center items-center bg-slate-500 bg-opacity-80 py-20 px-36">
+        <div className="w-1/2 opacity-100">
           <img className="w-full mr-14 px-10" src={featuredImg} alt="" />
         </div>
         <div className="w-1/2">
@@ -22,6 +23,7 @@ const MenuFeatured = () => {
           </button>
         </div>
       </div>
+     </div>
     </div>
   );
 };
