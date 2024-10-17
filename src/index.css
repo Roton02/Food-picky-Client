@@ -4,6 +4,9 @@
 @tailwind components;
 @tailwind utilities;
 
+*{
+  border: 1px solid black;
+}
 
 .logo,h1, h2, h3, h4 {
     font-family: "Rancho", cursive;

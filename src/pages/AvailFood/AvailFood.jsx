@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { FaLocationArrow, FaSearch } from "react-icons/fa";
 import { GiSelfLove } from "react-icons/gi";
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const AvailFood = () => {
@@ -11,6 +11,8 @@ const AvailFood = () => {
   const [search, setSearch] = useState("");
   const [stateManage, setStateManage] = useState(true);
   const [foods, setFoods] = useState([]);
+  const {count} = useLoaderData()
+  console.log(count);
   useEffect(() => {
     axios
       .get(
@@ -48,14 +50,14 @@ const AvailFood = () => {
   const handleStateManage = () => {
     setStateManage(!stateManage);
   };
-  console.log(stateManage);
-  const handleBrandChange = (brand) => {
-    if (brands.includes(brand)) {
-      setBrands(brands.filter((b) => b !== brand));
-    } else {
-      setBrands([...brands, brand]);
-    }
-  };
+  // console.log(stateManage);
+  // const handleBrandChange = (brand) => {
+  //   if (brands.includes(brand)) {
+  //     setBrands(brands.filter((b) => b !== brand));
+  //   } else {
+  //     setBrands([...brands, brand]);
+  //   }
+  // };
   return (
     <div>
       <Helmet>
