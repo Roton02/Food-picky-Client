@@ -52,7 +52,7 @@ const router = createBrowserRouter([
       {
         path: "/availFood",
         element: <AvailFood></AvailFood>,
-        loader: ()=> fetch('http://localhost:5000/FoodCount')
+        loader: ()=> fetch('https://food-pocky01.vercel.app/FoodCount')
       },
       {
         path: "/ManageMyFoods",
@@ -106,7 +106,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/featured/${params.id}`),
+          fetch(`https://food-pocky01.vercel.app/featured/${params.id}`),
       },
       {
         path: "/profile",

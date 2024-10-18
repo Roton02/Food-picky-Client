@@ -1,10 +1,6 @@
-import { Link } from "react-router-dom";
-import FeaturedFoods from "./FeaturedFoods";
 import Slide from "./Slider";
 import { Helmet } from "react-helmet-async";
-// import Maps from "./Maps";
 import Featured from "./Featured";
-import ClientReview from "./ClientReview";
 import PrepareFood from "./PrepareFood";
 import OfficeLonch from "./OfficeLonch";
 import Country from "./Country";
@@ -13,7 +9,7 @@ import MenuFeatured from "./Featured/MenuFeatured";
 
 const Home = () => {
   return (
-    <div>
+    <div className="overflow-hidden">
       <Helmet>
         <title>Food Picky </title>
         {/* <link rel="canonical" href="https://www.tacobell.com/" /> */}

@@ -16,7 +16,7 @@ const AvailFood = () => {
   useEffect(() => {
     axios
       .get(
-        `http://localhost:5000/featured/avilable?sorts=${sorts}&search=${search}`
+        `https://food-pocky01.vercel.app/featured/avilable?sorts=${sorts}&search=${search}`
       )
       .then((res) => {
         setFoods(res.data);

@@ -13,7 +13,7 @@ const ManageMyFoods = () => {
   const [upId , setupId] = useState(null)
   // useEffect(() => {
   //   // axios
-  //   //   .get(`http://localhost:5000/featured/?email=${user?.email}`)
+  //   //   .get(`https://food-pocky01.vercel.app/featured/?email=${user?.email}`)
   //   //   .then((res) => {
   //   //     setManageF(res.data);
   //   //   });
@@ -24,7 +24,7 @@ const ManageMyFoods = () => {
   })
   console.log(manageF)
   const getData = async () => {
-      const { data } = await axios(`http://localhost:5000/featured-info/${user?.email}`)
+      const { data } = await axios(`https://food-pocky01.vercel.app/featured-info/${user?.email}`)
       return data;
   }
   console.log(manageF);
@@ -54,7 +54,7 @@ const ManageMyFoods = () => {
             text: "Your file has been deleted.",
             icon: "success",
           });
-          axios.delete(`http://localhost:5000/delete/${id}`).then((res) => {
+          axios.delete(`https://food-pocky01.vercel.app/delete/${id}`).then((res) => {
             console.log(res.data);
             if (res.data.deletedCount > 0) {
               // const remaining = manageF.filter((manage) => manage._id !== id);
@@ -94,7 +94,7 @@ const ManageMyFoods = () => {
     };
     console.log(foodDetails);
     
-    axios.patch(`http://localhost:5000/update/${upId}`, foodDetails)
+    axios.patch(`https://food-pocky01.vercel.app/update/${upId}`, foodDetails)
     .then(res=>{
         console.log(res.data);
         if (res.data.modifiedCount > 0) {

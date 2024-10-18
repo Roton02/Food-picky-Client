@@ -4,9 +4,9 @@
 @tailwind components;
 @tailwind utilities;
 
-*{
+/* *{
   border: 1px solid black;
-}
+} */
 
 .logo,h1, h2, h3, h4 {
     font-family: "Rancho", cursive;
@@ -14,6 +14,10 @@
 }
 p{
     font-family: 'Times New Roman', Times, serif;    letter-spacing: 1px;
+}
+
+.bg-update-profile{
+  background-image: linear-gradient(to right top, #e21b70, #eb0683, #f30099, #f700b0, #f700ca, #cf53e9, #a073fb, #6d88ff, #24a0f5, #41afdb, #7bb6c2, #adb9b8);
 }
 
 .minh{

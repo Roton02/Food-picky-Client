@@ -20,9 +20,9 @@ const Banner = () => {
             </button>
           </div>
         </div>
-        <div className="w-1/2 ">
+        <div className="w-1/2 ml-32">
           <img
-            className="w-full h-[450px] ml-32 "
+            className="w-full h-[450px]  "
             src="https://images.deliveryhero.io/image/foodpanda/homepage/refresh-hero-home-bd.png?width=2560"
             alt=""
           />
