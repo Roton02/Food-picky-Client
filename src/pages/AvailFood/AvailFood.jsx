@@ -11,7 +11,7 @@ const AvailFood = () => {
   const [search, setSearch] = useState("");
   const [stateManage, setStateManage] = useState(true);
   const [foods, setFoods] = useState([]);
-  const {count} = useLoaderData()
+  const { count } = useLoaderData();
   console.log(count);
   useEffect(() => {
     axios
@@ -193,61 +193,69 @@ const AvailFood = () => {
           </ul>
         </div>
 
-        <div
-          className={
-            stateManage
-              ? "grid grid-cols-1 px-3  max-w-screen-xl mx-auto md:grid-cols-2 lg:grid-cols-4 gap-1 mt- flex-1"
-              : " grid grid-cols-1 px-3  flex-1 max-w-screen-xl mx-auto md:grid-cols-2  lg:grid-cols-3 lg:px-10 gap-10 mt-2"
-          }
-        >
-          {foods.map((p) => (
-            <div key={p._id} className="   shadow-xl  h-80">
-              <div className="relative p-2">
-                <figure className="flex justify-center items-center">
-                  <img
-                    className="w-64 h-52  hover:scale-105 transition hover:delay-75  object-cover"
-                    src={p.food_image}
-                  />
-                </figure>
-                <button className="absolute right-4 top-4 flex justify-center items-center bg-white p-1 hover:bg-slate-700 transition rounded-md">
-                  {" "}
-                  <GiSelfLove className="text-[#f81276] text-2xl" />{" "}
-                </button>
-                <p className="card-lavel bg-[#f81276] flex items-center gap-2 bg-red absolute py-3 px-7 -bottom-0 left-14 text-white">
-                  <FaLocationArrow size={20} />
-                  <span>
+        <div className="max-w-screen-xl mx-auto">
+          <div
+            className={
+              stateManage
+                ? "grid grid-cols-1 px-3   md:grid-cols-2 lg:grid-cols-3 gap-1 mt- flex-1"
+                : " grid grid-cols-1 px-3  flex-1  md:grid-cols-2  lg:grid-cols-4 lg:px-10 gap-10 mt-2"
+            }
+          >
+            {foods.map((p) => (
+              <div key={p._id} className="   shadow-xl  h-80">
+                <div className="relative p-2">
+                  <figure className="flex justify-center items-center">
+                    <img
+                      className="w-64 h-52  hover:scale-105 transition hover:delay-75  object-cover"
+                      src={p.food_image}
+                    />
+                  </figure>
+                  <button className="absolute right-4 top-4 flex justify-center items-center bg-white p-1 hover:bg-slate-700 transition rounded-md">
                     {" "}
-                    <p>{p.pickup_location}</p>
-                  </span>
-                </p>
-              </div>
-
-              <div className="md:p-4 px-2 md:px-14 lg:px-3">
-                <div className="flex justify-between items-center gap-2">
-                  <h2 className="font-semibold text-xl md:text-2xl text-nowrap ">
-                    {p.food_name}
-                  </h2>
-                  <p className="font-semibold text-red  ">
-                    1000 {p.food_price} TK
+                    <GiSelfLove className="text-[#f81276] text-2xl" />{" "}
+                  </button>
+                  <p className="card-lavel bg-[#f81276] flex items-center gap-2 bg-red absolute py-3 px-7 -bottom-0 left-14 text-white">
+                    <FaLocationArrow size={20} />
+                    <span>
+                      {" "}
+                      <p>{p.pickup_location}</p>
+                    </span>
                   </p>
                 </div>
 
-                <div className="flex  justify-between">
-                  <p className="mt-1">{p.expired_datetime}</p>
-                  <div className="  ">
-                    <Link to={`/singlePage/${p._id}`}>
-                      <button className="rounded-md  btn btn-sm border-t-0 border-x-0  overflow-hidden relative group cursor-pointer border-2  font-medium border-[#f81276] text-[#f81276]hover:text-white">
-                        <span className="absolute w-64 h-0 transition-all duration-300 origin-center rotate-45 -translate-x-20 bg-[#f81276] top-1/2 group-hover:h-64 group-hover:-translate-y-32 ease"></span>
-                        <span className="relative my-auto  text-[#f81276] transition duration-300 group-hover:text-white ease">
-                          Details
-                        </span>
-                      </button>
-                    </Link>
+                <div className="md:p-4 px-2 md:px-14 lg:px-3">
+                  <div className="flex justify-between items-center gap-2">
+                    <h2 className="font-semibold text-xl md:text-2xl text-nowrap ">
+                      {p.food_name}
+                    </h2>
+                    <p className="font-semibold text-red  ">
+                      1000 {p.food_price} TK
+                    </p>
+                  </div>
+
+                  <div className="flex  justify-between">
+                    <p className="mt-1">{p.expired_datetime}</p>
+                    <div className="  ">
+                      <Link to={`/singlePage/${p._id}`}>
+                        <button className="rounded-md  btn btn-sm border-t-0 border-x-0  overflow-hidden relative group cursor-pointer border-2  font-medium border-[#f81276] text-[#f81276]hover:text-white">
+                          <span className="absolute w-64 h-0 transition-all duration-300 origin-center rotate-45 -translate-x-20 bg-[#f81276] top-1/2 group-hover:h-64 group-hover:-translate-y-32 ease"></span>
+                          <span className="relative my-auto  text-[#f81276] transition duration-300 group-hover:text-white ease">
+                            Details
+                          </span>
+                        </button>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+ 
+          <div className="join mt-8 mb-4 px-10 flex justify-center items-center">
+            <button className="join-item btn btn-sm rounded-node rounded-l-xl "> Prev </button>
+            <button className="join-item  flex-1 ">Page No - S22</button>
+            <button className="join-item btn btn-sm rounded-none rounded-r-xl "> Next</button>
+          </div>
         </div>
       </div>
     </div>
