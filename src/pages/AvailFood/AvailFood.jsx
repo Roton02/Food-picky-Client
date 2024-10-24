@@ -12,6 +12,10 @@ const AvailFood = () => {
   const [stateManage, setStateManage] = useState(true);
   const [foods, setFoods] = useState([]);
   const { count } = useLoaderData();
+  const productPerpage = 10 ;  
+  const numberOfPage = Math.ceil(count / productPerpage) ;
+  const pages =[...Array(numberOfPage)]
+
   console.log(count);
   useEffect(() => {
     axios
@@ -50,7 +54,7 @@ const AvailFood = () => {
   const handleStateManage = () => {
     setStateManage(!stateManage);
   };
-  // console.log(stateManage);
+  console.log(stateManage);
   // const handleBrandChange = (brand) => {
   //   if (brands.includes(brand)) {
   //     setBrands(brands.filter((b) => b !== brand));
@@ -87,7 +91,7 @@ const AvailFood = () => {
         </div>
       </div>
       <div className="flex max-w-screen-xl mx-auto mb-5">
-        <div className="max-w-screen-xl mx-auto  w-1/4   bg-gray-200 mt-2  ">
+        <div className="max-w-screen-xl mx-auto  w-1/4   bg-gray-200 mt-4  ">
           <h1 className="bg-slate-400 lg:text-2xl  text-center py-1">
             Query by Food Name
           </h1>
@@ -193,12 +197,12 @@ const AvailFood = () => {
           </ul>
         </div>
 
-        <div className="max-w-screen-xl mx-auto">
+        <div className="max-w-screen-xl mx-auto flex-1 ">
           <div
             className={
               stateManage
-                ? "grid grid-cols-1 px-3   md:grid-cols-2 lg:grid-cols-3 gap-1 mt- flex-1"
-                : " grid grid-cols-1 px-3  flex-1  md:grid-cols-2  lg:grid-cols-4 lg:px-10 gap-10 mt-2"
+                ? "grid grid-cols-1 px-3 md:grid-cols-2 lg:grid-cols-3   lg:px-10 gap-10 mt-2"
+                : " grid grid-cols-1 px-3 md:grid-cols-2  lg:grid-cols-4  gap-1 mt-2"
             }
           >
             {foods.map((p) => (
@@ -251,11 +255,11 @@ const AvailFood = () => {
             ))}
           </div>
  
-          <div className="join mt-8 mb-4 px-10 flex justify-center items-center">
+          <div className={`${foods.length == '9'? 'flex' : 'hidden'} join mt-8 mb-4 px-10 flex justify-center items-center`}>
             <button className="join-item btn btn-sm rounded-node rounded-l-xl "> Prev </button>
             <button className="join-item  flex-1 ">Page No - S22</button>
             <button className="join-item btn btn-sm rounded-none rounded-r-xl "> Next</button>
-          </div>
+          </div> 
         </div>
       </div>
     </div>
