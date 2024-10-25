@@ -54,7 +54,7 @@ const AvailFood = () => {
   const handleStateManage = () => {
     setStateManage(!stateManage);
   };
-  console.log(stateManage);
+  // console.log(stateManage);
   // const handleBrandChange = (brand) => {
   //   if (brands.includes(brand)) {
   //     setBrands(brands.filter((b) => b !== brand));
