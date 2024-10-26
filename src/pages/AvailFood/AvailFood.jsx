@@ -15,7 +15,7 @@ const AvailFood = () => {
   const productPerpage = 10;
   const numberOfPage = Math.ceil(count / productPerpage);
   const pages = [...Array(numberOfPage)];
-  const [priceRange, setPriceRange] = useState('');
+  const [priceRange, setPriceRange] = useState("");
 
   console.log(priceRange);
   // console.log(count);
@@ -135,7 +135,7 @@ const AvailFood = () => {
               </h1>
               <ul className="mt-2">
                 <li
-                  onClick={() => setPriceRange('HtO')}
+                  onClick={() => setPriceRange("HtO")}
                   className={
                     "border-b-2 mb-1  hover:bg-black hover:cursor-pointer hover:scale-95  border-[#E21B70] font-bold  bg-[#E21B70] transition text-white w-full p-2 rounded-b-lg  "
                   }
@@ -143,7 +143,7 @@ const AvailFood = () => {
                   Price Low To High
                 </li>
                 <li
-                  onClick={() => setPriceRange('LtO')}
+                  onClick={() => setPriceRange("LtO")}
                   className={
                     "border-b-2 mb-3 border-[#E21B70] font-bold  bg-[#E21B70] transition text-white w-full p-2 rounded-b-lg  hover:bg-black hover:cursor-pointer hover:scale-95 "
                   }
@@ -236,9 +236,7 @@ const AvailFood = () => {
                     <h2 className="font-semibold text-xl md:text-2xl text-nowrap ">
                       {p.food_name}
                     </h2>
-                    <p className="font-semibold text-red  ">
-                       {p.price} TK
-                    </p>
+                    <p className="font-semibold text-red  ">{p.price} TK</p>
                   </div>
 
                   <div className="flex  justify-between">
