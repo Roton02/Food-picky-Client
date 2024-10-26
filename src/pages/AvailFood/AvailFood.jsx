@@ -237,7 +237,7 @@ const AvailFood = () => {
                       {p.food_name}
                     </h2>
                     <p className="font-semibold text-red  ">
-                      1000 {p.food_price} TK
+                       {p.price} TK
                     </p>
                   </div>
 
