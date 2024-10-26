@@ -11,11 +11,11 @@ const AvailFood = () => {
   const [search, setSearch] = useState("");
   const [stateManage, setStateManage] = useState(true);
   const [foods, setFoods] = useState([]);
-  const [priceRange, setPriceRange] = useState(false);
   const { count } = useLoaderData();
   const productPerpage = 10;
   const numberOfPage = Math.ceil(count / productPerpage);
   const pages = [...Array(numberOfPage)];
+  const [priceRange, setPriceRange] = useState('');
 
   console.log(priceRange);
   // console.log(count);
@@ -34,7 +34,7 @@ const AvailFood = () => {
           });
         }
       });
-  }, [sorts, search]);
+  }, [sorts, search, priceRange]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -135,7 +135,7 @@ const AvailFood = () => {
               </h1>
               <ul className="mt-2">
                 <li
-                  onClick={() => setPriceRange(false)}
+                  onClick={() => setPriceRange('HtO')}
                   className={
                     "border-b-2 mb-1  hover:bg-black hover:cursor-pointer hover:scale-95  border-[#E21B70] font-bold  bg-[#E21B70] transition text-white w-full p-2 rounded-b-lg  "
                   }
@@ -143,7 +143,7 @@ const AvailFood = () => {
                   Price Low To High
                 </li>
                 <li
-                  onClick={() => setPriceRange(true)}
+                  onClick={() => setPriceRange('LtO')}
                   className={
                     "border-b-2 mb-3 border-[#E21B70] font-bold  bg-[#E21B70] transition text-white w-full p-2 rounded-b-lg  hover:bg-black hover:cursor-pointer hover:scale-95 "
                   }
@@ -174,7 +174,7 @@ const AvailFood = () => {
                     <h1 className="label-text text-xl text-black">{brand}</h1>
                     <input
                       type="checkbox"
-                      onChange={() => handleBrandChange(brand)}
+                      // onChange={() => handleBrandChange(brand)}
                       className="checkbox checkbox-secondary"
                     />
                   </label>
