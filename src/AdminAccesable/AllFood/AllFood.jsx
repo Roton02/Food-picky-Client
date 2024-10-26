@@ -17,7 +17,7 @@ const AllFood = () => {
   const { data: pets = [], refetch } = useQuery({
     queryKey: ["pets"],
     queryFn: async () => {
-      const res = await axios.get("https://food-pocky01.vercel.app/Admin/AllFood");
+      const res = await axios.get("http://localhost:5000/Admin/AllFood");
       return res.data;
     },
   });
@@ -100,7 +100,7 @@ const AllFood = () => {
     console.log(foodDetails);
 
     axios
-      .patch(`https://food-pocky01.vercel.app/update/${upId}`, foodDetails)
+      .patch(`http://localhost:5000/update/${upId}`, foodDetails)
       .then((res) => {
         console.log(res.data);
         if (res.data.modifiedCount > 0) {
@@ -141,7 +141,7 @@ const AllFood = () => {
             text: "Your file has been deleted.",
             icon: "success",
           });
-          axios.delete(`https://food-pocky01.vercel.app/delete/${id}`).then((res) => {
+          axios.delete(`http://localhost:5000/delete/${id}`).then((res) => {
             console.log(res.data);
             if (res.data.deletedCount > 0) {
               // const remaining = manageF.filter((manage) => manage._id !== id);

@@ -11,16 +11,18 @@ const AvailFood = () => {
   const [search, setSearch] = useState("");
   const [stateManage, setStateManage] = useState(true);
   const [foods, setFoods] = useState([]);
+  const [priceRange, setPriceRange] = useState(false);
   const { count } = useLoaderData();
-  const productPerpage = 10 ;  
-  const numberOfPage = Math.ceil(count / productPerpage) ;
-  const pages =[...Array(numberOfPage)]
+  const productPerpage = 10;
+  const numberOfPage = Math.ceil(count / productPerpage);
+  const pages = [...Array(numberOfPage)];
 
-  console.log(count);
+  console.log(priceRange);
+  // console.log(count);
   useEffect(() => {
     axios
       .get(
-        `https://food-pocky01.vercel.app/featured/avilable?sorts=${sorts}&search=${search}`
+        `http://localhost:5000/featured/avilable?sorts=${sorts}&search=${search}&priceRange=${priceRange}`
       )
       .then((res) => {
         setFoods(res.data);
@@ -133,6 +135,7 @@ const AvailFood = () => {
               </h1>
               <ul className="mt-2">
                 <li
+                  onClick={() => setPriceRange(false)}
                   className={
                     "border-b-2 mb-1  hover:bg-black hover:cursor-pointer hover:scale-95  border-[#E21B70] font-bold  bg-[#E21B70] transition text-white w-full p-2 rounded-b-lg  "
                   }
@@ -140,6 +143,7 @@ const AvailFood = () => {
                   Price Low To High
                 </li>
                 <li
+                  onClick={() => setPriceRange(true)}
                   className={
                     "border-b-2 mb-3 border-[#E21B70] font-bold  bg-[#E21B70] transition text-white w-full p-2 rounded-b-lg  hover:bg-black hover:cursor-pointer hover:scale-95 "
                   }
@@ -254,12 +258,22 @@ const AvailFood = () => {
               </div>
             ))}
           </div>
- 
-          <div className={`${foods.length == '9'? 'flex' : 'hidden'} join mt-8 mb-4 px-10 flex justify-center items-center`}>
-            <button className="join-item btn btn-sm rounded-node rounded-l-xl "> Prev </button>
+
+          <div
+            className={`${
+              foods.length == "9" ? "flex" : "hidden"
+            } join mt-8 mb-4 px-10 flex justify-center items-center`}
+          >
+            <button className="join-item btn btn-sm rounded-node rounded-l-xl ">
+              {" "}
+              Prev{" "}
+            </button>
             <button className="join-item  flex-1 ">Page No - S22</button>
-            <button className="join-item btn btn-sm rounded-none rounded-r-xl "> Next</button>
-          </div> 
+            <button className="join-item btn btn-sm rounded-none rounded-r-xl ">
+              {" "}
+              Next
+            </button>
+          </div>
         </div>
       </div>
     </div>

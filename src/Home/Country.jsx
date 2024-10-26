@@ -6,7 +6,7 @@ export default function Country() {
   const [country, setCountry] = useState([]);
 
   useEffect(() => {
-    axios("https://food-pocky01.vercel.app/country")
+    axios("http://localhost:5000/country")
       .then((res) => {
         console.log("Data fetched:", res.data); // Check the data structure
         setCountry(res.data); 

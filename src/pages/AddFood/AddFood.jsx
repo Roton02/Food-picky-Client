@@ -31,7 +31,7 @@ const AddFood = () => {
     };
     console.log(foodDetails);
 
-    axios.post("https://food-pocky01.vercel.app/addFood", foodDetails).then((res) => {
+    axios.post("http://localhost:5000/addFood", foodDetails).then((res) => {
       if (res.data.acknowledged) {
         Swal.fire({
           title: "Added!",

@@ -16,7 +16,7 @@ const Reviews = () => {
     queryKey: ["rating"],
     queryFn: () =>
       axios
-        .get("https://food-pocky01.vercel.app/reviewsCollection")
+        .get("http://localhost:5000/reviewsCollection")
         .then((res) => res.data),
   });
 
@@ -38,7 +38,7 @@ const Reviews = () => {
       image,
       dateString,
     };
-    axios.post("https://food-pocky01.vercel.app/reviews", addRatings).then((res) => {
+    axios.post("http://localhost:5000/reviews", addRatings).then((res) => {
       if (res.data.insertedId) {
         Swal.fire({
           title: "Add your Review!",

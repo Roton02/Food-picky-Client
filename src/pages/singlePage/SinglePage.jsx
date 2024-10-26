@@ -18,7 +18,7 @@ const SinglePage = () => {
   const loadData = useLoaderData();
   const [foods, setFoods] = useState([]);
   useEffect(() => {
-    axios.get(`https://food-pocky01.vercel.app/featured/avilable`).then((res) => {
+    axios.get(`http://localhost:5000/featured/avilable`).then((res) => {
       setFoods(res.data);
       if (res.data.length < 1) {
         Swal.fire({
@@ -51,7 +51,7 @@ const SinglePage = () => {
       requsterEmail: user.email,
     };
 
-    axios.post("https://food-pocky01.vercel.app/requested", foodDetails).then((res) => {
+    axios.post("http://localhost:5000/requested", foodDetails).then((res) => {
       if (res.data.acknowledged) {
         toast.success("Added to Requested List!");
       } else {
