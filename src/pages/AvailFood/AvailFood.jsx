@@ -1,12 +1,20 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { FaLocationArrow, FaSearch } from "react-icons/fa";
+import {
+  FaFacebook,
+  FaLinkedin,
+  FaLocationArrow,
+  FaSearch,
+  FaTwitter,
+} from "react-icons/fa";
 import { GiSelfLove } from "react-icons/gi";
 import { Link, useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
+import useAuth from "../../Hooks/useAuth";
 
 const AvailFood = () => {
+  const { user } = useAuth();
   const [sorts, setSorts] = useState("");
   const [search, setSearch] = useState("");
   const [stateManage, setStateManage] = useState(true);
@@ -208,6 +216,113 @@ const AvailFood = () => {
                 <span className="ml-5  font-extrabold"> Previous Post</span>
               </li>
             </ul>
+          </div>
+
+          <div className="mt-12 bg-[url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmG0iaS1Bw8sSn36ZLqDC1VS9CtvZnK44xzlnZVyuy-R2CGgQQm90lIlLmc54GdC3Hows&usqp=CAU')] text-white ">
+            <div className="bg-black opacity-75 p-5">
+              <h1 className="text-4xl font-bold mb-5">
+                Join Our Dynaminc Team!
+              </h1>
+              <p className="mb-5">
+                Explore the profound connection between food and social
+                gatherings, from evolutionary roots to cultural identity.
+                Discover how shared meals.
+              </p>
+              <div className="z-50">
+                <div>
+                  <a
+                    onClick={() =>
+                      document.getElementById("my_modal_3").showModal()
+                    }
+                    href="#_"
+                    className="relative border-2   inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-pink-500 transition duration-300 ease-out  border-pink-500 shadow-md group"
+                  >
+                    <span className="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-pink-500 group-hover:translate-x-0 ease">
+                      <svg
+                        className="w-6 h-6"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                      </svg>
+                    </span>
+                    <span className="absolute flex items-center justify-center w-full h-full text-pink-600 transition-all duration-300 transform group-hover:translate-x-full ease">
+                      Request to Join
+                    </span>
+                    <span className="relative invisible">Request to Join</span>
+                  </a>
+                </div>
+                {/* You can open the modal using document.getElementById('ID').showModal() method */}
+
+                <dialog id="my_modal_3" className="modal text-black">
+                  <div className="modal-box">
+                    <form method="dialog">
+                      {/* if there is a button in form, it will close the modal */}
+                      {/* <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+                        X
+                      </button> */}
+                      <p className="font-bold text-center px-20">If you want to join our dynamic team , then click on  <span className="text-green-600 font-extrabold underline">confirm</span> </p>
+                    <div className="mt-4 space-x-10 text-center">
+                    <button className="btn btn-sm btn-success ">
+                        Confirm
+                      </button>
+                      <button className="btn btn-sm  btn-error ">
+                        Decline
+                      </button>
+                    </div>
+                    </form>
+                    
+                  </div>
+                </dialog>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-12">
+            <h2 className="text-2xl mb-3 font-semibold"> Find On Us </h2>
+            <div>
+              <a href="http://facebook.com/roton.choudury" target="_blank">
+                <h1 className="w-full border-2 flex  p-4 rounded-t-lg ">
+                  <a
+                    className="bg-gray-200 p-2 mr-3 rounded-full"
+                    href=""
+                    target="_blank"
+                  >
+                    <FaFacebook></FaFacebook>
+                  </a>
+                  Facebook
+                </h1>
+              </a>
+              <a href="https://x.com/MdSanaulla75762" target="_blank">
+                <h1 className="w-full border-x-2 flex p-4  ">
+                  <a
+                    className="bg-gray-200 p-2 mr-3 rounded-full"
+                    href="https://x.com/MdSanaulla75762"
+                    target="_blank"
+                  >
+                    <FaTwitter></FaTwitter>
+                  </a>
+                  Tiwtter
+                </h1>
+              </a>
+              <a
+                href="https://www.linkedin.com/in/md-sana-ullah12/"
+                target="_blank"
+              >
+                <h1 className="w-full border-2  flex p-4 rounded-b-lg ">
+                  <a
+                    className="bg-gray-200 p-2 mr-3 rounded-full"
+                    href="https://www.linkedin.com/in/md-sana-ullah12/"
+                    target="_blank"
+                  >
+                    <FaLinkedin></FaLinkedin>
+                  </a>
+                  linked in
+                </h1>
+              </a>
+            </div>
           </div>
         </div>
 
