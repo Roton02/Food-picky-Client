@@ -13,7 +13,7 @@ const AddFood = () => {
     const food_name = form.name.value;
     const food_image = form.image.value;
     const expired_datetime = form.expired.value;
-    const quantity = form.quantity.value;
+    const pickup_location = form.pickup_location.value;
     const additional_notes = form.notes.value;
     const image = user.photoURL;
     const name = user.displayName;
@@ -24,7 +24,7 @@ const AddFood = () => {
       food_name,
       food_image,
       expired_datetime,
-      quantity,
+      pickup_location,
       additional_notes,
       donator: { image, name, email },
       status,
@@ -107,7 +107,7 @@ const AddFood = () => {
                     />
                   </div>
 
-                  {/* Quantity */}
+                  {/* pickup_location */}
                   <div>
                     <label
                       className="block text-sm font-medium text-gray-700"
@@ -116,7 +116,7 @@ const AddFood = () => {
                       Branch
                     </label>
                     <select
-                      name="quantity"
+                      name="pickup_location"
                       required
                       className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     >
