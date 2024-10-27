@@ -121,22 +121,16 @@ const AddFood = () => {
                       className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     >
                       <option value="">Select Branch</option>
-                      <option value="dhaka">Dhaka</option>
-                      <option value="chottogram">Chottogram</option>
-                      <option value="noakhali">Noakhali</option>
-                      <option value="dinajpur">Dinajpur</option>
-                      <option value="barisal">Barisal</option>
-                      <option value="gazipur">Gazipur</option>
-                      <option value="sylhet">Sylhet</option>
-                      <option value="narayanganj">Narayanganj</option>
-                      <option value="khulna">Khulna</option>
-                      <option value="feni">Feni</option>
-                      <option value="pabna">Pabna</option>
-                      <option value="cox_bazar">Cox{`'`}s Bazar</option>
-                      <option value="jessore">Jessore</option>
-                      <option value="tangail">Tangail</option>
-                      <option value="sirajganj">Sirajganj</option>
-                      <option value="rajshahi">Rajshahi</option>
+                      <option value="Dhaka">Dhaka</option>
+                      <option value="chottogram">chottogram</option>
+                      <option value="Noakhali">Noakhali</option>
+                      <option value="Sylhet">Sylhet</option>
+                      <option value="Rajshahi">Rajshahi</option>
+                      <option value="Khulna">Khulna</option>
+                      <option value="Barishal">Barishal</option>
+                      <option value="Rangpur">Rangpur</option>
+                      <option value="Cumilla">Cumilla</option>
+                      <option value="Jassore">Jassore</option>
                     </select>
                   </div>
 

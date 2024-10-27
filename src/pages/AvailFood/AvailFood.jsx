@@ -165,7 +165,7 @@ const AvailFood = () => {
               {[
                 "Dhaka",
                 "Noakhali",
-                "chattogram",
+                "chottogram",
                 "Sylhet",
                 "Rajshahi",
                 "Khulna",
