@@ -38,7 +38,6 @@ const SinglePage = () => {
     food_name,
     pickup_location,
     price,
-    comments:comment
   } = loadData;
   console.log(loadData);
 
