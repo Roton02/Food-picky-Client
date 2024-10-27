@@ -349,7 +349,7 @@ const SinglePage = () => {
                 onChange={(e) => setCommentText(e.target.value)}
                 required
               />
-              <button
+              <button 
                 type="submit"
                 className="btn bg-pink-600 hover:bg-pink-700 text-white"
               >
