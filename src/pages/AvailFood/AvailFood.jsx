@@ -11,18 +11,21 @@ const AvailFood = () => {
   const [search, setSearch] = useState("");
   const [stateManage, setStateManage] = useState(true);
   const [foods, setFoods] = useState([]);
+  const [brands, setBrands] = useState([]);
+  const [priceRange, setPriceRange] = useState("");
   const { count } = useLoaderData();
   const productPerpage = 10;
   const numberOfPage = Math.ceil(count / productPerpage);
   const pages = [...Array(numberOfPage)];
-  const [priceRange, setPriceRange] = useState("");
 
-  console.log(priceRange);
+  console.log(brands);
   // console.log(count);
   useEffect(() => {
     axios
       .get(
-        `http://localhost:5000/featured/avilable?sorts=${sorts}&search=${search}&priceRange=${priceRange}`
+        `http://localhost:5000/featured/avilable?sorts=${sorts}&search=${search}&priceRange=${priceRange}&brands=${brands.join(
+          ","
+        )}`
       )
       .then((res) => {
         setFoods(res.data);
@@ -34,7 +37,7 @@ const AvailFood = () => {
           });
         }
       });
-  }, [sorts, search, priceRange]);
+  }, [sorts, search, priceRange, brands]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -57,13 +60,15 @@ const AvailFood = () => {
     setStateManage(!stateManage);
   };
   // console.log(stateManage);
-  // const handleBrandChange = (brand) => {
-  //   if (brands.includes(brand)) {
-  //     setBrands(brands.filter((b) => b !== brand));
-  //   } else {
-  //     setBrands([...brands, brand]);
-  //   }
-  // };
+  const handleBrandChange = (brand) => {
+    console.log(brand);
+    if (brands.includes(brand)) {
+      setBrands(brands.filter((b) => b !== brand));
+    } else {
+      setBrands([...brands, brand]);
+    }
+  };
+
   return (
     <div>
       <Helmet>
@@ -174,7 +179,7 @@ const AvailFood = () => {
                     <h1 className="label-text text-xl text-black">{brand}</h1>
                     <input
                       type="checkbox"
-                      // onChange={() => handleBrandChange(brand)}
+                      onChange={() => handleBrandChange(brand)}
                       className="checkbox checkbox-secondary"
                     />
                   </label>
