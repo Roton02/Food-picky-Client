@@ -37,18 +37,29 @@ const SinglePage = () => {
     food_image,
     food_name,
     pickup_location,
-    quantity,
+    price,
+    // comments
   } = loadData;
+  console.log(loadData);
 
   const handleUpdate = (e) => {
     e.preventDefault();
     const form = e.target;
-    const additional_notes = form.notes.value;
+    const address_notes = form.notes.value;
+    const pickup_location = form.location.value;
+    const quantity = form.quantity.value;
+    // console.log(quantity);
     const foodDetails = {
-      _id,
-      additional_notes,
-      ...loadData,
+      food_name,
+      food_image,donator,
+      expired_datetime,
+      price,
+      status:'requested',
+      quantity,
+      address_notes,
+      pickup_location,
       requsterEmail: user.email,
+      comments
     };
 
     axios.post("http://localhost:5000/requested", foodDetails).then((res) => {
@@ -80,6 +91,14 @@ const SinglePage = () => {
     setCommentText("");
     toast.success("Comment added!");
   };
+  const [quantity, setQuantity] = useState(1);
+
+  const handleQuantityChange = (e) => {
+    const value = Math.max(1, e.target.value); // Ensures quantity is at least 1
+    setQuantity(value);
+  };
+
+  const total = quantity * price;
 
   return (
     <div className="bg-gray-50 min-h-screen ">
@@ -127,7 +146,7 @@ const SinglePage = () => {
             </p>
 
             {/* Order Form */}
-            <form onSubmit={handleUpdate} className="mt-6">
+            {/* <form onSubmit={handleUpdate} className="mt-6">
               <div className="grid grid-cols-1 gap-4">
                 <div>
                   <label className="block text-gray-700">Food Quantity</label>
@@ -158,6 +177,7 @@ const SinglePage = () => {
                   </label>
                   <textarea
                     name="notes"
+                    required
                     rows={4}
                     placeholder="Enter additional notes"
                     className="textarea textarea-bordered w-full mt-2"
@@ -172,7 +192,76 @@ const SinglePage = () => {
               >
                 Confirm Order
               </button>
-            </form>
+            </form> */}
+             <form onSubmit={handleUpdate} className="mt-6  mx-auto bg-white">
+      <h2 className="text-xl font-semibold text-gray-800 mb-4">Product Order</h2>
+
+      <div className="grid grid-cols-1 gap-4">
+        {/* Quantity and Price Calculation */}
+        <div>
+          <div className="flex items-center mt-2 space-x-2">
+            <button
+              type="button"
+              onClick={() => setQuantity(Math.max(1, quantity - 1))}
+              className="btn bg-gray-200 text-gray-700 hover:bg-gray-300 rounded-md px-3 font-bold"
+            >
+              -
+            </button>
+            <input
+              name="quantity"
+              type="number"
+              value={quantity}
+              onChange={handleQuantityChange}
+              min="1"
+              className="input input-bordered w-16 text-center"
+            />
+            <button
+              type="button"
+              onClick={() => setQuantity(quantity + 1)}
+              className="btn bg-gray-200 text-gray-700 hover:bg-gray-300 rounded-md px-3 font-bold"
+            >
+              +
+            </button>
+          </div>
+          <p className="mt-2 text-gray-600 font-bold text-xl">Price: {quantity} x ${price} = ${total}</p>
+        </div>
+
+        {/* Location */}
+        <div>
+          <label className="block text-gray-700">Pickup Location</label>
+          <input
+            name="location"
+            required
+            // value={pickup_location}
+            defaultValue={pickup_location}
+            type="text"
+            placeholder="Enter your pickup location"
+            className="input input-bordered w-full mt-2"
+          />
+        </div>
+
+        {/* Additional Notes */}
+        <div>
+          <label className="block text-gray-700">Additional Notes</label>
+          <textarea
+            name="notes"
+            required
+            rows={4}
+            placeholder="Enter additional notes"
+            className="textarea textarea-bordered w-full mt-2"
+          />
+        </div>
+      </div>
+
+      {/* Confirm Order Button */}
+      <button
+        onClick={() => handleUp(_id)}
+        type="submit"
+        className="btn w-full bg-pink-600 hover:bg-pink-700 text-white mt-6 py-3 font-bold uppercase rounded-lg transition-transform duration-300 transform hover:scale-105"
+      >
+        Confirm Order
+      </button>
+    </form>
           </div>
 
           {/* Food Image */}
@@ -296,7 +385,7 @@ const SinglePage = () => {
       </div>
 
       {/* Mobile App Section */}
-      <div className="mt-10">
+      <div className="mt-32">
         <MobileApp />
       </div>
     </div>
