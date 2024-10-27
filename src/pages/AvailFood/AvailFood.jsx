@@ -100,42 +100,42 @@ const AvailFood = () => {
       <div className="flex max-w-screen-xl mx-auto mb-5">
         <div className="max-w-screen-xl mx-auto  w-1/4    mt-4  ">
           <div className="  shadow-2xl shadow-zinc-400 py-3 px-4 rounded-lg">
-          <h1 className="bg-slate-200 lg:text-2xl  text-center py-1">
-            Query by Food Name
-          </h1>
-          <form
-            className=" mt-2   flex justify-between items-center rounded-2xl  mt-  space-x-1"
-            onSubmit={handleSubmit}
-          >
-            <input
-              className="input input-bordered w-full "
-              type="text"
-              name="serching"
-              placeholder="Search by Foods Name  "
-              id=""
-            />
-
-            <button
-              type="submit"
-              className="btn  hover:bg-[#E21B90] text-white font-extrabold hover:scale-95 bg-[#E21B70]"
+            <h1 className="bg-slate-200 lg:text-2xl  text-center py-1">
+              Query by Food Name
+            </h1>
+            <form
+              className=" mt-2   flex justify-between items-center rounded-2xl  mt-  space-x-1"
+              onSubmit={handleSubmit}
             >
-              <FaSearch />
-            </button>
-          </form>
-          
-            <div className="my-3 space-y-2">
-            <ul>
-              <li
-                onClick={handleStateManage}
-                className={
-                  stateManage
-                    ? "border-b-2 mb-3 border-[#E21B70] font-bold  bg-[#E21B70] transition  text-white w-full p-2 rounded-b-lg hover:bg-black hover:cursor-pointer hover:scale-95 "
-                    : "border-b-2 mb- border-black font-bold  bg-black transition text-white w-full p-2 hover:bg-[#E21B70] rounded-b-lg hover:cursor-pointer hover:scale-95 "
-                }
+              <input
+                className="input input-bordered w-full "
+                type="text"
+                name="serching"
+                placeholder="Search by Foods Name  "
+                id=""
+              />
+
+              <button
+                type="submit"
+                className="btn  hover:bg-[#E21B90] text-white font-extrabold hover:scale-95 bg-[#E21B70]"
               >
-                Change Layout{" "}
-              </li>
-            </ul>
+                <FaSearch />
+              </button>
+            </form>
+
+            <div className="my-3 space-y-2">
+              <ul>
+                <li
+                  onClick={handleStateManage}
+                  className={
+                    stateManage
+                      ? "border-b-2 mb-3 border-[#E21B70] font-bold  bg-[#E21B70] transition  text-white w-full p-2 rounded-b-lg hover:bg-black hover:cursor-pointer hover:scale-95 "
+                      : "border-b-2 mb- border-black font-bold  bg-black transition text-white w-full p-2 hover:bg-[#E21B70] rounded-b-lg hover:cursor-pointer hover:scale-95 "
+                  }
+                >
+                  Change Layout{" "}
+                </li>
+              </ul>
               <h1 className="bg-slate-200 lg:text-2xl text-center w-full py-1 mt-">
                 Sort by Product Price
               </h1>
@@ -160,58 +160,55 @@ const AvailFood = () => {
             </div>
           </div>
 
-
-         <div className="shadow-xl scale-105  shadow-zinc-400 py-3 px-4 mt-12 rounded-lg ">
-         <div className="py-3">
-           
-
-           <h1 className="bg-slate-200 lg:text-2xl text-center w-full py-1">
-             Sort by Area Name
-           </h1>
-           <div className="grid px-4 grid-cols-1 lg:grid-cols-2 text-center  gap-2 mt-3">
-             {[
-               "Dhaka",
-               "Noakhali",
-               "chottogram",
-               "Sylhet",
-               "Rajshahi",
-               "Khulna",
-               "Barishal",
-               "Rangpur",
-               "Cumilla",
-               "Jassore",
-             ].map((brand) => (
-               <div className="form-control" key={brand}>
-                 <label className="cursor-pointer label px-4">
-                   <h1 className="label-text text-xl text-black">{brand}</h1>
-                   <input
-                     type="checkbox"
-                     onChange={() => handleBrandChange(brand)}
-                     className="checkbox checkbox-secondary"
-                   />
-                 </label>
-               </div>
-             ))}
-           </div>
-         </div>
-         <h1 className="bg-slate-200 lg:text-2xl text-center w-full py-1">
-           Sort by Date
-         </h1>
-         <ul className="mt-2 space-y-2">
-           <li
-             onClick={() => sort("recentDays")}
-             className="border-b-2 border-[#E21B70]  hover:bg-black hover:cursor-pointer hover:scale-95 font-bold  bg-[#E21B70] transition text-white w-full p-2 rounded-b-lg "
-           >
-             <span className="ml-5  font-extrabold"> Recent Post</span>
-           </li>
-           <li
-             onClick={() => sort("fastDays")}
-             className=" border-b-2 border-[#E21B70]  hover:bg-black hover:cursor-pointer hover:scale-95 font-bold bg-[#E21B70] transition text-white w-full p-2 rounded-b-lg "
-           >
-             <span className="ml-5  font-extrabold"> Previous Post</span>
-           </li>
-         </ul>
-         </div>
+          <div className="shadow-xl scale-105  shadow-zinc-400 py-3 px-4 mt-12 rounded-lg ">
+            <div className="py-3">
+              <h1 className="bg-slate-200 lg:text-2xl text-center w-full py-1">
+                Sort by Area Name
+              </h1>
+              <div className="grid px-4 grid-cols-1 lg:grid-cols-2 text-center  gap-2 mt-3">
+                {[
+                  "Dhaka",
+                  "Noakhali",
+                  "chottogram",
+                  "Sylhet",
+                  "Rajshahi",
+                  "Khulna",
+                  "Barishal",
+                  "Rangpur",
+                  "Cumilla",
+                  "Jassore",
+                ].map((brand) => (
+                  <div className="form-control" key={brand}>
+                    <label className="cursor-pointer label px-4">
+                      <h1 className="label-text text-xl text-black">{brand}</h1>
+                      <input
+                        type="checkbox"
+                        onChange={() => handleBrandChange(brand)}
+                        className="checkbox checkbox-secondary"
+                      />
+                    </label>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <h1 className="bg-slate-200 lg:text-2xl text-center w-full py-1">
+              Sort by Date
+            </h1>
+            <ul className="mt-2 space-y-2">
+              <li
+                onClick={() => sort("recentDays")}
+                className="border-b-2 border-[#E21B70]  hover:bg-black hover:cursor-pointer hover:scale-95 font-bold  bg-[#E21B70] transition text-white w-full p-2 rounded-b-lg "
+              >
+                <span className="ml-5  font-extrabold"> Recent Post</span>
+              </li>
+              <li
+                onClick={() => sort("fastDays")}
+                className=" border-b-2 border-[#E21B70]  hover:bg-black hover:cursor-pointer hover:scale-95 font-bold bg-[#E21B70] transition text-white w-full p-2 rounded-b-lg "
+              >
+                <span className="ml-5  font-extrabold"> Previous Post</span>
+              </li>
+            </ul>
+          </div>
         </div>
 
         <div className="max-w-screen-xl mx-auto flex-1 ">
