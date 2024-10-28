@@ -13,7 +13,6 @@ const SinglePage = () => {
   const { user } = useAuth();
   const [upId, setupId] = useState(null);
   const [showMore, setShowMore] = useState(false);
-  const [comments, setComments] = useState([]);
   const [commentText, setCommentText] = useState("");
   const loadData = useLoaderData();
   const [foods, setFoods] = useState([]);
@@ -38,8 +37,18 @@ const SinglePage = () => {
     food_name,
     pickup_location,
     price,
+    comments
   } = loadData;
   console.log(loadData);
+
+  const [quantity, setQuantity] = useState(1);
+
+  const handleQuantityChange = (e) => {
+    const value = Math.max(1, e.target.value); // Ensures quantity is at least 1
+    setQuantity(value);
+  };
+
+  const total = quantity * price;
 
   const handleUpdate = (e) => {
     e.preventDefault();
@@ -50,17 +59,17 @@ const SinglePage = () => {
     // console.log(quantity);
     const foodDetails = {
       food_name,
-      food_image,donator,
+      food_image,
+      donator,
       expired_datetime,
-      price,
-      status:'requested',
+      price : total,
+      status: "requested",
       quantity,
       address_notes,
       pickup_location,
       requsterEmail: user.email,
-      comments
     };
-
+    console.log(foodDetails);
     axios.post("http://localhost:5000/requested", foodDetails).then((res) => {
       if (res.data.acknowledged) {
         toast.success("Added to Requested List!");
@@ -81,23 +90,23 @@ const SinglePage = () => {
   const handleCommentSubmit = (e) => {
     e.preventDefault();
     const newComment = {
+      id_1: _id,
       id: comments.length + 1,
       name: user.displayName,
       image: user.photoURL,
-      text: commentText,
+      text: commentText,  
     };
-    setComments([...comments, newComment]);
-    setCommentText("");
-    toast.success("Comment added!");
+    axios.patch('http://localhost:5000/commentAdd', newComment).then((res)=>{
+      console.log(res);
+      if(res.status === 200){
+        toast.success("😚Comment added!");
+      }else{
+        toast.error("Failed to add comment");
+      }
+    })
   };
-  const [quantity, setQuantity] = useState(1);
+  
 
-  const handleQuantityChange = (e) => {
-    const value = Math.max(1, e.target.value); // Ensures quantity is at least 1
-    setQuantity(value);
-  };
-
-  const total = quantity * price;
 
   return (
     <div className="bg-gray-50 min-h-screen ">
@@ -192,75 +201,81 @@ const SinglePage = () => {
                 Confirm Order
               </button>
             </form> */}
-             <form onSubmit={handleUpdate} className="mt-6  mx-auto bg-white">
-      <h2 className="text-xl font-semibold text-gray-800 mb-4">Product Order</h2>
+            <form onSubmit={handleUpdate} className="mt-6  mx-auto bg-white">
+              <h2 className="text-xl font-semibold text-gray-800 mb-4">
+                Product Order
+              </h2>
 
-      <div className="grid grid-cols-1 gap-4">
-        {/* Quantity and Price Calculation */}
-        <div>
-          <div className="flex items-center mt-2 space-x-2">
-            <button
-              type="button"
-              onClick={() => setQuantity(Math.max(1, quantity - 1))}
-              className="btn bg-gray-200 text-gray-700 hover:bg-gray-300 rounded-md px-3 font-bold"
-            >
-              -
-            </button>
-            <input
-              name="quantity"
-              type="number"
-              value={quantity}
-              onChange={handleQuantityChange}
-              min="1"
-              className="input input-bordered w-16 text-center"
-            />
-            <button
-              type="button"
-              onClick={() => setQuantity(quantity + 1)}
-              className="btn bg-gray-200 text-gray-700 hover:bg-gray-300 rounded-md px-3 font-bold"
-            >
-              +
-            </button>
-          </div>
-          <p className="mt-2 text-gray-600 font-bold text-xl">Price: {quantity} x ${price} = ${total}</p>
-        </div>
+              <div className="grid grid-cols-1 gap-4">
+                {/* Quantity and Price Calculation */}
+                <div>
+                  <div className="flex items-center mt-2 space-x-2">
+                    <button
+                      type="button"
+                      onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                      className="btn bg-gray-200 text-gray-700 hover:bg-gray-300 rounded-md px-3 font-bold"
+                    >
+                      -
+                    </button>
+                    <input
+                      name="quantity"
+                      type="number"
+                      value={quantity}
+                      onChange={handleQuantityChange}
+                      min="1"
+                      className="input input-bordered w-16 text-center"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setQuantity(quantity + 1)}
+                      className="btn bg-gray-200 text-gray-700 hover:bg-gray-300 rounded-md px-3 font-bold"
+                    >
+                      +
+                    </button>
+                  </div>
+                  <p className="mt-2 text-gray-600 font-bold text-xl">
+                    Price: {quantity} x ${price} = ${total}
+                  </p>
+                </div>
 
-        {/* Location */}
-        <div>
-          <label className="block text-gray-700">Pickup Location</label>
-          <input
-            name="location"
-            required
-            // value={pickup_location}
-            defaultValue={pickup_location}
-            type="text"
-            placeholder="Enter your pickup location"
-            className="input input-bordered w-full mt-2"
-          />
-        </div>
+                {/* Location */}
+                <div>
+                  <label className="block text-gray-700">Pickup Location</label>
+                  <input
+                    name="location"
+                    required
+                    // value={pickup_location}
+                    defaultValue={pickup_location}
+                    type="text"
+                    placeholder="Enter your pickup location"
+                    className="input input-bordered w-full mt-2"
+                  />
+                </div>
 
-        {/* Additional Notes */}
-        <div>
-          <label className="block text-gray-700">Additional Notes</label>
-          <textarea
-            name="notes"
-            required
-            rows={4}
-            placeholder="Enter additional notes"
-            className="textarea textarea-bordered w-full mt-2"
-          />
-        </div>
-      </div>
+                {/* Additional Notes */}
+                <div>
+                  <label className="block text-gray-700">
+                    Additional Notes
+                  </label>
+                  <textarea
+                    name="notes"
+                    required
+                    rows={4}
+                    placeholder="Enter additional notes"
+                    className="textarea textarea-bordered w-full mt-2"
+                  />
+                </div>
+              </div>
 
-      {/* Confirm Order Button */}
-      <button
-        onClick={() => handleUp(_id)}
-        type="submit"
-        className="btn w-full bg-pink-600 hover:bg-pink-700 text-white mt-6 py-3 font-bold uppercase rounded-lg transition-transform duration-300 transform hover:scale-105"
-      >
-        Confirm Order
-      </button>
-    </form>
+              {/* Confirm Order Button */}
+              <button
+                onClick={() => handleUp(_id)}
+                type="submit"
+                className="btn w-full bg-pink-600 hover:bg-pink-700 text-white mt-6 py-3 font-bold uppercase rounded-lg transition-transform duration-300 transform hover:scale-105"
+              >
+                Confirm Order
+              </button>
+            </form>
           </div>
 
           {/* Food Image */}
@@ -276,7 +291,7 @@ const SinglePage = () => {
                   "grid grid-cols-1 px-3  max-w-screen-xl mx-auto md:grid-cols-2 gap-1 md:gap-10 mt-2 flex-1"
                 }
               >
-                {foods.slice(0,2).map((p) => (
+                {foods.slice(0, 2).map((p) => (
                   <div key={p._id} className="   shadow-xl  h-80">
                     <div className="relative p-2">
                       <figure className="flex justify-center items-center">
@@ -349,7 +364,7 @@ const SinglePage = () => {
                 onChange={(e) => setCommentText(e.target.value)}
                 required
               />
-              <button 
+              <button
                 type="submit"
                 className="btn bg-pink-600 hover:bg-pink-700 text-white"
               >
