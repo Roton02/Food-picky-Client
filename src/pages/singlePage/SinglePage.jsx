@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { Link,  useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import useAuth from "../../Hooks/useAuth";
 import MobileApp from "../../Home/MobileApp";
@@ -11,34 +11,36 @@ import { GiSelfLove } from "react-icons/gi";
 import { useQuery } from "@tanstack/react-query";
 
 const SinglePage = () => {
-  const {DynamicId} = useParams()
+  const { DynamicId } = useParams();
   const { user } = useAuth();
   const [upId, setupId] = useState(null);
   const [showMore, setShowMore] = useState(false);
   const [commentText, setCommentText] = useState("");
   const [foods, setFoods] = useState([]);
 
-  const {data , refetch} = useQuery({ queryKey: ['SingleData'], queryFn: ()=>{
-    return axios.get(`http://localhost:5000/featured/${DynamicId}`)
-     .then(res => res.data)
-  } })
+  const { data, refetch } = useQuery({
+    queryKey: ["SingleData"],
+    queryFn: () => {
+      return axios
+        .get(`http://localhost:5000/featured/${DynamicId}`)
+        .then((res) => res.data);
+    },
+  });
   console.log(data);
-  
-    const {
-      _id,
-      additional_notes,
-      donator,
-      expired_datetime,
-      food_image,
-      food_name,
-      pickup_location,
-      price,
-      comments
-    } = data || {};
-  
-    // console.log(_id, additional_notes, donator, expired_datetime, food_image, food_name, pickup_location, price, comments);
-  
 
+  const {
+    _id,
+    additional_notes,
+    donator,
+    expired_datetime,
+    food_image,
+    food_name,
+    pickup_location,
+    price,
+    comments,
+  } = data || {};
+
+  // console.log(_id, additional_notes, donator, expired_datetime, food_image, food_name, pickup_location, price, comments);
 
   useEffect(() => {
     axios.get(`http://localhost:5000/featured/avilable`).then((res) => {
@@ -53,7 +55,6 @@ const SinglePage = () => {
     });
   }, []);
 
- 
   const [quantity, setQuantity] = useState(1);
 
   const handleQuantityChange = (e) => {
@@ -75,7 +76,7 @@ const SinglePage = () => {
       food_image,
       donator,
       expired_datetime,
-      price : total,
+      price: total,
       status: "requested",
       quantity,
       address_notes,
@@ -106,25 +107,25 @@ const SinglePage = () => {
       id_1: _id,
       name: user.displayName,
       image: user.photoURL,
-      text: commentText,  
+      text: commentText,
     };
-    axios.patch('http://localhost:5000/commentAdd', newComment).then((res)=>{
+    axios.patch("http://localhost:5000/commentAdd", newComment).then((res) => {
       console.log(res);
-      if(res.status === 200){
+      if (res.status === 200) {
         toast.success("😚Comment added!");
-      }else{
+        setCommentText(" ");
+        refetch();
+      } else {
         toast.error("Failed to add comment");
       }
-    })
+    });
   };
-  
-
 
   return (
     // <div className="bg-black h-screen">
 
     // </div>
-    
+
     <div className="bg-gray-50 min-h-screen ">
       <Helmet>
         <title>Food Picky || Food Details</title>
@@ -160,7 +161,7 @@ const SinglePage = () => {
             <p className="mt-4 text-gray-700">
               {showMore
                 ? additional_notes
-                : `${additional_notes.slice(0, 350)}...`}{" "}
+                : `${additional_notes?.slice(0, 350)}...`}{" "}
               <span
                 onClick={handleSeeMoreToggle}
                 className="text-pink-500 cursor-pointer hover:underline"
@@ -334,9 +335,7 @@ const SinglePage = () => {
                         <h2 className="font-semibold text-xl md:text-2xl text-nowrap ">
                           {p.food_name}
                         </h2>
-                        <p className="font-semibold text-red  ">
-                           {p.price} TK
-                        </p>
+                        <p className="font-semibold text-red  ">{p.price} TK</p>
                       </div>
 
                       <div className="flex  justify-between">
@@ -390,21 +389,24 @@ const SinglePage = () => {
           </form>
 
           {/* Display Comments */}
-          {comments  ? (
+          {comments && comments.length > 0 ? (
             <div className="space-y-4">
-              {comments.map((comment) => (
-                <div key={comment.id} className="flex items-start gap-4">
-                  <img
-                    src={comment.image}
-                    alt={comment.name}
-                    className="w-12 h-12 rounded-full"
-                  />
-                  <div className="bg-gray-100 p-4 rounded-lg shadow-sm w-full">
-                    <h3 className="font-semibold">{comment.name}</h3>
-                    <p>{comment.text}</p>
+              {comments
+                .slice()
+                .reverse()
+                .map((comment) => (
+                  <div key={comment.id} className="flex items-start gap-4">
+                    <img
+                      src={comment.image}
+                      alt={comment.name}
+                      className="w-12 h-12 rounded-full"
+                    />
+                    <div className="bg-gray-100 p-4 rounded-lg shadow-sm w-full">
+                      <h3 className="font-semibold">{comment.name}</h3>
+                      <p>{comment.text}</p>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
             </div>
           ) : (
             <p className="text-gray-600">
