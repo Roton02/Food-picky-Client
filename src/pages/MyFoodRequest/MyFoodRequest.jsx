@@ -66,7 +66,7 @@ const MyFoodRequest = () => {
                 jobTitle={item.food_name}
                 postedDate={item.expired_datetime}
                 type={item.status}
-                salery={item.quantity}
+                salery={item.price}
                 deadLine={item.expired_datetime}
                 id={item._id}
               />
