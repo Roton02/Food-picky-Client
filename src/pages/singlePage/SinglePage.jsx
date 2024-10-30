@@ -1,21 +1,45 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link,  useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import useAuth from "../../Hooks/useAuth";
 import MobileApp from "../../Home/MobileApp";
 import Swal from "sweetalert2";
 import { FaLocationArrow } from "react-icons/fa";
 import { GiSelfLove } from "react-icons/gi";
+import { useQuery } from "@tanstack/react-query";
 
 const SinglePage = () => {
+  const {DynamicId} = useParams()
   const { user } = useAuth();
   const [upId, setupId] = useState(null);
   const [showMore, setShowMore] = useState(false);
   const [commentText, setCommentText] = useState("");
-  const loadData = useLoaderData();
   const [foods, setFoods] = useState([]);
+
+  const {data , refetch} = useQuery({ queryKey: ['SingleData'], queryFn: ()=>{
+    return axios.get(`http://localhost:5000/featured/${DynamicId}`)
+     .then(res => res.data)
+  } })
+  console.log(data);
+  
+    const {
+      _id,
+      additional_notes,
+      donator,
+      expired_datetime,
+      food_image,
+      food_name,
+      pickup_location,
+      price,
+      comments
+    } = data || {};
+  
+    // console.log(_id, additional_notes, donator, expired_datetime, food_image, food_name, pickup_location, price, comments);
+  
+
+
   useEffect(() => {
     axios.get(`http://localhost:5000/featured/avilable`).then((res) => {
       setFoods(res.data);
@@ -28,19 +52,8 @@ const SinglePage = () => {
       }
     });
   }, []);
-  const {
-    _id,
-    additional_notes,
-    donator,
-    expired_datetime,
-    food_image,
-    food_name,
-    pickup_location,
-    price,
-    comments
-  } = loadData;
-  console.log(loadData);
 
+ 
   const [quantity, setQuantity] = useState(1);
 
   const handleQuantityChange = (e) => {
@@ -91,7 +104,6 @@ const SinglePage = () => {
     e.preventDefault();
     const newComment = {
       id_1: _id,
-      id: comments.length + 1,
       name: user.displayName,
       image: user.photoURL,
       text: commentText,  
@@ -109,6 +121,10 @@ const SinglePage = () => {
 
 
   return (
+    // <div className="bg-black h-screen">
+
+    // </div>
+    
     <div className="bg-gray-50 min-h-screen ">
       <Helmet>
         <title>Food Picky || Food Details</title>
@@ -127,8 +143,8 @@ const SinglePage = () => {
                   <img src={donator?.image} alt="Seller" />
                 </div>
                 <div className="ml-4">
-                  <p className="text-lg font-semibold">Name: {donator.name}</p>
-                  <p className="text-gray-600">Email: {donator.email}</p>
+                  <p className="text-lg font-semibold">Name: {donator?.name}</p>
+                  <p className="text-gray-600">Email: {donator?.email}</p>
                 </div>
               </div>
             </div>
@@ -319,7 +335,7 @@ const SinglePage = () => {
                           {p.food_name}
                         </h2>
                         <p className="font-semibold text-red  ">
-                          1000 {p.food_price} TK
+                           {p.price} TK
                         </p>
                       </div>
 
@@ -374,7 +390,7 @@ const SinglePage = () => {
           </form>
 
           {/* Display Comments */}
-          {comments.length > 0 ? (
+          {comments  ? (
             <div className="space-y-4">
               {comments.map((comment) => (
                 <div key={comment.id} className="flex items-start gap-4">

@@ -99,14 +99,12 @@ const router = createBrowserRouter([
         element: <AboutUs></AboutUs>,
       },
       {
-        path: "/singlePage/:id",
+        path: "/singlePage/:DynamicId",
         element: (
           <PrivateRoute>
             <SinglePage></SinglePage>
           </PrivateRoute>
-        ),
-        loader: ({ params }) =>
-          fetch(`http://localhost:5000/featured/${params.id}`),
+        )
       },
       {
         path: "/profile",
