@@ -60,14 +60,20 @@ const JobCard = ({
               <h4>{type==='requested'&& 'On Going'} {type==='Complete'&& 'Delivered'}  {type==='StockOver'&& 'Stock over'} </h4>
             </div>
 
-            <Link to={`/details/${id}`}>
+           { type==='requested'?  <Link to={`/details/${id}`}>
               <div className="bg-indigo-400 px-7 text-base md:text-lg rounded-2xl flex items-center cursor-pointer gap-2 mt-2 md:mt-5 text-white">
                 {type==='requested'? <FaDeleteLeft/> : <FaExternalLinkAlt />}
-                <Link to={`/details/${id}`}>
-                  <button>{`${type==='requested' ? 'Cancel Order' :'View Details'}`}</button>
-                </Link>
+                  <button>{type==='requested' && 'Cancel Order'} {type==='Complete' && 'Personal review'}  {type==='StockOver' && 'Another Order'}  </button>
+                
               </div>
-            </Link>
+            </Link> :
+            <Link to={`${type==='Complete'? '/reviews' : '/availFood'}`}>
+              <div className="bg-indigo-400 px-7 text-base md:text-lg rounded-2xl flex items-center cursor-pointer gap-2 mt-2 md:mt-5 text-white">
+                {type==='requested'? <FaDeleteLeft/> : <FaExternalLinkAlt />}
+                  <button>{type==='requested' && 'Cancel Order'} {type==='Complete' && 'Personal review'}  {type==='StockOver' && 'Another Order'}  </button>
+                
+              </div>
+            </Link>}
           </div>
           <hr className="mt-3 md:mt-5 border border-gray-300" />
           <div className="flex justify-between mt-3 flex-col md:flex-row">
