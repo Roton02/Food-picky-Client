@@ -29,10 +29,12 @@ const MyFoodRequest = () => {
     return data;
   };
   console.log(foods);
-  const Deliver = foods.filter((f) => f.type === "Cat");
-  const Process = foods.filter((f) => f.type === "Dog");
-  const StockOver = foods.filter((f) => f.type === "Rabbit");
-  console.log(Deliver,Process, StockOver);
+  const Deliver = foods.filter((f) => f.status === "Complete"); //Complete
+  const Process = foods.filter((f) => f.status === "requested");
+  const StockOver = foods.filter((f) => f.status === "StockOver");
+  console.log('Delivery',Deliver);
+  console.log('Process',Process);
+  console.log('StockOver',StockOver);
 
 
   return (
@@ -41,11 +43,9 @@ const MyFoodRequest = () => {
         <title>Food Picky || My Food</title>
         {/* <link rel="canonical" href="https://www.tacobell.com/" /> */}
       </Helmet>
-      
-
       <div className="max-w-screen-lg mx-auto  overflow-hidden ">
-        <h1 className="text-4xl text-center  mt-10 ">My Order History </h1>
-        <Tabs>
+        <h1 className="text-4xl mb-10 text-center  mt-10 ">My Order History </h1>
+        <Tabs className={'mb-20'}>
         <TabList>
           <Tab>Orders in Progress </Tab>
           <Tab>Delivered Orders</Tab>
@@ -53,37 +53,13 @@ const MyFoodRequest = () => {
         </TabList>
 
         <TabPanel>
-          <h2>Any content 1</h2>
-        </TabPanel>
-        <TabPanel>
-          <h2>Any content 2</h2>
-        </TabPanel>
-        <TabPanel>
-          <h2>Any content 3</h2>
-        </TabPanel>
-      </Tabs>
-        {/* <div className="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-b border-gray-200 dark:border-neutral-700">
-          <div>
-            <h2 className="text-xl font-semibold ">Order Foods Collection</h2>
-            <p className="text-sm ">Manage Your order</p>
-          </div>
-          <div className="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center ">
-            <div>
-              <p className="text-sm ">
-                <span className="font-semibold ">Total results</span>{" "}
-                {foods.length}
-              </p>
-            </div>
-          </div>
-        </div>
-
         {loading ? (
           <div className="flex justify-center items-center h-[50vh]">
             <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-600"></div>
           </div>
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-2 w-full gap-9 md:gap-16 mt-10">
-            {foods.map((item) => (
+            {Deliver?.map((item) => (
               <JobCard
                 key={item._id}
                 img={item.food_image}
@@ -97,7 +73,58 @@ const MyFoodRequest = () => {
               />
             ))}
           </div>
-        )} */}
+        )}
+        </TabPanel>
+        <TabPanel>
+        {loading ? (
+          <div className="flex justify-center items-center h-[50vh]">
+            <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-600"></div>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 lg:grid-cols-2 w-full gap-9 md:gap-16 mt-10">
+            {Process?.map((item) => (
+              <JobCard
+                key={item._id}
+                img={item.food_image}
+                postedBy={item.donator.name}
+                jobTitle={item.food_name}
+                postedDate={item.expired_datetime}
+                type={item.status}
+                salery={item.price}
+                deadLine={item.expired_datetime}
+                id={item._id}
+              />
+            ))}
+          </div>
+        )}
+        </TabPanel>
+        <TabPanel>
+        {loading ? (
+          <div className="flex justify-center items-center h-[50vh]">
+            <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-600"></div>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 lg:grid-cols-2 w-full gap-9 md:gap-16 mt-10">
+            {StockOver?.map((item) => (
+              <JobCard
+                key={item._id}
+                img={item.food_image}
+                postedBy={item.donator.name}
+                jobTitle={item.food_name}
+                postedDate={item.expired_datetime}
+                type={item.status}
+                salery={item.price}
+                deadLine={item.expired_datetime}
+                id={item._id}
+              />
+            ))}
+          </div>
+        )}
+        </TabPanel>
+      </Tabs>
+        
+
+       
       </div>
     </div>
   );
