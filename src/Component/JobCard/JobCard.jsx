@@ -70,7 +70,7 @@ const JobCard = ({
             <Link to={`${type==='Complete'? `/singlePage/${id}` : '/availFood'}`}>
               <div className="bg-indigo-400 px-7 text-base md:text-lg rounded-2xl flex items-center cursor-pointer gap-2 mt-2 md:mt-5 text-white">
                 {type==='requested'? <FaDeleteLeft/> : <FaExternalLinkAlt />}
-                  <button>{type==='requested' && 'Cancel Order'} {type==='Complete' && 'Personal review'}  {type==='StockOver' && 'Another Order'}  </button>
+                  <button>{type==='requested' && 'Cancel Order'} {type==='Complete' && 'Personal review'}  {type==='StockOver' && 'Another Order'}  </button> 
               </div>
             </Link>}
           </div>
