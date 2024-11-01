@@ -57,7 +57,7 @@ const JobCard = ({
                 type
               )} px-7 text-base md:text-lg rounded-2xl inline-block mt-2 md:mt-5 text-white`}
             >
-              <h4>{type==='requested'&& 'On Going'}</h4>
+              <h4>{type==='requested'&& 'On Going'} {type==='Complete'&& 'Delivered'}  {type==='StockOver'&& 'Stock over'} </h4>
             </div>
 
             <Link to={`/details/${id}`}>
