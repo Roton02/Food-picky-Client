@@ -1,4 +1,5 @@
 import { BsCalendar2Date } from "react-icons/bs";
+import { FaDeleteLeft } from "react-icons/fa6";
 import { LuCircleDollarSign } from "react-icons/lu";
 import { IoTimerSharp } from "react-icons/io5";
 import { FaExternalLinkAlt } from "react-icons/fa";
@@ -56,14 +57,14 @@ const JobCard = ({
                 type
               )} px-7 text-base md:text-lg rounded-2xl inline-block mt-2 md:mt-5 text-white`}
             >
-              <h1>{type === "requested" ? "Pending" : type}</h1>
+              <h1>{type}</h1>
             </div>
 
             <Link to={`/details/${id}`}>
               <div className="bg-indigo-400 px-7 text-base md:text-lg rounded-2xl flex items-center cursor-pointer gap-2 mt-2 md:mt-5 text-white">
-                <FaExternalLinkAlt />
+                {type==='requested'? <FaDeleteLeft/> : <FaExternalLinkAlt />}
                 <Link to={`/details/${id}`}>
-                  <button>View Details</button>
+                  <button>{`${type==='requested' ? 'Cancel Order' :'View Details'}`}</button>
                 </Link>
               </div>
             </Link>

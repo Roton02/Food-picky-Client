@@ -59,7 +59,7 @@ const MyFoodRequest = () => {
           </div>
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-2 w-full gap-9 md:gap-16 mt-10">
-            {Deliver?.map((item) => (
+            {Process?.map((item) => (
               <JobCard
                 key={item._id}
                 img={item.food_image}
@@ -82,7 +82,7 @@ const MyFoodRequest = () => {
           </div>
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-2 w-full gap-9 md:gap-16 mt-10">
-            {Process?.map((item) => (
+            {Deliver?.map((item) => (
               <JobCard
                 key={item._id}
                 img={item.food_image}
