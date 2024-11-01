@@ -11,12 +11,14 @@ const AdminRoute = ({ children }) => {
   const location = useLocation();
 
   useEffect(() => {
-    if (!user || !isAdmin) {
-      Logout(); // Call Logout if the user is not an admin
+    // Only call Logout if loading is done and the user is not an admin
+    if (!loading && !isAdminLoading && (!user || !isAdmin)) {
+      Logout();
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [ isAdmin]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [loading, isAdminLoading, isAdmin, user]);
 
+  // Display loading spinner while loading states are true
   if (loading || isAdminLoading) {
     return (
       <div className="flex items-center mx-auto my-auto justify-center mt-20">
@@ -28,10 +30,12 @@ const AdminRoute = ({ children }) => {
     );
   }
 
+  // Render the children if user is authenticated and is an admin
   if (user && isAdmin) {
-    return children; // Render the children if user is authenticated and is an admin
+    return children;
   }
 
+  // Redirect to login if not authenticated or not an admin
   return <Navigate state={{ from: location.pathname }} to="/login" />;
 };
 

@@ -6,6 +6,8 @@ import useAuth from "../../Hooks/useAuth";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import JobCard from "../../Component/JobCard/JobCard";
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
 
 const MyFoodRequest = () => {
   const { user } = useAuth();
@@ -27,17 +29,40 @@ const MyFoodRequest = () => {
     return data;
   };
   console.log(foods);
+  const Deliver = foods.filter((f) => f.type === "Cat");
+  const Process = foods.filter((f) => f.type === "Dog");
+  const StockOver = foods.filter((f) => f.type === "Rabbit");
+  console.log(Deliver,Process, StockOver);
 
-  console.log(foods);
+
   return (
     <div>
       <Helmet>
         <title>Food Picky || My Food</title>
         {/* <link rel="canonical" href="https://www.tacobell.com/" /> */}
       </Helmet>
+      
+
       <div className="max-w-screen-lg mx-auto  overflow-hidden ">
         <h1 className="text-4xl text-center  mt-10 ">My Order History </h1>
-        <div className="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-b border-gray-200 dark:border-neutral-700">
+        <Tabs>
+        <TabList>
+          <Tab>Orders in Progress </Tab>
+          <Tab>Delivered Orders</Tab>
+          <Tab>Out of Stock Orders</Tab>
+        </TabList>
+
+        <TabPanel>
+          <h2>Any content 1</h2>
+        </TabPanel>
+        <TabPanel>
+          <h2>Any content 2</h2>
+        </TabPanel>
+        <TabPanel>
+          <h2>Any content 3</h2>
+        </TabPanel>
+      </Tabs>
+        {/* <div className="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-b border-gray-200 dark:border-neutral-700">
           <div>
             <h2 className="text-xl font-semibold ">Order Foods Collection</h2>
             <p className="text-sm ">Manage Your order</p>
@@ -72,7 +97,7 @@ const MyFoodRequest = () => {
               />
             ))}
           </div>
-        )}
+        )} */}
       </div>
     </div>
   );
