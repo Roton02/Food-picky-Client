@@ -52,7 +52,7 @@ const router = createBrowserRouter([
       {
         path: "/availFood",
         element: <AvailFood></AvailFood>,
-        loader: ()=> fetch('http://localhost:5000/FoodCount')
+        loader: () => fetch("http://localhost:5000/FoodCount"),
       },
       {
         path: "/ManageMyFoods",
@@ -104,7 +104,7 @@ const router = createBrowserRouter([
           <PrivateRoute>
             <SinglePage></SinglePage>
           </PrivateRoute>
-        )
+        ),
       },
       {
         path: "/profile",
@@ -116,14 +116,21 @@ const router = createBrowserRouter([
       },
       {
         path: "/Users",
-        element: <AdminRoute><Users></Users></AdminRoute>,
+        element: (
+          <AdminRoute>
+            <Users></Users>
+          </AdminRoute>
+        ),
       },
-     
+
       {
         path: "/Admin/allFood",
-        element: <AdminRoute><AllFood></AllFood></AdminRoute>,
+        element: (
+          <AdminRoute>
+            <AllFood></AllFood>
+          </AdminRoute>
+        ),
       },
-     
     ],
   },
 ]);
