@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { BsCalendar2Date } from "react-icons/bs";
 import { FaDeleteLeft } from "react-icons/fa6";
 import { LuCircleDollarSign } from "react-icons/lu";
