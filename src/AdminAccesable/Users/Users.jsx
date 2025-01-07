@@ -6,14 +6,14 @@ const Users = () => {
   const { data: users = [], refetch } = useQuery({
     queryKey: ["user"],
     queryFn: async () => {
-      const { data } = await axios.get("http://localhost:5000/Admin/user");
+      const { data } = await axios.get("https://food-pocky01.vercel.app/Admin/user");
       return data;
     },
   });
 
   console.log(users);
   const handleMakeAdmin = (id) => {
-    axios.patch(`http://localhost:5000/users/admin/${id}`).then((res) => {
+    axios.patch(`https://food-pocky01.vercel.app/users/admin/${id}`).then((res) => {
       console.log(res.data);
       if (res.data.modifiedCount > 0) {
         refetch();

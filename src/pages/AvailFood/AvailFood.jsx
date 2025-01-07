@@ -31,7 +31,7 @@ const AvailFood = () => {
   useEffect(() => {
     axios
       .get(
-        `http://localhost:5000/featured/avilable?sorts=${sorts}&search=${search}&priceRange=${priceRange}&brands=${brands.join(
+        `https://food-pocky01.vercel.app/featured/avilable?sorts=${sorts}&search=${search}&priceRange=${priceRange}&brands=${brands.join(
           ","
         )}`
       )

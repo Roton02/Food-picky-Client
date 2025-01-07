@@ -22,7 +22,7 @@ const SinglePage = () => {
     queryKey: ["SingleData"],
     queryFn: () => {
       return axios
-        .get(`http://localhost:5000/featured/${DynamicId}`)
+        .get(`https://food-pocky01.vercel.app/featured/${DynamicId}`)
         .then((res) => res.data);
     },
   });
@@ -43,7 +43,7 @@ const SinglePage = () => {
   // console.log(_id, additional_notes, donator, expired_datetime, food_image, food_name, pickup_location, price, comments);
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/featured/avilable`).then((res) => {
+    axios.get(`https://food-pocky01.vercel.app/featured/avilable`).then((res) => {
       setFoods(res.data);
       if (res.data.length < 1) {
         Swal.fire({
@@ -84,7 +84,7 @@ const SinglePage = () => {
       requsterEmail: user.email,
     };
     console.log(foodDetails);
-    axios.post("http://localhost:5000/requested", foodDetails).then((res) => {
+    axios.post("https://food-pocky01.vercel.app/requested", foodDetails).then((res) => {
       if (res.data.acknowledged) {
         toast.success("Added to Requested List!");
       } else {
@@ -109,7 +109,7 @@ const SinglePage = () => {
       image: user.photoURL,
       text: commentText,
     };
-    axios.patch("http://localhost:5000/commentAdd", newComment).then((res) => {
+    axios.patch("https://food-pocky01.vercel.app/commentAdd", newComment).then((res) => {
       console.log(res);
       if (res.status === 200) {
         toast.success("😚Comment added!");

@@ -33,7 +33,7 @@ const AllRequested = () => {
   };
   const handleAccept = (id) => {
     axios
-      .patch("http://localhost:5000/admin/updateAccepted", { id })
+      .patch("https://food-pocky01.vercel.app/admin/updateAccepted", { id })
       .then((res) => {
         console.log(res.data);
         if (res.data.modifiedCount > 0) {
@@ -53,7 +53,7 @@ const AllRequested = () => {
   };
   const handleStockover = (id) => {
     axios
-      .patch("http://localhost:5000/admin/updateStockover", { id })
+      .patch("https://food-pocky01.vercel.app/admin/updateStockover", { id })
       .then((res) => {
         if (res.data.modifiedCount > 0) {
           refetch();

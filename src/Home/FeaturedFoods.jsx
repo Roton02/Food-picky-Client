@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 const FeaturedFoods = () => {
   const [foods, setFoods] = useState([]);
   useEffect(() => {
-    axios.get("http://localhost:5000/featured").then((res) => {
+    axios.get("https://food-pocky01.vercel.app/featured").then((res) => {
       setFoods(res.data.filter((avail) => avail.status === "available"));
     });
   }, []);
